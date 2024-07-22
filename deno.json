@@ -1,0 +1,25 @@
+{
+  "imports": {
+    "@/": "./src/",
+    "cssnano": "npm:cssnano@^7.0.4",
+    "esbuild": "https://deno.land/x/esbuild@v0.23.0/mod.js",
+    "esbuild_deno_loader": "https://deno.land/x/esbuild_deno_loader@0.9.0/mod.ts",
+    "hono": "jsr:@hono/hono@^4.5.1",
+    "luxon": "npm:luxon@^3.4.4",
+    "postcss": "npm:postcss@^8.4.39",
+    "std/": "https://deno.land/std@0.224.0/",
+    "tailwindcss": "npm:tailwindcss@^3.4.6"
+  },
+  "tasks": {
+    "gen:routes": "deno run --allow-all --watch=src/routes scripts/gen-routes.ts",
+    "gen:styles": "deno run --allow-all --watch=src scripts/gen-styles.ts",
+    "gen": "deno task gen:routes & deno task gen:styles",
+    "start": "deno run --allow-net --unstable-hmr=.generated dev.ts",
+    "dev": "deno task gen & deno task start",
+    "deploy": "deno bundle main.js generated/o.js && fleek functions deploy --path generated/o.js"
+  },
+  "compilerOptions": {
+    "jsx": "precompile",
+    "jsxImportSource": "hono/jsx"
+  }
+}
