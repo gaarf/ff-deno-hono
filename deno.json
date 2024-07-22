@@ -13,7 +13,8 @@
   "tasks": {
     "gen:routes": "deno run --allow-all --watch=src/routes scripts/gen-routes.ts",
     "gen:styles": "deno run --allow-all --watch=src scripts/gen-styles.ts",
-    "gen": "deno task gen:routes & deno task gen:styles",
+    "gen:client": "deno run --allow-all --watch=src scripts/gen-client.ts",
+    "gen": "mkdir -p .generated && deno task gen:routes & deno task gen:styles & deno task gen:client",
     "start": "deno run --allow-net --unstable-hmr=.generated dev.ts",
     "dev": "deno task gen & deno task start",
     "deploy": "deno bundle main.js generated/o.js && fleek functions deploy --path generated/o.js"
