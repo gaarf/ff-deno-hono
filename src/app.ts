@@ -9,6 +9,7 @@ import { jsxRenderer } from "hono/jsx-renderer";
 import Layout, { nested } from "@/Layout.tsx";
 import routes from "../.generated/routes.ts";
 import styles, { cssMap } from "../.generated/styles.ts";
+import client, { jsMap } from "../.generated/client.ts";
 import { Landing } from "@/fragments/Landing.tsx";
 
 const app = new Hono();
@@ -28,9 +29,9 @@ app.get("/client.*", ...cache, (c) => {
   switch (c.req.path.substring(8)) {
     case "js":
       c.header("Content-Type", "text/javascript");
-      return c.body("console.log('hello')");
+      return c.body(client);
     case "js.map":
-      return c.json(null);
+      return c.json(jsMap);
     default:
       return c.notFound();
   }

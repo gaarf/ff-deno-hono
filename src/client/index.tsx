@@ -1,7 +1,6 @@
 /// <reference lib="dom" />
 import { LoremIpsum } from "@/components/LoremIpsum.tsx";
-import { useState } from "hono/jsx";
-import { render } from "hono/jsx/dom";
+import { render, useState } from "hono/jsx/dom";
 
 function Counter() {
   const [count, setCount] = useState(0);
