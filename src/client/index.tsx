@@ -6,8 +6,8 @@ function Counter() {
   const [count, setCount] = useState(0);
   return (
     <div>
-      <p>Count: {count}</p>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <p>CLIENT SIDE COUNTER: {count}</p>
+      <button onClick={() => setCount(count + 1)} class="border">Increment</button>
       <LoremIpsum />
     </div>
   );

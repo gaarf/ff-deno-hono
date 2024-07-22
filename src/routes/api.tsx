@@ -1,11 +1,16 @@
 import { Hono, isoNow} from "@/util.ts";
 
-export default new Hono().get("/api/*", async (c) => {
-  const example = await fetch(
-    "https://api.coindesk.com/v1/bpi/currentprice.json"
-  );
-  return c.json({
-    data: await example.json(),
-    renderedAt: isoNow(),
+export default new Hono()
+  .get("/*", async (c) => {
+    const { time, disclaimer, bpi } = await fetch(
+      "https://api.coindesk.com/v1/bpi/currentprice.json"
+    ).then(result => result.json());
+    return c.json({
+      btc: {
+        updated: time.updated,
+        disclaimer,
+        usd: bpi.usd.rate_float
+      },
+      renderedAt: isoNow(),
+    });
   });
-});

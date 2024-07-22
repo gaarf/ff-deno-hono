@@ -1,4 +1,4 @@
-import app from "./src/app.ts";
+import app from "@/app.ts";
 import { toText } from "std/streams/mod.ts";
 
 /** @param request {Fleek.HttpRequest} */

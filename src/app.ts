@@ -1,7 +1,6 @@
 import { Hono, httpNow, isoNow } from "@/util.ts";
 import { createMiddleware } from "hono/factory";
 import { poweredBy } from "hono/powered-by";
-import { logger } from "hono/logger";
 import { etag } from "hono/etag";
 import { showRoutes } from "hono/dev";
 import { timing } from "hono/timing";
@@ -15,7 +14,7 @@ import { Landing } from "@/fragments/Landing.tsx";
 const app = new Hono();
 const bootTime = httpNow();
 
-app.use(timing(), logger(), poweredBy(), jsxRenderer(Layout));
+app.use(timing(), poweredBy(), jsxRenderer(Layout));
 
 const cache = [
   etag(),
@@ -49,12 +48,14 @@ app.get("/styles.*", ...cache, (c) => {
   }
 });
 
+app.get("/health", (c) => c.text("Hello!"));
+
 app.all("/", nested(Landing, { title: "home" }), (c) => c.render(isoNow()));
 
 Object.entries(routes).forEach(([path, route]) => {
   app.route(path, route);
 });
 
-showRoutes(app);
+showRoutes(app, { colorize: false });
 
 export default app;
