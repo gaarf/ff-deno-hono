@@ -1,9 +1,6 @@
 import { Hono, httpNow, isoNow } from "@/util.ts";
 import { createMiddleware } from "hono/factory";
-import { poweredBy } from "hono/powered-by";
 import { etag } from "hono/etag";
-import { showRoutes } from "hono/dev";
-import { timing } from "hono/timing";
 import { jsxRenderer } from "hono/jsx-renderer";
 import Layout, { nested } from "@/Layout.tsx";
 import routes from "../.generated/routes.ts";
@@ -14,11 +11,16 @@ import { Landing } from "@/fragments/Landing.tsx";
 const app = new Hono();
 const bootTime = httpNow();
 
-// addEventListener("hmr", (e) => {
-//   console.log("HMR triggered", e.detail.path);
-// });
+DEV: {
+  const [{ timing }, { logger }] = await Promise.all([
+    import("hono/timing"),
+    import("hono/logger"),
+  ]);
+  app.use(timing(), logger());
+  break DEV;
+}
 
-app.use(timing(), poweredBy(), jsxRenderer(Layout));
+app.use(jsxRenderer(Layout));
 
 const cache = [
   etag(),
@@ -60,6 +62,10 @@ Object.entries(routes).forEach(([path, route]) => {
   app.route(path, route);
 });
 
-showRoutes(app, { colorize: false });
+DEV: {
+  const { showRoutes } = await import("hono/dev");
+  showRoutes(app, { colorize: false });
+  break DEV;
+}
 
 export default app;

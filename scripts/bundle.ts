@@ -16,6 +16,7 @@ await esbuild.build({
   outfile: OUTFILE,
   jsx: "automatic",
   jsxImportSource: "hono/jsx",
+  dropLabels: ["DEV"],
   bundle: true,
   minify: true,
 });
