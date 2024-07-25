@@ -1,8 +1,8 @@
-import { Hono, httpNow, isoNow } from "@/util.ts";
+import { Hono, httpNow, isoNow, nestedLayout } from "@/util.ts";
 import { createMiddleware } from "hono/factory";
 import { etag } from "hono/etag";
 import { jsxRenderer } from "hono/jsx-renderer";
-import Layout, { nested } from "@/Layout.tsx";
+import Layout from "@/Layout.tsx";
 import routes from "../.generated/routes.ts";
 import styles, { cssMap } from "../.generated/styles.ts";
 import client, { jsMap } from "../.generated/client.ts";
@@ -56,7 +56,7 @@ app.get("/styles.*", ...cache, (c) => {
 
 app.get("/health", (c) => c.text("Hello!"));
 
-app.all("/", nested(Landing, { title: "home" }), (c) => c.render(isoNow()));
+app.all("/", nestedLayout(Landing, { title: "home" }), (c) => c.render(isoNow()));
 
 Object.entries(routes).forEach(([path, route]) => {
   app.route(path, route);

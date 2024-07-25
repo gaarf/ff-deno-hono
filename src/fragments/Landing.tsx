@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "hono/jsx";
 
-export const Landing = ({ children}: PropsWithChildren) => {
+export const Landing = ({ children }: PropsWithChildren) => {
   return (
     <>
       <p class="bg-orange-500">landing page goes here</p>

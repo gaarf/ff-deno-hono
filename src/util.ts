@@ -1,6 +1,6 @@
 export { Hono } from "hono";
 export { type PropsWithChildren, type FC } from "hono/jsx";
-export { nested } from '@/Layout.tsx';
+export { nested as nestedLayout } from '@/Layout.tsx';
 
 import { DateTime } from "luxon";
 export { DateTime };

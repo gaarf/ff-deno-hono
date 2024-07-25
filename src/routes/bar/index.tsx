@@ -1,6 +1,7 @@
-import { Hono } from "@/util.ts";
+import { Hono, nestedLayout } from "@/util.ts";
+import { LoremIpsum } from "@/components/LoremIpsum.tsx";
 
 export default new Hono()
-  // .use(nested(LoremIpsum))
+  .use(nestedLayout(LoremIpsum))
   .get('/', c => c.render(<strong>bar</strong>));
 

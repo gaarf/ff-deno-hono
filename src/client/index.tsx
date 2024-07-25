@@ -1,16 +1,15 @@
 /// <reference lib="dom" />
 import { LoremIpsum } from "@/components/LoremIpsum.tsx";
-import { render, useState } from "hono/jsx/dom";
+import { render } from "hono/jsx/dom";
 
-function Counter() {
-  const [count, setCount] = useState(0);
-  return (
-    <div>
-      <p>CLIENT SIDE COUNTER: {count}</p>
-      <button onClick={() => setCount(count + 1)} class="border">Increment</button>
-      <LoremIpsum />
-    </div>
-  );
+
+const MainComponent = {
+  '/foo': LoremIpsum
+}[location.pathname];
+
+const main = document.querySelector("main");
+
+if(main && MainComponent) {
+  render(<MainComponent />, main);
 }
 
-render(<Counter />, document.querySelector("main")!);
