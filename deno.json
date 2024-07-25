@@ -18,7 +18,7 @@
     "start": "deno run --allow-net --unstable-hmr=.generated dev.ts",
     "dev": "deno task gen & deno task start",
     "bundle": "deno run --allow-all scripts/bundle.ts",
-    "deploy": "deno task bundle && fleek functions deploy --path .generated/o.js"
+    "deploy": "deno task bundle && fleek functions deploy —noBundle --path .generated/o.js"
   },
   "compilerOptions": {
     "jsx": "precompile",
