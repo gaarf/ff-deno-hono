@@ -20,7 +20,7 @@ export const main = async ({ path, method, headers, body, query }) => {
 
   return {
     status: res.status,
-    body: await toText(res.body),
+    body: res.body && await toText(res.body),
     headers: res.headers,
   };
 };

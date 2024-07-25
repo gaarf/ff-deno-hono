@@ -14,6 +14,10 @@ import { Landing } from "@/fragments/Landing.tsx";
 const app = new Hono();
 const bootTime = httpNow();
 
+// addEventListener("hmr", (e) => {
+//   console.log("HMR triggered", e.detail.path);
+// });
+
 app.use(timing(), poweredBy(), jsxRenderer(Layout));
 
 const cache = [

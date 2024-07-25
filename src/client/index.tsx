@@ -13,5 +13,4 @@ function Counter() {
   );
 }
 
-
 render(<Counter />, document.querySelector("main")!);

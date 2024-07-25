@@ -14,6 +14,8 @@ await esbuild.build({
   entryPoints: ["main.js"],
   platform: "neutral",
   outfile: OUTFILE,
+  jsx: "automatic",
+  jsxImportSource: "hono/jsx",
   bundle: true,
   minify: true,
 });
