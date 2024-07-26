@@ -1,9 +1,6 @@
 export { Hono } from "hono";
 export { type PropsWithChildren, type FC } from "hono/jsx";
-import { nested, type LayoutProps } from '@/Layout.tsx';
-
-export { nested as nestedLayout };
-export const layoutProps = (props: LayoutProps) => nested(({ children }) => children, props);
+export { nested as nestedLayout, clientMount, layoutProps } from '@/Layout.tsx';
 
 // @deno-types="npm:@types/luxon"
 import { DateTime } from "luxon";

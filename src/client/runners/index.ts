@@ -1,8 +1,8 @@
-import mountMain from "@/client/runners/mountMain.ts";
+import mount from "@/client/runners/mount.ts";
 import hmr from "@/client/runners/hmr.ts";
 
 const runners = {
-  mountMain,
+  mount,
   hmr
 } as const;
 
