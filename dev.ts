@@ -1,5 +1,8 @@
 import app from "@/app.ts";
 
+const log = ({ type }: Event) => console.info(`DEV HMR ${type}`);
+
+
 Deno.serve((request) => {
   if (
     new URL(request.url).pathname === "/hmr" &&
@@ -7,12 +10,9 @@ Deno.serve((request) => {
   ) {
     const { socket, response } = Deno.upgradeWebSocket(request);
 
-    socket.onopen = () => {
-      console.log("WebSocket OPEN");
-    };
-    socket.onclose = () => {
-      console.log("WebSocket CLOSE");
-    };
+    socket.onopen = log;
+    socket.onmessage = log;
+    socket.onclose = log;
 
     return response;
   } else {

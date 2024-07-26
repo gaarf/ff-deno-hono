@@ -13,13 +13,15 @@ export default function Layout({
 }: PropsWithChildren<LayoutProps>) {
   const now = isoNow();
   const dev = isDev();
+  const cacheBust = dev ? `?now=${encodeURIComponent(now)}`: '';
+
   return (
     <html>
       <head>
         {title && <title>{title}</title>}
         {icon && <Favicon icon={icon} />}
-        <link rel="stylesheet" href="/styles.css" />
-        <script defer src="/client.js" />
+        <link rel="stylesheet" href={`/styles.css${cacheBust}`} />
+        <script defer src={`/client.js${cacheBust}`} />
       </head>
       <body>
         <header>
