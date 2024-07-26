@@ -1,15 +1,17 @@
 /// <reference lib="dom" />
-import { LoremIpsum } from "@/components/LoremIpsum.tsx";
-import { render } from "hono/jsx/dom";
+import runners, { Runner } from "@/client/runners/index.ts";
 
+const dataAttr = 'data-client-run';
 
-const MainComponent = {
-  '/foo': LoremIpsum
-}[location.pathname];
-
-const main = document.querySelector("main");
-
-if(main && MainComponent) {
-  render(<MainComponent />, main);
-}
-
+document.querySelectorAll(`object[${dataAttr}]`).forEach(o => {
+  const run = runners[o.getAttribute(dataAttr) as Runner];
+  if (run) {
+    try {
+      const { textContent } = o;
+      run(textContent ? JSON.parse(textContent) : {});  
+    }
+    catch(e) {
+      console.error(e);
+    }
+  }
+})

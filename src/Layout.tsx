@@ -1,10 +1,17 @@
-import { type PropsWithChildren, type FC } from "@/util.ts";
+import { type PropsWithChildren, type FC, isoNow, isDev } from "@/util.ts";
 import { jsxRenderer } from "hono/jsx-renderer";
 import { Favicon } from "@/components/Favicon.tsx";
+import { Client } from "@/components/Client.tsx";
 
-type LayoutProps = { title?: string; icon?: string };
+export type LayoutProps = { title?: string; icon?: string };
 
-export default function Layout({ children, title, icon = "⚡" }: PropsWithChildren<LayoutProps>) {
+export default function Layout({
+  children,
+  title,
+  icon = "⚡",
+}: PropsWithChildren<LayoutProps>) {
+  const now = isoNow();
+  const dev = isDev();
   return (
     <html>
       <head>
@@ -14,18 +21,24 @@ export default function Layout({ children, title, icon = "⚡" }: PropsWithChild
         <script defer src="/client.js" />
       </head>
       <body>
-        <div class="max-w-[500px] mx-auto bg-blue-200">
-          <header>
-            <h1>header</h1>
-            <nav class="flex gap-2">
-              <a href="/">home</a>
-              <a href="/foo">Foo</a>
-            </nav>
-          </header>
+        <header>
+          <h1>header</h1>
+          <nav class="flex gap-2">
+            <a href="/">home</a>
+            <a href="/foo">Foo</a>
+          </nav>
+        </header>
+        <div class="max-w-4xl mx-auto p-3 pt-8">
+
           <main>{children}</main>
-          <footer>
-            <hr />
-            footer
+          <Client run="mountMain" opts={{ now }} />
+          {dev && <Client run="hmr" />}
+
+          <footer class="absolute inset-0 top-auto border-t p-1 flex justify-between text-xs">
+            <span>
+              {dev && "[DEV]"} SSR: <time at={now}>{now}</time>{" "}
+            </span>
+            <span>&copy; Fleek Labs</span>
           </footer>
         </div>
       </body>

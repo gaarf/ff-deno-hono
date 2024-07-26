@@ -1,7 +1,7 @@
-import { Hono, nestedLayout } from "@/util.ts";
+import { Hono, layoutProps } from "@/util.ts";
 import { LoremIpsum } from "@/components/LoremIpsum.tsx";
 
 export default new Hono()
-  .use(nestedLayout(LoremIpsum))
-  .get('/', c => c.render(<strong>bar</strong>));
+  .use(layoutProps({ title: 'Bar!' }))
+  .get('/', c => c.render(<LoremIpsum count={100} />));
 
