@@ -1081,9 +1081,7 @@
       }
     }
   },
-  "remote": {
-    "https://deno.land/std@0.224.0/async/debounce.ts": "e7bcccb17b6fe34646ac5d37c2a6d3830ca049e7e3534d2aace4001596f42eff"
-  },
+  "remote": {},
   "workspace": {
     "dependencies": [
       "jsr:@hono/hono@^4.5.1",
