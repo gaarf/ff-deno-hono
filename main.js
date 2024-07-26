@@ -21,6 +21,6 @@ export const main = async ({ path, method, headers, body, query }) => {
   return {
     status: res.status,
     body: res.body && await toText(res.body),
-    headers: res.headers,
+    headers: Object.fromEntries(res.headers),
   };
 };
