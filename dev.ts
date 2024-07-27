@@ -36,14 +36,14 @@ const runTask = (name: string) => {
   const output = new TextDecoder().decode(stdout).trim();
   console.log(output);
   for (const socket of hmrSockets) {
-    socket.send(output);
+    socket.send(`[dev] ${output}`);
   }
 };
 
 const handleEvent = debounce(({ paths, kind }: Deno.FsEvent) => {
-  const path = paths[0].replace(srcPath, "");
+  const path = paths[0].replace(srcPath, ".");
   console.log(kind, path);
-  if (path.startsWith("routes")) {
+  if (path.startsWith("./routes")) {
     runTask("gen:routes");
   } else {
     runTask("gen:client");

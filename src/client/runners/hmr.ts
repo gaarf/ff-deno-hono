@@ -21,7 +21,7 @@ export default function hmr(_opts: unknown) {
     const hmr = ws();
 
     hmr.onmessage = ({ data }) => {
-      console.log('HMR', data);
+      console.log(data);
     };
 
     hmr.onclose = onclose;
