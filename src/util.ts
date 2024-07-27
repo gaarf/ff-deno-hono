@@ -1,6 +1,6 @@
 export { Hono } from "hono";
 export { type PropsWithChildren, type FC } from "hono/jsx";
-export { nested as nestedLayout, clientMount, layoutProps } from '@/Layout.tsx';
+export * from "@/layout/middleware.tsx";
 
 // @deno-types="npm:@types/luxon"
 import { DateTime } from "luxon";
@@ -16,4 +16,17 @@ export const isDev = () => dev;
 export const isoNow = () => DateTime.now().toUTC().toISO();
 export const httpNow = () => DateTime.now().toHTTP();
 
+import { twMerge } from "tailwind-merge";
+import { ClassValue, clsx } from "clsx";
 
+export const cn = (...inputs: ClassValue[]) => {
+  return twMerge(clsx(inputs));
+};
+
+import LayoutContext from "@/layout/context.ts";
+import { useContext } from "hono/jsx";
+
+export const useUrl = (): URL => {
+  const { url } = useContext(LayoutContext);
+  return new URL(url!);
+};

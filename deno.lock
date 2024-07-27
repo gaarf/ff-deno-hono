@@ -5,9 +5,12 @@
       "jsr:@hono/hono@^4.5.1": "jsr:@hono/hono@4.5.1",
       "npm:@types/luxon": "npm:@types/luxon@3.4.2",
       "npm:autoprefixer": "npm:autoprefixer@10.4.19_postcss@8.4.39",
+      "npm:clsx@^2.1.1": "npm:clsx@2.1.1",
       "npm:cssnano": "npm:cssnano@7.0.4_postcss@8.4.39",
       "npm:luxon@^3.4.4": "npm:luxon@3.4.4",
       "npm:postcss": "npm:postcss@8.4.39",
+      "npm:tailwind-merge": "npm:tailwind-merge@2.4.0",
+      "npm:tailwind-merge@^2.4.0": "npm:tailwind-merge@2.4.0",
       "npm:tailwindcss": "npm:tailwindcss@3.4.6_postcss@8.4.39"
     },
     "jsr": {
@@ -195,6 +198,10 @@
           "normalize-path": "normalize-path@3.0.0",
           "readdirp": "readdirp@3.6.0"
         }
+      },
+      "clsx@2.1.1": {
+        "integrity": "sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==",
+        "dependencies": {}
       },
       "color-convert@2.0.1": {
         "integrity": "sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==",
@@ -992,6 +999,10 @@
           "picocolors": "picocolors@1.0.1"
         }
       },
+      "tailwind-merge@2.4.0": {
+        "integrity": "sha512-49AwoOQNKdqKPd9CViyH5wJoSKsCDjUlzL8DxuGp3P1FsGY36NJDAa18jLZcaHAUUuTj+JB8IAo8zWgBNvBF7A==",
+        "dependencies": {}
+      },
       "tailwindcss@3.4.6_postcss@8.4.39": {
         "integrity": "sha512-1uRHzPB+Vzu57ocybfZ4jh5Q3SdlH7XW23J5sQoM9LhE9eIOlzxer/3XPSsycvih3rboRsvt0QCmzSrqyOYUIA==",
         "dependencies": {
@@ -1351,9 +1362,11 @@
   "workspace": {
     "dependencies": [
       "jsr:@hono/hono@^4.5.1",
+      "npm:clsx@^2.1.1",
       "npm:cssnano@^7.0.4",
       "npm:luxon@^3.4.4",
       "npm:postcss@^8.4.39",
+      "npm:tailwind-merge@^2.4.0",
       "npm:tailwindcss@^3.4.6"
     ]
   }
