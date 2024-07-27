@@ -3,6 +3,8 @@ import { jsxRenderer } from "hono/jsx-renderer";
 import { Favicon } from "@/components/Favicon.tsx";
 import { Client } from "@/components/Client.tsx";
 import { mountables } from "@/client/mountables.ts";
+import { Header } from "@/fragments/Header.tsx";
+import { Footer } from "@/fragments/Footer.tsx";
 
 export type LayoutProps = { title?: string; icon?: string };
 
@@ -13,6 +15,7 @@ export default function Layout({
 }: PropsWithChildren<LayoutProps>) {
   const now = isoNow();
   const dev = isDev();
+
   const cacheBust = dev ? `?now=${encodeURIComponent(now)}`: '';
 
   return (
@@ -24,24 +27,13 @@ export default function Layout({
         <script defer src={`/client.js${cacheBust}`} />
       </head>
       <body>
-        <header>
-          <h1 class="text-center text-white text-3xl from-white to-orange-500 bg-gradient-to-t">
-            FUNKY FLEEK FUNCTION FRAMEWORK
-          </h1>
-          <nav class="flex gap-2">
-            <a href="/">home</a>
-            <a href="/foo">Foo</a>
-          </nav>
-        </header>
-        <main class="max-w-4xl mx-auto px-3 py-8 bg-orange-100">
+        <Header />
+        <main class="max-w-4xl mx-auto px-3 py-8">
           {children}
         </main>
-        <footer class="fixed inset-0 top-auto border-t p-1 flex justify-between bg-white text-xs">
-          <span>
-            {dev && "[DEV]"} SSR: <time at={now}>{now}</time>{" "}
-          </span>
-          <span>&copy; Fleek Labs</span>
-        </footer>
+        <Footer>
+          {dev && "[DEV]"} SSR: <time at={now}>{now}</time>
+        </Footer>
         {dev && <Client run="hmr" />}
       </body>
     </html>

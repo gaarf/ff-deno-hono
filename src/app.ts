@@ -54,7 +54,7 @@ app.get("/styles.*", ...cache, (c) => {
   }
 });
 
-app.get("/health", (c) => c.text("Hello!"));
+app.get("/health", (c) => c.text("OK!"));
 
 app.all("/", nestedLayout(Landing, { title: "home" }), (c) => c.render(isoNow()));
 

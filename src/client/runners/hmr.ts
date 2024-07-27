@@ -1,13 +1,30 @@
 export default function hmr(_opts: unknown) {
   DEV: {
-    const ws = new WebSocket("/hmr");
+    const ws = () => new WebSocket("/hmr");
 
-    ws.onclose = (event) => {
-      console.log("HMR to reload....", event);
+    let attempts = 0;
+    const onclose = () => {
+      console.log("HMR to reload...");
       setTimeout(() => {
-        location.reload();
-      }, 888);
+        attempts++;
+        const reconnect = ws();
+        reconnect.onopen = () => {
+          reconnect.close();
+          location.reload();
+        };
+        if(attempts < 3) {
+          reconnect.onerror = onclose;
+        }
+      }, 200 + (attempts * 100));
+    }
+
+    const hmr = ws();
+
+    hmr.onmessage = ({ data }) => {
+      console.log('HMR', data);
     };
+
+    hmr.onclose = onclose;
 
     break DEV;
   }

@@ -11,12 +11,12 @@
     "tailwindcss": "npm:tailwindcss@^3.4.6"
   },
   "tasks": {
-    "gen:routes": "deno run --allow-all --watch=\"src/routes\" scripts/gen-routes.ts",
-    "gen:client": "deno run --allow-all --watch=\"src/client,src/components\" scripts/gen-client.ts",
-    "gen:styles": "deno run --allow-all --watch=\"src/**/*.tsx\" scripts/gen-styles.ts",
-    "gen": "mkdir -p .generated && deno task gen:routes & deno task gen:styles & deno task gen:client",
-    "start": "deno run --allow-net --watch dev.ts",
-    "dev": "deno task gen & deno task start",
+    "gen:routes": "deno run --allow-all scripts/gen-routes.ts",
+    "gen:client": "deno run --allow-all scripts/gen-client.ts",
+    "gen:styles": "deno run --allow-all scripts/gen-styles.ts",
+    "gen": "mkdir -p .generated && deno task gen:routes && deno task gen:client && deno task gen:styles",
+    "start": "deno run --allow-net --allow-read --allow-run --unstable-hmr dev.ts",
+    "dev": "deno task gen && deno task start",
     "bundle": "deno run --allow-all scripts/bundle.ts",
     "deploy": "deno task bundle && fleek functions deploy —noBundle --path .generated/o.js"
   },
