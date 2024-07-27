@@ -1,4 +1,4 @@
-import { Hono, httpNow, isoNow, nestedLayout } from "@/util.ts";
+import { Hono, httpNow, nestedLayout } from "@/util.ts";
 import { createMiddleware } from "hono/factory";
 import { etag } from "hono/etag";
 import { jsxRenderer } from "hono/jsx-renderer";
@@ -56,7 +56,7 @@ app.get("/styles.*", ...cache, (c) => {
 
 app.get("/health", (c) => c.text("OK!"));
 
-app.all("/", nestedLayout(Landing, { title: "home" }), (c) => c.render(isoNow()));
+app.all("/", nestedLayout(Landing, { title: "home" }), (c) => c.render(bootTime));
 
 Object.entries(routes).forEach(([path, route]) => {
   app.route(path, route);
