@@ -43,12 +43,8 @@ const runTask = (name: string) => {
 const handleEvent = debounce(({ paths, kind }: Deno.FsEvent) => {
   const path = paths[0].replace(srcPath, ".");
   console.log(kind, path);
-  if (path.startsWith("./routes")) {
-    runTask("gen:routes");
-  } else {
-    runTask("gen:client");
-    runTask("gen:styles");
-  }
+  runTask(path.startsWith("./routes") ? "gen:routes" : "gen:client");
+  runTask("gen:styles");
 }, 1);
 
 for await (const event of watcher) {

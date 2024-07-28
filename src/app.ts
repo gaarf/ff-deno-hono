@@ -1,6 +1,5 @@
 
-import { Hono, httpNow, nestedLayout, } from "@/util.ts";
-import { layoutMiddleware } from "@/layout/Layout.tsx";
+import { Hono, httpNow, nestedLayout, documentLayout } from "@/util.ts";
 import { Landing } from "@/fragments/Landing.tsx";
 
 import { etag } from "hono/etag";
@@ -22,7 +21,7 @@ DEV: {
   break DEV;
 }
 
-app.use(layoutMiddleware);
+app.use(documentLayout);
 
 const cache = [
   etag(),

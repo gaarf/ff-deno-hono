@@ -3,14 +3,14 @@ import { Favicon } from "@/components/Favicon.tsx";
 import { Client } from "@/components/Client.tsx";
 import { Header } from "@/fragments/Header.tsx";
 import { Footer } from "@/fragments/Footer.tsx";
-import { createMiddleware } from "hono/factory";
 
 declare module "hono" {
   interface ContextRenderer {
-    (content: string | Promise<string>, props?: LayoutProps): Response;
+    (content: string | Promise<string>, props?: DocumentProps): Response;
   }
 }
-export type LayoutProps = {
+
+export type DocumentProps = {
   title?: string;
   icon?: string;
 };
@@ -18,7 +18,7 @@ export type LayoutProps = {
 export default function Layout({
   children,
   ...props
-}: PropsWithChildren<LayoutProps>) {
+}: PropsWithChildren<DocumentProps>) {
   const now = isoNow();
   const dev = isDev();
   const { title = "FFF", icon = "⚡" } = props;
@@ -42,7 +42,3 @@ export default function Layout({
   );
 }
 
-export const layoutMiddleware = createMiddleware((c, next) => {
-  c.setLayout(Layout);
-  return next();
-});
