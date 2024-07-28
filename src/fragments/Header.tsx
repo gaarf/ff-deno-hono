@@ -1,4 +1,4 @@
-import { cn, useUrl, PropsWithChildren } from "@/util.ts";
+import { cn, PropsWithChildren } from "@/util.ts";
 
 type HeaderProps = {
   class?: string;
@@ -37,12 +37,12 @@ export const Header = ({
 type NavItemProps = PropsWithChildren<{ href: string }>;
 
 const NavItem = ({ href, children }: NavItemProps) => {
-  const url = useUrl();
-  const active = url.pathname === href;
+  const active = false; // FIXME
   return (
     <li class="border flex rounded-full text-sm overflow-hidden">
       <a href={href} class={cn({
-        'hover:bg-slate-300 px-3': true,
+        'px-3': true,
+        'hover:bg-slate-300': !active,
         'bg-yellow-100': active
       })}>{children}</a>
     </li>

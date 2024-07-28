@@ -1,13 +1,14 @@
-import { Hono, httpNow, nestedLayout, type FC } from "@/util.ts";
-import Layout from "@/layout/Layout.tsx";
+
+import { Hono, httpNow, nestedLayout, } from "@/util.ts";
+import { layoutMiddleware } from "@/layout/Layout.tsx";
 import { Landing } from "@/fragments/Landing.tsx";
 
 import { etag } from "hono/etag";
+import { createMiddleware } from "hono/factory";
 
 import routes from "../.generated/routes.ts";
 import styles, { cssMap } from "../.generated/styles.ts";
 import client, { jsMap } from "../.generated/client.ts";
-import { MiddlewareHandler } from "hono";
 
 const app = new Hono();
 const bootTime = httpNow();
@@ -21,17 +22,14 @@ DEV: {
   break DEV;
 }
 
-app.use((c, next) => {
-  c.setLayout(Layout as FC);
-  return next();
-});
+app.use(layoutMiddleware);
 
-const cache: MiddlewareHandler[] = [
+const cache = [
   etag(),
-  (c, next) => {
+  createMiddleware((c, next) => {
     c.header("Last-Modified", bootTime);
     return next();
-  },
+  }),
 ];
 
 app.get("/client.*", ...cache, (c) => {
@@ -60,8 +58,8 @@ app.get("/styles.*", ...cache, (c) => {
 
 app.get("/health", (c) => c.text("OK!"));
 
-app.all("/", nestedLayout(Landing, { title: "FFF Landing" }), (c) =>
-  c.render(bootTime)
+app.all("/", nestedLayout(Landing), (c) =>
+  c.render(bootTime, { title: 'Homepage' })
 );
 
 Object.entries(routes).forEach(([path, route]) => {

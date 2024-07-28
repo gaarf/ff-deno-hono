@@ -3,10 +3,14 @@ import { Favicon } from "@/components/Favicon.tsx";
 import { Client } from "@/components/Client.tsx";
 import { Header } from "@/fragments/Header.tsx";
 import { Footer } from "@/fragments/Footer.tsx";
-import LayoutContext from "@/layout/context.ts";
+import { createMiddleware } from "hono/factory";
 
+declare module "hono" {
+  interface ContextRenderer {
+    (content: string | Promise<string>, props?: LayoutProps): Response;
+  }
+}
 export type LayoutProps = {
-  url: URL | null;
   title?: string;
   icon?: string;
 };
@@ -17,7 +21,7 @@ export default function Layout({
 }: PropsWithChildren<LayoutProps>) {
   const now = isoNow();
   const dev = isDev();
-  const { title, icon = "⚡" } = props;
+  const { title = "FFF", icon = "⚡" } = props;
   return (
     <html>
       <head>
@@ -27,17 +31,18 @@ export default function Layout({
         <script defer src="/client.js" />
       </head>
       <body class="min-h-svh flex flex-col">
-        <LayoutContext.Provider value={props}>
-          <Header fixed />
-          <main class="flex-1 w-full relative p-3">{children}</main>
-          <Footer>
-            {dev && "[DEV]"} SSR: <time at={now}>{now}</time>
-          </Footer>
-        </LayoutContext.Provider>
+        <Header fixed />
+        <main class="flex-1 w-full relative p-3">{children}</main>
+        <Footer>
+          {dev && "[DEV]"} SSR: <time at={now}>{now}</time>
+        </Footer>
         {dev && <Client run="hmr" />}
       </body>
     </html>
   );
 }
 
-
+export const layoutMiddleware = createMiddleware((c, next) => {
+  c.setLayout(Layout);
+  return next();
+});

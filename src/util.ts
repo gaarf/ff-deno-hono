@@ -22,11 +22,3 @@ import { ClassValue, clsx } from "clsx";
 export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));
 };
-
-import LayoutContext from "@/layout/context.ts";
-import { useContext } from "hono/jsx";
-
-export const useUrl = (): URL => {
-  const { url } = useContext(LayoutContext);
-  return new URL(url!);
-};

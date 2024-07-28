@@ -7,6 +7,9 @@ async function parse(dir = "routes", path = "/") {
   for await (const route of Deno.readDir(`src/${dir}`)) {
     const { name, isDirectory } = route;
     const fname = basename(name, ".tsx");
+    if (fname.match(/^[A-Z]+/)) { // uppercase first letter
+      continue;
+    }
     const routePath = join(path, fname);
     const dname = join(dir, name);
     if (isDirectory) {
