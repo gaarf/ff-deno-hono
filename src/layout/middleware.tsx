@@ -5,7 +5,6 @@ import { Client } from "@/layout/Client.tsx";
 import Document from "@/layout/Document.tsx";
 import LayoutContext from "@/layout/context.ts";
 import type { ComponentType, FC } from "@/util.ts";
-import type { Child } from "hono/jsx";
 
 export const documentLayout = createMiddleware((c, next) => {
   const url = new URL(c.req.url);
