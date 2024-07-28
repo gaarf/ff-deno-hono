@@ -1,4 +1,4 @@
-import { cn, useUrl, type PropsWithChildren } from "@/util.ts";
+import { cn, usePathname, type PropsWithChildren } from "@/util.ts";
 
 type HeaderProps = {
   class?: string;
@@ -37,8 +37,8 @@ export const Header = ({
 type NavItemProps = PropsWithChildren<{ href: string }>;
 
 const NavItem = ({ href, children }: NavItemProps) => {
-  const { pathname } = useUrl();
-  const active = href === '/' ? href === pathname : pathname.startsWith(href);
+  const p = usePathname();
+  const active = href === '/' ? href === p : p.startsWith(href);
   return (
     <li class="border flex rounded-full text-sm overflow-hidden">
       <a href={href} class={cn({

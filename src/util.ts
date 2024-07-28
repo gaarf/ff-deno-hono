@@ -1,4 +1,4 @@
-import { type DocumentProps } from '@/layout/Document.tsx';
+import { type DocumentProps } from "@/layout/Document.tsx";
 
 declare module "hono" {
   interface ContextRenderer {
@@ -26,12 +26,13 @@ DEV: {
   break DEV;
 }
 export const isDev = () => dev;
-export const isBrowser = () => 'document' in globalThis;
+export const isBrowser = () => "document" in globalThis;
 
 import { useLayoutContext } from "@/layout/context.ts";
-export const useUrl = () => {
-  return isBrowser() ? new URL(location.href) : useLayoutContext().url!;
-};
+
+export const useUrl = () =>
+  isBrowser() ? new URL(location.href) : useLayoutContext().url!;
+export const usePathname = () => useUrl().pathname;
 
 import { twMerge } from "tailwind-merge";
 import { type ClassValue, clsx } from "clsx";
