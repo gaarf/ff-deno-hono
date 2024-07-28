@@ -11,7 +11,7 @@ export const LoremIpsum: ComponentType<LoremIpsumProps> = ({
 }) => {
   const pathname = usePathname();
   const dev = isDev();
-  const browser = isBrowser()
+  const browser = isBrowser();
   return (
     <>
       {children}
