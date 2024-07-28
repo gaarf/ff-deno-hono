@@ -1,4 +1,4 @@
-import { cn, PropsWithChildren, useUrl } from "@/util.ts";
+import { cn, useUrl, type PropsWithChildren } from "@/util.ts";
 
 type HeaderProps = {
   class?: string;
