@@ -21,4 +21,4 @@ document.querySelectorAll(`object[${dataAttr}]`).forEach((o) => {
 
 Promise.all(
   todo.map(([name, ...args]) => (runners[name] as RunPromise)(...args))
-).then(() => console.timeEnd("boot"));
+).finally(() => console.timeEnd("boot"));
