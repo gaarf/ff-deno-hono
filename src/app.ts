@@ -22,8 +22,6 @@ DEV: {
   break DEV;
 }
 
-app.use(documentLayout);
-
 const cache = [
   etag(),
   createMiddleware((c, next) => {
@@ -57,6 +55,8 @@ app.get("/styles.*", ...cache, (c) => {
 });
 
 app.get("/health", (c) => c.text("OK!"));
+
+app.use(documentLayout);
 
 app.all("/", nestedLayout(Landing), (c) =>
   c.render(bootTime, { title: 'Homepage' })

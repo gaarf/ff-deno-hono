@@ -8,7 +8,13 @@ type LoremIpsumProps = {
 export const LoremIpsum = ({ count = 1 }: LoremIpsumProps) => {
   return (
     <>
-      {isBrowser() && <Link href="/">link to home rendered on client</Link>}
+      <p>
+        {isBrowser() ? (
+          <Link href="/">link to home rendered on client</Link>
+        ) : (
+          <span>SERVER RENDERED</span>
+        )}
+      </p>
       {Array(count)
         .fill(null)
         .map((_, i) => (

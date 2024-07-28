@@ -6,6 +6,18 @@ import Document from "@/layout/Document.tsx";
 import type { FC } from "hono/jsx";
 import LayoutContext from "@/layout/context.ts";
 
+export const documentLayout = createMiddleware((c, next) => {
+  const url = new URL(c.req.url);
+
+  c.setLayout(({ Layout: _, ...props }) => (
+    <LayoutContext.Provider value={{ ...props, url }}>
+      <Document {...props} />
+    </LayoutContext.Provider>
+  ));
+
+  return next();
+});
+
 export function nestedLayout(Component: FC) {
   return jsxRenderer(({ Layout, children, ...props }) => (
     <Layout {...props}>
@@ -25,15 +37,3 @@ export function clientMount(Component: FC, where = "main") {
     </>
   ));
 }
-
-export const documentLayout = createMiddleware((c, next) => {
-  const url = new URL(c.req.url);
-
-  c.setLayout(({ Layout: _, ...props }) => (
-    <LayoutContext.Provider value={{...props, url}}>
-      <Document {...props} />
-    </LayoutContext.Provider>
-  ));
-
-  return next();
-});
