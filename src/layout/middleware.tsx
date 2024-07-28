@@ -3,8 +3,9 @@ import { jsxRenderer } from "hono/jsx-renderer";
 import { mountables } from "@/client/mountables.ts";
 import { Client } from "@/layout/Client.tsx";
 import Document from "@/layout/Document.tsx";
-import type { FC } from "hono/jsx";
 import LayoutContext from "@/layout/context.ts";
+import type { ComponentType, FC } from "@/util.ts";
+import type { Child } from "hono/jsx";
 
 export const documentLayout = createMiddleware((c, next) => {
   const url = new URL(c.req.url);
@@ -18,22 +19,26 @@ export const documentLayout = createMiddleware((c, next) => {
   return next();
 });
 
-export function nestedLayout(Component: FC) {
+export function nestedLayout<T>(
+  Component: ComponentType<T>,
+  componentProps?: T
+) {
+  const FComponent = Component as FC; // fixme?
   return jsxRenderer(({ Layout, children, ...props }) => (
     <Layout {...props}>
-      <Component>{children}</Component>
+      <FComponent {...componentProps}>{children}</FComponent>
     </Layout>
   ));
 }
 
-export function clientMount(Component: FC, where = "main") {
+export function clientMount<T>(Component: FC<T>, componentProps?: T, where = "main") {
   const [what] = Object.entries(mountables).find(
     ([_, Mountable]) => Component === Mountable
   )!;
   return nestedLayout(({ children }) => (
     <>
       {children}
-      <Client run="mount" opts={{ [where]: what }} />
+      <Client run="mount" opts={{ [where]: [what, componentProps ?? {}] }} />
     </>
   ));
 }

@@ -14,7 +14,7 @@ export const Header = ({
       class={cn(
         {
           "flex w-full items-center justify-between p-3 border-b": true,
-          "fixed bg-white": fixed,
+          "fixed bg-white z-10": fixed,
         },
         className
       )}

@@ -4,12 +4,6 @@ import { Client } from "@/layout/Client.tsx";
 import { Header } from "@/fragments/Header.tsx";
 import { Footer } from "@/fragments/Footer.tsx";
 
-declare module "hono" {
-  interface ContextRenderer {
-    (content: string | Promise<string>, props?: DocumentProps): Response;
-  }
-}
-
 export type DocumentProps = {
   title?: string;
   icon?: string;
@@ -41,4 +35,3 @@ export default function Layout({
     </html>
   );
 }
-

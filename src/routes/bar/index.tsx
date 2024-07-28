@@ -9,11 +9,8 @@ export default new Hono()
   .get("/", (c) =>
     c.render(<Link href="/bar/baz">baz</Link>, { title: "barrr" })
   )
-  .get("/baz", (c) =>
-    c.render(
-      <>
-        nested in bar <LoremIpsum />
-      </>,
-      { title: "baz!" }
-    )
+  .get(
+    "/baz",
+    nestedLayout(LoremIpsum, { count: 5 }),
+    (c) => c.render(<h1>nested in bar</h1>, { title: "baz!" })
   );

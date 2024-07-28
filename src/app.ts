@@ -1,4 +1,3 @@
-
 import { Hono, httpNow } from "@/util.ts";
 import { documentLayout, nestedLayout } from "@/layout/middleware.tsx";
 import { Landing } from "@/fragments/Landing.tsx";
@@ -59,7 +58,7 @@ app.get("/health", (c) => c.text("OK!"));
 app.use(documentLayout);
 
 app.all("/", nestedLayout(Landing), (c) =>
-  c.render(bootTime, { title: 'Homepage' })
+  c.render(bootTime, { title: "Homepage" })
 );
 
 Object.entries(routes).forEach(([path, route]) => {

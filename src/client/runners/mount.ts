@@ -1,3 +1,4 @@
+/// <reference lib="dom" />
 import { mountables, type Mountable } from "@/client/mountables.ts";
 import { render } from "hono/jsx/dom";
 

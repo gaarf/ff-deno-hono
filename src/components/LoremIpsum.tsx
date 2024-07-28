@@ -1,13 +1,19 @@
 import { Link } from "@/components/Link.tsx";
-import { isBrowser } from "@/util.ts";
+import { isBrowser, type ComponentType, useUrl } from "@/util.ts";
 
 type LoremIpsumProps = {
   count?: number;
 };
 
-export const LoremIpsum = ({ count = 1 }: LoremIpsumProps) => {
+export const LoremIpsum: ComponentType<LoremIpsumProps> = ({
+  children,
+  count = 1,
+}) => {
+  const url = useUrl();
+
   return (
     <>
+      {children}
       <p>
         {isBrowser() ? (
           <Link href="/">link to home rendered on client</Link>
@@ -15,6 +21,7 @@ export const LoremIpsum = ({ count = 1 }: LoremIpsumProps) => {
           <span>SERVER RENDERED</span>
         )}
       </p>
+      <pre>{JSON.stringify(url)}</pre>
       {Array(count)
         .fill(null)
         .map((_, i) => (

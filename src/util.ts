@@ -1,6 +1,18 @@
+import { type DocumentProps } from '@/layout/Document.tsx';
+
+declare module "hono" {
+  interface ContextRenderer {
+    (content: string | Promise<string>, props?: DocumentProps): Response;
+  }
+}
+
 export { Hono } from "hono";
-export { type PropsWithChildren, type FC } from "hono/jsx";
-export { useUrl } from "@/layout/context.ts";
+
+import { type PropsWithChildren, type FC } from "hono/jsx";
+import { type JSX } from "hono/jsx/jsx-runtime";
+
+export { FC, PropsWithChildren };
+export type ComponentType<T> = (props: PropsWithChildren<T>) => JSX.Element;
 
 // @deno-types="npm:@types/luxon"
 import { DateTime } from "luxon";
@@ -14,11 +26,14 @@ DEV: {
   break DEV;
 }
 export const isDev = () => dev;
-export const isBrowser = () => typeof document !== "undefined";
+export const isBrowser = () => 'document' in globalThis;
+
+import { useLayoutContext } from "@/layout/context.ts";
+export const useUrl = () => {
+  return isBrowser() ? new URL(location.href) : useLayoutContext().url!;
+};
 
 import { twMerge } from "tailwind-merge";
 import { type ClassValue, clsx } from "clsx";
 
 export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
-
-

@@ -11,6 +11,4 @@ const LayoutContext = createContext<
 
 export const useLayoutContext = () => useContext(LayoutContext);
 
-export const useUrl = () => useLayoutContext().url!;
-
 export default LayoutContext;
