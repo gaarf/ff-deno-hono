@@ -1,17 +1,24 @@
 /// <reference lib="dom" />
-import runners, { Runner } from "@/client/runners/index.ts";
+import runners, { NamedRunner, RunPromise } from "@/client/runners/index.ts";
 
-const dataAttr = 'data-client-run';
+const dataAttr = "data-client-run";
 
-document.querySelectorAll(`object[${dataAttr}]`).forEach(o => {
-  const run = runners[o.getAttribute(dataAttr) as Runner];
-  if (run) {
+console.time("boot");
+
+const todo: [NamedRunner, ...Parameters<RunPromise>][] = [];
+
+document.querySelectorAll(`object[${dataAttr}]`).forEach((o) => {
+  const name = o.getAttribute(dataAttr) as NamedRunner;
+  if (runners[name]) {
     try {
       const { textContent } = o;
-      run(textContent ? JSON.parse(textContent) : {});  
-    }
-    catch(e) {
+      todo.push([name, textContent ? JSON.parse(textContent) : {}]);
+    } catch (e) {
       console.error(e);
     }
   }
-})
+});
+
+Promise.all(
+  todo.map(([name, ...args]) => (runners[name] as RunPromise)(...args))
+).then(() => console.timeEnd("boot"));

@@ -1,3 +1,6 @@
+import { Link } from "@/components/Link.tsx";
+import { isBrowser } from "@/util.ts";
+
 type LoremIpsumProps = {
   count?: number;
 };
@@ -5,6 +8,7 @@ type LoremIpsumProps = {
 export const LoremIpsum = ({ count = 1 }: LoremIpsumProps) => {
   return (
     <>
+      {isBrowser() && <Link href="/">link to home rendered on client</Link>}
       {Array(count)
         .fill(null)
         .map((_, i) => (

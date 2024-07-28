@@ -1,6 +1,6 @@
 import { type PropsWithChildren, isoNow, isDev } from "@/util.ts";
-import { Favicon } from "@/components/Favicon.tsx";
-import { Client } from "@/components/Client.tsx";
+import { Favicon } from "@/layout/Favicon.tsx";
+import { Client } from "@/layout/Client.tsx";
 import { Header } from "@/fragments/Header.tsx";
 import { Footer } from "@/fragments/Footer.tsx";
 

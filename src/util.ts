@@ -1,11 +1,12 @@
 export { Hono } from "hono";
 export { type PropsWithChildren, type FC } from "hono/jsx";
-export * from "@/layout/middleware.tsx";
 export { useUrl } from "@/layout/context.ts";
 
 // @deno-types="npm:@types/luxon"
 import { DateTime } from "luxon";
 export { DateTime };
+export const isoNow = () => DateTime.now().toUTC().toISO();
+export const httpNow = () => DateTime.now().toHTTP();
 
 let dev = false;
 DEV: {
@@ -13,15 +14,11 @@ DEV: {
   break DEV;
 }
 export const isDev = () => dev;
-
-export const isoNow = () => DateTime.now().toUTC().toISO();
-export const httpNow = () => DateTime.now().toHTTP();
+export const isBrowser = () => typeof document !== "undefined";
 
 import { twMerge } from "tailwind-merge";
-import { ClassValue, clsx } from "clsx";
+import { type ClassValue, clsx } from "clsx";
 
-export const cn = (...inputs: ClassValue[]) => {
-  return twMerge(clsx(inputs));
-};
+export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
 
 

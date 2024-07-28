@@ -1,7 +1,7 @@
 import { createMiddleware } from "hono/factory";
 import { jsxRenderer } from "hono/jsx-renderer";
 import { mountables } from "@/client/mountables.ts";
-import { Client } from "@/components/Client.tsx";
+import { Client } from "@/layout/Client.tsx";
 import Document from "@/layout/Document.tsx";
 import type { FC } from "hono/jsx";
 import LayoutContext from "@/layout/context.ts";

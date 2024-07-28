@@ -1,4 +1,4 @@
-export default function hmr(_opts: unknown) {
+export default async function hmr(_opts: unknown) {
   DEV: {
     const ws = () => new WebSocket("/hmr");
 
@@ -18,13 +18,13 @@ export default function hmr(_opts: unknown) {
       }, 200 + (attempts * 100));
     }
 
-    const hmr = ws();
-
-    hmr.onmessage = ({ data }) => {
-      console.log(data);
-    };
-
-    hmr.onclose = onclose;
+    await new Promise((resolve, reject) => {  
+      const hmr = ws();
+      hmr.onclose = onclose;
+      hmr.onerror = reject;
+      hmr.onopen = () => resolve(console.info("HMR ready"));
+      hmr.onmessage = ({ data }) => console.log(data);
+    });
 
     break DEV;
   }

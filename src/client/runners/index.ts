@@ -6,6 +6,7 @@ const runners = {
   hmr
 } as const;
 
-export type Runner = keyof typeof runners;
+export type NamedRunner = keyof typeof runners;
+export type RunPromise = (opts: Record<string, unknown>) => Promise<void>;
 
 export default runners;
