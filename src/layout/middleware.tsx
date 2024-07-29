@@ -30,7 +30,11 @@ export function nestedLayout<T>(
   ));
 }
 
-export function clientMount<T>(Component: FC<T>, componentProps?: T, where = "main") {
+export function clientMount<T>(
+  Component: ComponentType<T>,
+  componentProps?: T,
+  where = "main"
+) {
   const [what] = Object.entries(mountables).find(
     ([_, Mountable]) => Component === Mountable
   )!;
