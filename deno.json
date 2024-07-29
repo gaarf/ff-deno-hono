@@ -19,7 +19,7 @@
     "gen": "mkdir -p .generated && deno task gen:routes && deno task gen:client && deno task gen:styles",
     "start": "deno run --allow-net --allow-read --allow-run --unstable-hmr dev.ts",
     "dev": "deno task gen && deno task start",
-    "bundle": "deno task gen && deno run --allow-all scripts/bundle.ts",
+    "bundle": "TASK=bundle deno task gen && deno run --allow-all scripts/bundle.ts",
     "deploy": "deno task bundle && fleek functions deploy —noBundle --path .generated/o.js"
   },
   "compilerOptions": {

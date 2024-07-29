@@ -19,7 +19,10 @@ await esbuild.build({
   sourcemap: "linked",
   jsx: "automatic",
   jsxImportSource: "hono/jsx/dom",
-  minify: true,
+  ...(Deno.env.get("TASK") === 'bundle' && {
+    dropLabels: ["DEV"],
+    minify: true,
+  })
 });
 
 esbuild.stop();
