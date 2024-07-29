@@ -3,7 +3,6 @@
     "@/": "./src/",
     "clsx": "npm:clsx@^2.1.1",
     "cssnano": "npm:cssnano@^7.0.4",
-    "daisyui": "npm:daisyui@^4.12.10",
     "esbuild": "https://deno.land/x/esbuild@v0.23.0/mod.js",
     "esbuild_deno_loader": "https://deno.land/x/esbuild_deno_loader@0.9.0/mod.ts",
     "hono": "jsr:@hono/hono@^4.5.1",
