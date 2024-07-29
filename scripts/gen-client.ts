@@ -24,7 +24,7 @@ await esbuild.build({
 
   ...(prod && {
     dropLabels: ["DEV"],
-    // minify: true,
+    minify: true,
   })
 });
 
@@ -33,7 +33,7 @@ esbuild.stop();
 const tempFiles = [TEMP_TARGET, TEMP_TARGET + ".map"];
 const [strOfJs, mapOfJs] = await Promise.all(
   tempFiles.map((file) => Deno.readTextFile(file))
-); // .finally(() => tempFiles.forEach((file) => Deno.remove(file)));
+).finally(() => tempFiles.forEach((file) => Deno.remove(file)));
 
 Deno.writeTextFileSync(
   FINAL_TARGET,
