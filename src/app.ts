@@ -1,6 +1,6 @@
 import { Hono, httpNow } from "@/util.ts";
 import { documentLayout, nestedLayout } from "@/layout/middleware.tsx";
-import { Landing } from "@/fragments/Landing.tsx";
+import { Landing } from "@/islands/Landing.tsx";
 
 import { etag } from "hono/etag";
 import { createMiddleware } from "hono/factory";

@@ -1,8 +1,8 @@
 import { type PropsWithChildren, isoNow, isDev } from "@/util.ts";
 import { Favicon } from "@/layout/Favicon.tsx";
 import { ClientRun } from "@/layout/ClientRun.tsx";
-import { Header } from "@/fragments/Header.tsx";
-import { Footer } from "@/fragments/Footer.tsx";
+import { Header } from "@/islands/Header.tsx";
+import { Footer } from "@/islands/Footer.tsx";
 
 export type DocumentProps = {
   title?: string;
