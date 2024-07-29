@@ -1,6 +1,6 @@
 import { type PropsWithChildren, isoNow, isDev } from "@/util.ts";
 import { Favicon } from "@/layout/Favicon.tsx";
-import { Client } from "@/layout/Client.tsx";
+import { ClientRun } from "@/layout/ClientRun.tsx";
 import { Header } from "@/fragments/Header.tsx";
 import { Footer } from "@/fragments/Footer.tsx";
 
@@ -30,7 +30,7 @@ export default function Layout({
         <Footer>
           {dev && "[DEV]"} SSR: <time at={now}>{now}</time>
         </Footer>
-        {dev && <Client run="hmr" />}
+        {dev && <ClientRun name="hmr" />}
       </body>
     </html>
   );

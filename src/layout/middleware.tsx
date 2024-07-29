@@ -1,7 +1,7 @@
 import { createMiddleware } from "hono/factory";
 import { jsxRenderer } from "hono/jsx-renderer";
 import { mountables } from "@/client/mountables.ts";
-import { Client } from "@/layout/Client.tsx";
+import { ClientRun } from "@/layout/ClientRun.tsx";
 import Document from "@/layout/Document.tsx";
 import LayoutContext from "@/layout/context.ts";
 import type { ComponentType, FC } from "@/util.ts";
@@ -41,7 +41,7 @@ export function clientMount<T>(
   return nestedLayout(({ children }) => (
     <>
       {children}
-      <Client run="mount" opts={{ [where]: [what, componentProps ?? {}] }} />
+      <ClientRun name="mount" opts={{ [where]: [what, componentProps ?? {}] }} />
     </>
   ));
 }
