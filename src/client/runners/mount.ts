@@ -12,7 +12,7 @@ export default function mount(opts: Record<string, [Mountable, Record<string, un
 
     if (root && Component) {
       render(Component(props), root);
-      console.log(root, what, props);
+      console.log(root.firstElementChild, what, props);
     }
     else {
       console.error(what, props, where);

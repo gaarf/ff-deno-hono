@@ -16,9 +16,9 @@ export function Hybrid({ children, id: inputId }: HybridProps) {
   const id = inputId || `hybrid-${name}`;
 
   return (
-    <div id={id} class="contents">
+    <slot id={id} class="contents">
       {children}
       <ClientRun name="mount" opts={{ [`#${id}`]: [name, Component.props] }} />
-    </div>
+    </slot>
   );
 }
