@@ -1,4 +1,5 @@
 import { cn, usePathname, type PropsWithChildren } from "@/util.ts";
+import { Counter } from "@/components/Counter.tsx";
 
 type HeaderProps = {
   class?: string;
@@ -23,6 +24,7 @@ export const Header = ({
         FUNKY FLEEK FUNCTION FRAMEWORK
       </h1>
 
+      <Counter />
       <nav>
         <ul class="flex gap-2">
           <NavItem href="/">Home</NavItem>
@@ -38,14 +40,19 @@ type NavItemProps = PropsWithChildren<{ href: string }>;
 
 const NavItem = ({ href, children }: NavItemProps) => {
   const p = usePathname();
-  const active = href === '/' ? href === p : p.startsWith(href);
+  const active = href === "/" ? href === p : p.startsWith(href);
   return (
     <li class="border flex rounded-full text-sm overflow-hidden">
-      <a href={href} class={cn({
-        'px-3': true,
-        'hover:bg-slate-300': !active,
-        'bg-yellow-100': active
-      })}>{children}</a>
+      <a
+        href={href}
+        class={cn({
+          "px-3": true,
+          "hover:bg-slate-300": !active,
+          "bg-yellow-100": active,
+        })}
+      >
+        {children}
+      </a>
     </li>
   );
 };
