@@ -7,8 +7,8 @@ export const Landing = ({ children }: PropsWithChildren) => {
 
   return (
     <>
-      <p class="bg-blue-100">Landing fragment</p>
-      <LoremIpsum />
+      <p class="bg-blue-100 rounded p-2 mb-2">Landing fragment</p>
+
       {uptime.isValid && (
         <aside>
           uptime:{" "}
@@ -17,6 +17,7 @@ export const Landing = ({ children }: PropsWithChildren) => {
           </time>
         </aside>
       )}
+      <LoremIpsum />
     </>
   );
 };

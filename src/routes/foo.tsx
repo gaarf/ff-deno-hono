@@ -7,7 +7,7 @@ export default new Hono()
   .get("/", (c) =>
     c.render(
       <>
-        <h1 class="text-5xl">this is foo!!!!</h1>
+        <h1 class="text-5xl">foo on the server!</h1>
         <div id="lorem" />
       </>,
       { title: "foo!" }

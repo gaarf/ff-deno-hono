@@ -53,8 +53,6 @@ app.get("/styles.*", ...cache, (c) => {
   }
 });
 
-app.get("/health", (c) => c.text("OK!"));
-
 app.use(documentLayout);
 
 app.all("/", nestedLayout(Landing), (c) =>
@@ -67,7 +65,7 @@ Object.entries(routes).forEach(([path, route]) => {
 
 DEV: {
   const { showRoutes } = await import("hono/dev");
-  showRoutes(app, { colorize: false });
+  showRoutes(app);
   break DEV;
 }
 
