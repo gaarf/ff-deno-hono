@@ -19,13 +19,6 @@ import { DateTime } from "luxon";
 export { DateTime };
 export const isoNow = () => DateTime.now().toUTC().toISO();
 export const httpNow = () => DateTime.now().toHTTP();
-
-let dev = false;
-DEV: {
-  dev = true;
-  break DEV;
-}
-export const isDev = () => dev;
 export const isBrowser = () => "document" in globalThis;
 
 import { twMerge } from "tailwind-merge";

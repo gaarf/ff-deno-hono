@@ -11,11 +11,12 @@ export default function mount(opts: Record<string, [Mountable, Record<string, un
     const root = document.querySelector<HTMLElement>(where);
 
     if (root && Component) {
+      console.log(what, props);
       render(Component(props), root);
-      console.log(root.firstElementChild, what, props);
+      console.log(root.childNodes);
     }
     else {
-      console.error(what, props, where);
+      console.error(where);
     }
 
     console.timeEnd(what);

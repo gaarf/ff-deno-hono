@@ -1,5 +1,5 @@
 import { Link } from "@/components/Link.tsx";
-import { isBrowser, type ComponentType, isDev } from "@/util.ts";
+import { isBrowser, type ComponentType } from "@/util.ts";
 import { usePathname } from "@/hooks.ts";
 
 type LoremIpsumProps = {
@@ -11,7 +11,6 @@ export const LoremIpsum: ComponentType<LoremIpsumProps> = ({
   count = 1,
 }) => {
   const pathname = usePathname();
-  const dev = isDev();
   const browser = isBrowser();
   return (
     <>
@@ -23,7 +22,7 @@ export const LoremIpsum: ComponentType<LoremIpsumProps> = ({
           <span>SERVER RENDERED</span>
         )}
       </p>
-      <pre>{JSON.stringify({ pathname, dev, browser })}</pre>
+      <pre>{JSON.stringify({ pathname, browser })}</pre>
       {Array(count)
         .fill(null)
         .map((_, i) => (

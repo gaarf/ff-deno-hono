@@ -1,4 +1,4 @@
-import { type PropsWithChildren, isoNow, isDev } from "@/util.ts";
+import { type PropsWithChildren, isoNow } from "@/util.ts";
 import { Favicon } from "@/layout/Favicon.tsx";
 import { ClientRun } from "@/client/ClientRun.tsx";
 import { Header } from "@/islands/Header.tsx";
@@ -15,7 +15,11 @@ export default function Layout({
   ...props
 }: PropsWithChildren<DocumentProps>) {
   const now = isoNow();
-  const dev = isDev();
+  let dev = false;
+  DEV: {
+    dev = true;
+    break DEV;
+  }
   const { title = "FFF", icon = "⚡" } = props;
   return (
     <html>
