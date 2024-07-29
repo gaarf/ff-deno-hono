@@ -28,12 +28,6 @@ DEV: {
 export const isDev = () => dev;
 export const isBrowser = () => "document" in globalThis;
 
-import { useLayoutContext } from "@/layout/context.ts";
-
-export const useUrl = () =>
-  isBrowser() ? new URL(location.href) : useLayoutContext().url!;
-export const usePathname = () => useUrl().pathname;
-
 import { twMerge } from "tailwind-merge";
 import { type ClassValue, clsx } from "clsx";
 

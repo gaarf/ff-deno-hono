@@ -1,5 +1,6 @@
 import { Link } from "@/components/Link.tsx";
-import { isBrowser, type ComponentType, usePathname, isDev } from "@/util.ts";
+import { isBrowser, type ComponentType, isDev } from "@/util.ts";
+import { usePathname } from "@/hooks.ts";
 
 type LoremIpsumProps = {
   count?: number;
