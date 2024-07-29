@@ -7,11 +7,11 @@ export const Landing = ({ children }: PropsWithChildren) => {
 
   return (
     <>
-      <p class="bg-blue-100 rounded p-2 mb-2">Landing fragment</p>
+      <p class="bg-blue-100 rounded p-2 mb-2">Landing layout</p>
 
       {uptime.isValid && (
         <aside>
-          uptime:{" "}
+          server uptime:{" "}
           <time datetime={uptime.toISO()}>
             {uptime.diffNow("seconds").negate().toHuman()}
           </time>

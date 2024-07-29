@@ -1,8 +1,9 @@
 import { type PropsWithChildren, isoNow, isDev } from "@/util.ts";
 import { Favicon } from "@/layout/Favicon.tsx";
-import { ClientRun } from "@/layout/ClientRun.tsx";
+import { ClientRun } from "@/client/ClientRun.tsx";
 import { Header } from "@/islands/Header.tsx";
-import { Footer } from "@/islands/Footer.tsx";
+import { Footer } from "@/layout/Footer.tsx";
+import { Hybrid } from "@/client/Hybrid.tsx";
 
 export type DocumentProps = {
   title?: string;
@@ -25,7 +26,9 @@ export default function Layout({
         <script defer src="/client.js" />
       </head>
       <body class="min-h-svh flex flex-col">
-        <Header fixed />
+        <Hybrid>
+          <Header fixed />
+        </Hybrid>
         <main class="flex-1 w-full relative p-3">{children}</main>
         <Footer>
           {dev && "[DEV]"} SSR: <time at={now}>{now}</time>
@@ -35,3 +38,4 @@ export default function Layout({
     </html>
   );
 }
+
