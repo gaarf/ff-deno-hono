@@ -2,8 +2,8 @@
 import runners, { NamedRunner, RunPromise } from "@/client/runners/index.ts";
 
 const dataAttr = "data-client-run";
-
-console.time("boot");
+const boot = "🥾";
+console.time(boot);
 
 const todo: [NamedRunner, ...Parameters<RunPromise>][] = [];
 
@@ -18,7 +18,8 @@ document.querySelectorAll(`object[${dataAttr}]`).forEach((o) => {
     }
   }
 });
+console.timeLog(boot, todo);
 
 Promise.all(
   todo.map(([name, ...args]) => (runners[name] as RunPromise)(...args))
-).finally(() => console.timeEnd("boot"));
+).finally(() => console.timeEnd(boot));
