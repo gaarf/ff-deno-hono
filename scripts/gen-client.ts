@@ -6,6 +6,8 @@ const TARGET = ".generated/client";
 const TEMP_TARGET = TARGET + '.js';
 const FINAL_TARGET = TARGET + '.ts';
 
+const prod = Deno.env.get("GEN_ENV") === 'prod';
+
 await esbuild.build({
   plugins: [
     ...(denoPlugins({
@@ -19,7 +21,7 @@ await esbuild.build({
   sourcemap: "linked",
   jsx: "automatic",
   jsxImportSource: "hono/jsx/dom",
-  ...(Deno.env.get("TASK") === 'bundle' && {
+  ...(prod && {
     dropLabels: ["DEV"],
     minify: true,
   })
@@ -40,4 +42,4 @@ Deno.writeTextFileSync(
   )
 );
 
-console.log("✍️ client");
+console.log(`✍️ client (${prod?'prod':'dev'})`);
