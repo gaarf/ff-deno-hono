@@ -4,6 +4,7 @@ import { ClientRun } from "@/client/ClientRun.tsx";
 import { Header } from "@/islands/Header.tsx";
 import { Footer } from "@/layout/Footer.tsx";
 import { withHybrid } from "@/client/Hybrid.tsx";
+import Providers from "@/layout/Providers.tsx";
 
 export type DocumentProps = {
   title?: string;
@@ -32,11 +33,13 @@ export default function Layout({
         <script defer src="/client.js" />
       </head>
       <body class="min-h-svh flex flex-col">
-        <HybridHeader fixed />
-        <main class="flex-1 w-full relative p-3">{children}</main>
-        <Footer>
-          {dev && "[DEV]"} SSR: <time at={now}>{now}</time>
-        </Footer>
+        <Providers>
+          <HybridHeader fixed />
+          <main class="flex-1 w-full relative p-3">{children}</main>
+          <Footer>
+            {dev && "[DEV]"} SSR: <time at={now}>{now}</time>
+          </Footer>
+        </Providers>
         {dev && <ClientRun name="hmr" />}
       </body>
     </html>

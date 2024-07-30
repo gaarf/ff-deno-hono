@@ -7,11 +7,11 @@ declare module "hono" {
 }
 
 export { Hono } from "hono";
-
-import { type PropsWithChildren, type FC } from "hono/jsx";
+export { type FC, createContext } from "hono/jsx";
+import { type PropsWithChildren } from "hono/jsx";
 import { type JSX } from "hono/jsx/jsx-runtime";
 
-export { FC, PropsWithChildren };
+export { PropsWithChildren };
 export type ComponentType<T> = (props: PropsWithChildren<T>) => JSX.Element;
 
 // @deno-types="npm:@types/luxon"
