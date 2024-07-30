@@ -6,7 +6,7 @@ import postcss from "npm:postcss";
 const TARGET = ".generated/styles.ts";
 const cssIn = "src/app.css";
 
-const prod = Deno.env.get("GEN_ENV") === 'prod';
+const prod = Deno.env.get("GEN_ENV") === 'bundle';
 const plugins: Parameters<typeof postcss> = [tailwindcss, autoprefixer];
 if (prod) {
   plugins.push(cssnano);

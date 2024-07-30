@@ -6,7 +6,7 @@ const TARGET = ".generated/client";
 const TEMP_TARGET = TARGET + '.js';
 const FINAL_TARGET = TARGET + '.ts';
 
-const prod = Deno.env.get("GEN_ENV") === 'prod';
+const prod = Deno.env.get("GEN_ENV") === 'bundle';
 
 await esbuild.build({
   plugins: [
@@ -23,7 +23,7 @@ await esbuild.build({
   jsxImportSource: "hono/jsx/dom",
 
   ...(prod && {
-    dropLabels: ["DEV"],
+    dropLabels: ["DEV"], // FIXME: doesnt seem to work
     minify: true,
   })
 });
