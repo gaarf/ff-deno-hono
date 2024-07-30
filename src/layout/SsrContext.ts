@@ -1,7 +1,7 @@
 import { createContext, useContext } from "hono/jsx";
 import { DocumentProps } from "@/layout/Document.tsx";
 
-const LayoutContext = createContext<
+const SsrContext = createContext<
   {
     url: URL | null;
   } & DocumentProps
@@ -9,6 +9,6 @@ const LayoutContext = createContext<
   url: null,
 });
 
-export const useLayoutContext = () => useContext(LayoutContext);
+export const useSsrContext = () => useContext(SsrContext);
 
-export default LayoutContext;
+export default SsrContext;

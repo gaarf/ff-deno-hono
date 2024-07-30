@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "@/util.ts";
+import { ComponentType, PropsWithChildren } from "@/util.ts";
 import { ClientRun } from "@/client/ClientRun.tsx";
 import { mountables } from "@/client/mountables.ts";
 import { type JSXNode } from "hono/jsx";
@@ -20,5 +20,13 @@ export function Hybrid({ children, id: inputId }: HybridProps) {
       {children}
       <ClientRun name="mount" opts={{ [`#${id}`]: [name, Component.props] }} />
     </slot>
+  );
+}
+
+export function withHybrid<T>(Component: ComponentType<T>) {
+  return (props: PropsWithChildren<T>) => (
+    <Hybrid>
+      <Component {...props} />
+    </Hybrid>
   );
 }

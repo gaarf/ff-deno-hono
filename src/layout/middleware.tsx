@@ -3,16 +3,16 @@ import { jsxRenderer } from "hono/jsx-renderer";
 import { mountables } from "@/client/mountables.ts";
 import { ClientRun } from "@/client/ClientRun.tsx";
 import Document from "@/layout/Document.tsx";
-import LayoutContext from "@/layout/context.ts";
+import SsrContext from "@/layout/SsrContext.ts";
 import type { ComponentType, FC } from "@/util.ts";
 
 export const documentLayout = createMiddleware((c, next) => {
   const url = new URL(c.req.url);
 
   c.setLayout(({ Layout: _, ...props }) => (
-    <LayoutContext.Provider value={{ ...props, url }}>
+    <SsrContext.Provider value={{ ...props, url }}>
       <Document {...props} />
-    </LayoutContext.Provider>
+    </SsrContext.Provider>
   ));
 
   return next();

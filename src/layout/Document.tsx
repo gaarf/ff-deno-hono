@@ -3,12 +3,14 @@ import { Favicon } from "@/layout/Favicon.tsx";
 import { ClientRun } from "@/client/ClientRun.tsx";
 import { Header } from "@/islands/Header.tsx";
 import { Footer } from "@/layout/Footer.tsx";
-import { Hybrid } from "@/client/Hybrid.tsx";
+import { withHybrid } from "@/client/Hybrid.tsx";
 
 export type DocumentProps = {
   title?: string;
   icon?: string;
 };
+
+const HybridHeader = withHybrid(Header);
 
 export default function Layout({
   children,
@@ -30,9 +32,7 @@ export default function Layout({
         <script defer src="/client.js" />
       </head>
       <body class="min-h-svh flex flex-col">
-        <Hybrid>
-          <Header fixed />
-        </Hybrid>
+        <HybridHeader fixed />
         <main class="flex-1 w-full relative p-3">{children}</main>
         <Footer>
           {dev && "[DEV]"} SSR: <time at={now}>{now}</time>
