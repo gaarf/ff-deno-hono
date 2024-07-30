@@ -1,4 +1,5 @@
-import { Hono, httpNow } from "@/util.ts";
+import { Hono } from "hono";
+import { httpNow } from "@/util.ts";
 import { documentLayout, nestedLayout } from "@/layout/middleware.tsx";
 import { Landing } from "@/routes/Landing.tsx";
 

@@ -1,12 +1,3 @@
-import { type DocumentProps } from "@/layout/Document.tsx";
-
-declare module "hono" {
-  interface ContextRenderer {
-    (content: string | Promise<string>, props?: DocumentProps): Response;
-  }
-}
-
-export { Hono } from "hono";
 export { type FC, createContext } from "hono/jsx";
 import { type PropsWithChildren } from "hono/jsx";
 import { type JSX } from "hono/jsx/jsx-runtime";

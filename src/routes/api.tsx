@@ -1,4 +1,5 @@
-import { Hono, isoNow } from "@/util.ts";
+import { Hono } from "hono";
+import { isoNow } from "@/util.ts";
 
 export default new Hono()
   .get("/*", async (c) => {

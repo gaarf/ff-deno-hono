@@ -1,4 +1,4 @@
-import { Hono } from "@/util.ts";
+import { Hono } from "hono";
 import { nestedLayout } from "@/layout/middleware.tsx";
 import { BarLayout } from "@/routes/bar/BarLayout.tsx";
 import { Link } from "@/components/Link.tsx";

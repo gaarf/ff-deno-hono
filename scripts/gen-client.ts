@@ -18,7 +18,7 @@ await esbuild.build({
   outfile: TEMP_TARGET,
   platform: "browser",
   bundle: true,
-  sourcemap: "linked",
+  sourcemap: "external",
   jsx: "automatic",
   jsxImportSource: "hono/jsx/dom",
 

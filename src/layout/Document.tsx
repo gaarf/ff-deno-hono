@@ -5,11 +5,7 @@ import { Header } from "@/islands/Header.tsx";
 import { Footer } from "@/layout/Footer.tsx";
 import { withHybrid } from "@/client/Hybrid.tsx";
 import Providers from "@/layout/Providers.tsx";
-
-export type DocumentProps = {
-  title?: string;
-  icon?: string;
-};
+import { type DocumentProps } from "@/types.ts";
 
 const HybridHeader = withHybrid(Header);
 
@@ -45,4 +41,3 @@ export default function Layout({
     </html>
   );
 }
-

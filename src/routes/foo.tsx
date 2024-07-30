@@ -1,4 +1,4 @@
-import { Hono } from "@/util.ts";
+import { Hono } from "hono";
 import { LoremIpsum as LoremRenamed } from "@/components/LoremIpsum.tsx";
 import { clientMount } from "@/layout/middleware.tsx";
 

@@ -1,5 +1,6 @@
-import { createContext, useContext } from "hono/jsx";
-import { DocumentProps } from "@/layout/Document.tsx";
+import { createContext } from "hono/jsx";
+import { useContext } from "@/hooks.ts";
+import { type DocumentProps } from "@/types.ts";
 
 const SsrContext = createContext<
   {
