@@ -1,3 +1,5 @@
+import { isBrowser } from "@/utils.ts";
+
 export const Favicon = ({ icon }: { icon: string }) => {
   return (
     <link
@@ -6,3 +8,13 @@ export const Favicon = ({ icon }: { icon: string }) => {
     />
   );
 };
+
+export function getEmoji() {
+  if (isBrowser()) {
+    const link = document.querySelector<HTMLLinkElement>('link[rel="icon"]');
+    const emoji = link?.href.match(/>([^<]*)<\/text><\/svg>$/);
+    if (emoji) {
+      return decodeURIComponent(emoji[1]);
+    }
+  }
+}
