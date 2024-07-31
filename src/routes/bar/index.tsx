@@ -2,10 +2,7 @@ import { Hono } from "hono";
 import { nestedLayout } from "@/layout/middleware.tsx";
 import { BarLayout } from "@/routes/bar/BarLayout.tsx";
 import { Link } from "@/components/intrinsic.ts";
-import { BtcPrice } from "@/islands/BtcPrice.tsx";
-import { withHybrid } from "@/client/ClientRun.tsx";
-
-const HybridBtc = withHybrid(BtcPrice);
+import { Test } from "@/components/Test.tsx";
 
 export default new Hono()
   .use(nestedLayout(BarLayout))
@@ -14,6 +11,6 @@ export default new Hono()
   )
   .get(
     "/baz",
-    nestedLayout(HybridBtc),
+    nestedLayout(Test),
     (c) => c.render('baz in bar', { title: "baz!", icon: '😃' })
   );

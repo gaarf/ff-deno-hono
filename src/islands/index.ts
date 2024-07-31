@@ -1,7 +1,13 @@
 import { LoremIpsum } from "@/islands/LoremIpsum.tsx";
 import { Header } from "@/islands/Header.tsx";
-import { BtcPrice } from "@/islands/BtcPrice.tsx";
+import { withHybrid } from "@/client/ClientRun.tsx";
 
-export const mountables = { LoremIpsum, Header, BtcPrice } as const;
+/* islands cannot have state! however their children can. */
+
+export const mountables = { LoremIpsum, Header } as const;
 
 export type Mountable = keyof typeof mountables;
+
+export const hybrid = {
+  LoremIpsum: withHybrid(LoremIpsum),
+}

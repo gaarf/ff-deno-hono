@@ -1,7 +1,8 @@
 import { useCallback, useState } from "@/hooks.ts";
 import { Button } from "@/components/intrinsic.ts";
+import clientOnly from "@/client/only.tsx";
 
-export const Counter = () => {
+export const Counter = clientOnly(() => {
   const [count, setCount] = useState(0);
 
   const handleClick = useCallback<EventListener>((event) => {
@@ -17,4 +18,4 @@ export const Counter = () => {
       {count}
     </Button>
   );
-};
+});

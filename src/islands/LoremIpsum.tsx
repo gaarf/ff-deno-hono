@@ -1,7 +1,6 @@
 import { type ComponentType } from "@/utils.ts";
 import { Counter } from "@/components/Counter.tsx";
 
-
 type LoremIpsumProps = {
   count?: number;
 };
