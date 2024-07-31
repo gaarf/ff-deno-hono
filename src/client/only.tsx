@@ -2,9 +2,11 @@ import { ComponentType, isBrowser, PropsWithChildren } from "@/utils.ts";
 
 const browser = isBrowser();
 
+const DefaulFallback = () => <object class="size-0" />;
+
 // HOC renders an inert object on the server
-export default function clientOnly<T>(Component: ComponentType<T>, fallbackClass = "size-0") {
+export default function clientOnly<T>(Component: ComponentType<T>, Fallback = DefaulFallback) {
   return (props: PropsWithChildren<T>) => {
-    return browser ? <Component {...props} /> : <object class={fallbackClass} />;
+    return browser ? <Component {...props} /> : <Fallback />;
   };
 }
