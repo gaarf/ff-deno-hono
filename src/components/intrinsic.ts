@@ -7,6 +7,7 @@ function intrinsic<T extends keyof JSX.IntrinsicElements>(
 ): ComponentType<JSX.IntrinsicElements[T]> {
   return forwardRef(
     ({ children, ...props }, ref) =>
+      // @ts-expect-error: JSXNode ¯\_(ツ)_/¯ JSX.Element
       createElement(
         String(tag),
         {
@@ -16,19 +17,25 @@ function intrinsic<T extends keyof JSX.IntrinsicElements>(
           class: cn(baseProps?.class, props.class),
         },
         children as string
-      ) as unknown as JSX.Element
+      )
   );
 }
 
 export const Button = intrinsic("button", {
-  class: "border hover:border-orange-500 font-bold rounded-lg py-1 px-2 select-none",
+  class: [
+    "border hover:border-orange-500 font-bold rounded-lg py-1 px-2 select-none",
+    "disabled:pointer-events-none disabled:opacity-50 disabled:cursor-forbidden",
+  ].join(" "),
 });
+
 export const Input = intrinsic("input", {
   class: "border",
 });
+
 export const Textarea = intrinsic("textarea", {
   class: "border",
 });
+
 export const Box = intrinsic("div", {
   class: "flex justify-between",
 });
