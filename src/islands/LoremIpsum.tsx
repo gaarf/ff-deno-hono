@@ -1,5 +1,6 @@
 import { type ComponentType } from "@/utils.ts";
 import { Counter } from "@/components/Counter.tsx";
+import { Box } from "@/components/intrinsic.ts";
 
 type LoremIpsumProps = {
   count?: number;
@@ -22,7 +23,10 @@ export const LoremIpsum: ComponentType<LoremIpsumProps> = ({
             autem nulla. Obcaecati!!
           </p>
         ))}
-        <Counter />
+        <Box>
+          <Counter />
+          👏
+        </Box>
     </>
   );
 };

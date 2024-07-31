@@ -22,10 +22,10 @@ function intrinsic<T extends keyof JSX.IntrinsicElements>(
 }
 
 export const Button = intrinsic("button", {
-  class: [
+  class: cn(
     "border hover:border-orange-500 font-bold rounded-lg py-1 px-2 select-none",
     "disabled:pointer-events-none disabled:opacity-50 disabled:cursor-forbidden",
-  ].join(" "),
+  ),
 });
 
 export const Input = intrinsic("input", {
