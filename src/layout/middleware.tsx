@@ -10,7 +10,7 @@ export const documentLayout = createMiddleware((c, next) => {
   const url = new URL(c.req.url);
 
   c.setLayout(({ Layout: _, ...props }) => (
-    <SsrContext.Provider value={{ ...props, url }}>
+    <SsrContext.Provider value={{ ...props, url, dev: c.get('dev') }}>
       <Document {...props} />
     </SsrContext.Provider>
   ));

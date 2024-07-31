@@ -23,7 +23,7 @@ await esbuild.build({
   jsxImportSource: "hono/jsx/dom",
 
   ...(prod && {
-    dropLabels: ["DEV"], // FIXME: doesnt seem to work
+    dropLabels: ["DEV"],
     minify: true,
   })
 });

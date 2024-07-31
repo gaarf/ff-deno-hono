@@ -13,7 +13,9 @@ import client, { jsMap } from "../.generated/client.ts";
 const app = new Hono();
 const bootTime = httpNow();
 
+let dev = false;
 DEV: {
+  dev = true;
   const [{ timing }, { logger }] = await Promise.all([
     import("hono/timing"),
     import("hono/logger"),
@@ -21,6 +23,11 @@ DEV: {
   app.use(timing(), logger());
   break DEV;
 }
+
+app.use((c, next) => {
+  c.set('dev', dev);
+  return next();
+});
 
 const cache = [
   etag(),

@@ -6,6 +6,7 @@ import { Footer } from "@/layout/Footer.tsx";
 import { withHybrid } from "@/client/Hybrid.tsx";
 import Providers from "@/layout/Providers.tsx";
 import { type DocumentProps } from "@/types.ts";
+import { useSsrContext } from "@/layout/SsrContext.ts";
 
 const HybridHeader = withHybrid(Header);
 
@@ -14,11 +15,7 @@ export default function Layout({
   ...props
 }: PropsWithChildren<DocumentProps>) {
   const now = isoNow();
-  let dev = false;
-  DEV: {
-    dev = true;
-    break DEV;
-  }
+  const { dev } = useSsrContext();
   const { title = "FFF", icon = "⚡" } = props;
   return (
     <html>

@@ -1,10 +1,5 @@
 import mount from "@/client/runners/mount.ts";
-
-let hmr = (_o: unknown) => Promise.resolve();
-DEV: {
-  hmr = (await import("@/client/runners/hmr.ts")).default;
-  break DEV;
-}
+import hmr from "@/client/runners/hmr.ts";
 
 const runners = {
   mount,
