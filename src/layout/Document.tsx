@@ -15,7 +15,7 @@ export default function Layout({
 }: PropsWithChildren<DocumentProps>) {
   const now = isoNow();
   const { dev } = useSsrContext();
-  const { title = "FFF", icon = "⚡" } = props;
+  const { title, icon } = props;
   return (
     <html>
       <head>

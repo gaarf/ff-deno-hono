@@ -32,7 +32,7 @@ staticAssets(app, bootTime);
 app.use(documentLayout);
 
 app.all("/", nestedLayout(Landing), (c) =>
-  c.render(bootTime, { title: "Homepage" })
+  c.render(bootTime, { icon: "🚀" })
 );
 
 Object.entries(routes).forEach(([path, route]) => {

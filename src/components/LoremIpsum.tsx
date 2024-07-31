@@ -1,4 +1,4 @@
-import { Link } from "@/components/Link.tsx";
+import { Link } from "@/components/intrinsic.ts";
 import { isBrowser, type ComponentType } from "@/utils.ts";
 import { usePathname } from "@/hooks.ts";
 

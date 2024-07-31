@@ -10,7 +10,14 @@ export const documentLayout = createMiddleware((c, next) => {
   const url = new URL(c.req.url);
 
   c.setLayout(({ Layout: _, ...props }) => (
-    <SsrContext.Provider value={{ ...props, url, dev: c.get('dev') }}>
+    <SsrContext.Provider
+      value={{
+        url,
+        title: props.title,
+        icon: props.icon,
+        dev: c.get("dev"),
+      }}
+    >
       <Document {...props} />
     </SsrContext.Provider>
   ));
@@ -41,7 +48,10 @@ export function clientMount<T>(
   return nestedLayout(({ children }) => (
     <>
       {children}
-      <ClientRun name="mount" opts={{ [where]: [what, componentProps ?? {}] }} />
+      <ClientRun
+        name="mount"
+        opts={{ [where]: [what, componentProps ?? {}] }}
+      />
     </>
   ));
 }

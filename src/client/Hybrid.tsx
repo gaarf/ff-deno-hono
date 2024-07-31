@@ -11,7 +11,9 @@ export function Hybrid({ children, id: inputId }: HybridProps) {
   const Component = children as JSXNode;
   const [name] =
     Object.entries(mountables).find(([, v]) => v === Component.tag) || [];
-  if (!name) return null;
+  if (!name) {
+    throw new Error("Cannot mount "+children);
+  };
 
   const id = inputId || `hybrid-${name}`;
 
