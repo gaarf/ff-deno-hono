@@ -14,14 +14,14 @@ if (prod) {
 
 const result = await postcss(plugins).process(
   Deno.readTextFileSync(cssIn),
-  { from: cssIn, to: "styles.css", map: { inline: true } }
+  { from: cssIn, to: "styles.css", map: !prod && { inline: false } }
 );
 
 Deno.writeTextFileSync(
   TARGET,
   `/* generated, do not edit */\n`.concat(
     `export default ${JSON.stringify(result.css)};\n`,
-    `export const cssMap = ${JSON.stringify(result.map)};\n`
+    `export const cssMap = ${prod ? 'undefined' : JSON.stringify(result.map)};\n`
   )
 );
 console.log(`✍️ styles (${prod?'prod':'dev'})`);

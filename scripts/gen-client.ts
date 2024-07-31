@@ -18,7 +18,7 @@ await esbuild.build({
   outfile: TEMP_TARGET,
   platform: "browser",
   bundle: true,
-  sourcemap: "external",
+  sourcemap: prod ? false : "linked",
   jsx: "automatic",
   jsxImportSource: "hono/jsx/dom",
 
@@ -30,7 +30,10 @@ await esbuild.build({
 
 esbuild.stop();
 
-const tempFiles = [TEMP_TARGET, TEMP_TARGET + ".map"];
+const tempFiles = [TEMP_TARGET];
+if (!prod) {
+  tempFiles.push(TEMP_TARGET + ".map");
+}
 const [strOfJs, mapOfJs] = await Promise.all(
   tempFiles.map((file) => Deno.readTextFile(file))
 ).finally(() => tempFiles.forEach((file) => Deno.remove(file)));
@@ -39,7 +42,7 @@ Deno.writeTextFileSync(
   FINAL_TARGET,
   `/* generated, do not edit */\n`.concat(
     `export default ${JSON.stringify(strOfJs)};\n`,
-    `export const jsMap = ${mapOfJs};\n`
+    `export const jsMap = ${prod ? 'undefined' : mapOfJs};\n`
   )
 );
 

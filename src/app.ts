@@ -25,7 +25,7 @@ DEV: {
 }
 
 app.use((c, next) => {
-  c.set('dev', dev);
+  c.set("dev", dev);
   return next();
 });
 
@@ -43,7 +43,10 @@ app.get("/client.*", ...cache, (c) => {
       c.header("Content-Type", "text/javascript");
       return c.body(client);
     case "js.map":
-      return c.json(jsMap);
+      if (jsMap) {
+        return c.json(jsMap);
+      }
+    /* falls through */
     default:
       return c.notFound();
   }
@@ -55,7 +58,10 @@ app.get("/styles.*", ...cache, (c) => {
       c.header("Content-Type", "text/css");
       return c.body(styles);
     case "css.map":
-      return c.json(cssMap);
+      if (cssMap) {
+        return c.json(cssMap);
+      }
+    /* falls through */
     default:
       return c.notFound();
   }
