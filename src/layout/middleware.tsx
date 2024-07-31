@@ -4,7 +4,7 @@ import { mountables } from "@/client/mountables.ts";
 import { ClientRun } from "@/client/ClientRun.tsx";
 import Document from "@/layout/Document.tsx";
 import SsrContext from "@/layout/SsrContext.ts";
-import type { ComponentType, FC } from "@/util.ts";
+import type { ComponentType, FC } from "@/utils.ts";
 
 export const documentLayout = createMiddleware((c, next) => {
   const url = new URL(c.req.url);

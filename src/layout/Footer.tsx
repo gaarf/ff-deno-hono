@@ -1,4 +1,4 @@
-import { cn, PropsWithChildren } from "@/util.ts";
+import { cn, PropsWithChildren } from "@/utils.ts";
 
 type FooterProps = PropsWithChildren<{
   fixed?: boolean;

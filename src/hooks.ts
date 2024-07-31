@@ -1,4 +1,4 @@
-import { isBrowser } from "@/util.ts";
+import { isBrowser } from "@/utils.ts";
 import { useSsrContext } from "@/layout/SsrContext.ts";
 import { useEffect } from "hono/jsx";
 

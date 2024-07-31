@@ -1,4 +1,4 @@
-import { type PropsWithChildren, isoNow } from "@/util.ts";
+import { type PropsWithChildren, isoNow } from "@/utils.ts";
 import { Favicon } from "@/layout/Favicon.tsx";
 import { ClientRun } from "@/client/ClientRun.tsx";
 import { Header } from "@/islands/Header.tsx";

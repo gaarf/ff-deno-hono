@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "@/util.ts";
+import { PropsWithChildren } from "@/utils.ts";
 
 export default function Providers({ children }: PropsWithChildren) {
   return (

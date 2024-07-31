@@ -1,8 +1,8 @@
-export { type FC, createContext } from "hono/jsx";
+export { type FC, createContext, forwardRef } from "hono/jsx";
 import { type PropsWithChildren } from "hono/jsx";
 import { type JSX } from "hono/jsx/jsx-runtime";
 
-export { PropsWithChildren };
+export { JSX, PropsWithChildren };
 export type ComponentType<T> = (props: PropsWithChildren<T>) => JSX.Element;
 
 // @deno-types="npm:@types/luxon"

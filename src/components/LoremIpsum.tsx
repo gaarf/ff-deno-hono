@@ -1,5 +1,5 @@
 import { Link } from "@/components/Link.tsx";
-import { isBrowser, type ComponentType } from "@/util.ts";
+import { isBrowser, type ComponentType } from "@/utils.ts";
 import { usePathname } from "@/hooks.ts";
 
 type LoremIpsumProps = {

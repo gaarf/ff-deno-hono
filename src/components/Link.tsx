@@ -1,6 +1,4 @@
-import { cn, PropsWithChildren } from "@/util.ts";
-import { type JSX } from "hono/jsx/jsx-runtime";
-import { forwardRef } from "hono/jsx";
+import { cn, forwardRef, type JSX, type PropsWithChildren } from "@/utils.ts";
 
 type LinkProps = PropsWithChildren<JSX.IntrinsicElements["a"]>;
 

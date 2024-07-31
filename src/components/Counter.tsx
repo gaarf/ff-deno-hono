@@ -1,5 +1,5 @@
-import { JSX, useState } from "hono/jsx";
-import { cn } from "@/util.ts";
+import { useState } from "@/hooks.ts";
+import { cn, type JSX } from "@/utils.ts";
 
 export const Counter = (props: JSX.IntrinsicElements["button"]) => {
   const [count, setCount] = useState(0);

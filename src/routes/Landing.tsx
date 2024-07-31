@@ -1,4 +1,4 @@
-import { DateTime, type PropsWithChildren } from "@/util.ts";
+import { DateTime, type PropsWithChildren } from "@/utils.ts";
 import { LoremIpsum } from "@/components/LoremIpsum.tsx";
 
 export const Landing = ({ children }: PropsWithChildren) => {

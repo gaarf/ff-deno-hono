@@ -13,7 +13,7 @@ export default function mount(opts: Record<string, [Mountable, Record<string, un
     if (root && Component) {
       console.log(what, props);
       render(Component(props), root);
-      console.log(root.childNodes);
+      root.childNodes.forEach(node => console.log(node));
     }
     else {
       console.error(where);

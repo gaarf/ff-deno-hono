@@ -1,4 +1,4 @@
-import { cn, type PropsWithChildren } from "@/util.ts";
+import { cn, type PropsWithChildren } from "@/utils.ts";
 import { usePathname } from "@/hooks.ts";
 import { Counter } from "@/components/Counter.tsx";
 
