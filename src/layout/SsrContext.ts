@@ -1,6 +1,10 @@
 import { createContext } from "hono/jsx";
 import { useContext } from "@/hooks.ts";
-import { type DocumentProps } from "@/types.ts";
+
+export type DocumentProps = {
+  title?: string;
+  icon?: string;
+};
 
 const SsrContext = createContext<
   {

@@ -5,8 +5,7 @@ import { Header } from "@/islands/Header.tsx";
 import { Footer } from "@/layout/Footer.tsx";
 import { withHybrid } from "@/client/Hybrid.tsx";
 import Providers from "@/layout/Providers.tsx";
-import { type DocumentProps } from "@/types.ts";
-import { useSsrContext } from "@/layout/SsrContext.ts";
+import { useSsrContext, type DocumentProps } from "@/layout/SsrContext.ts";
 
 const HybridHeader = withHybrid(Header);
 

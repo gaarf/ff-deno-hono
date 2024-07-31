@@ -1,5 +1,6 @@
 import { Hono } from "hono";
 import { httpNow } from "@/utils.ts";
+
 import { documentLayout, nestedLayout } from "@/layout/middleware.tsx";
 import { Landing } from "@/routes/Landing.tsx";
 
@@ -84,3 +85,15 @@ DEV: {
 }
 
 export default app;
+
+declare module "hono" {
+  interface ContextRenderer {
+    (
+      content: string | Promise<string>,
+      props?: import("@/layout/SsrContext.ts").DocumentProps
+    ): Response;
+  }
+  interface ContextVariableMap {
+    dev: boolean;
+  }
+}
