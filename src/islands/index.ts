@@ -1,4 +1,4 @@
-import { LoremIpsum } from "@/components/LoremIpsum.tsx";
+import { LoremIpsum } from "@/islands/LoremIpsum.tsx";
 import { Header } from "@/islands/Header.tsx";
 import { BtcPrice } from "@/islands/BtcPrice.tsx";
 

@@ -1,21 +1,21 @@
 /// <reference lib="dom" />
-import { mountables, type Mountable } from "@/client/mountables.ts";
+import { mountables, type Mountable } from "@/islands/index.ts";
 import { render } from "hono/jsx/dom";
 
-export default function mount(opts: Record<string, [Mountable, Record<string, unknown>]>) {
+export default function mount(
+  opts: Record<string, [Mountable, Record<string, unknown>]>
+) {
   console.group("mount");
-  Object.entries(opts).forEach(([where, [what, props = {}]]) => {
+  Object.entries(opts).forEach(([where, [what, props]]) => {
     console.time(what);
 
     const Component = mountables[what];
     const root = document.querySelector<HTMLElement>(where);
 
     if (root && Component) {
-      console.log(what, props);
-      render(Component(props), root);
-      root.childNodes.forEach(node => console.log(node));
-    }
-    else {
+      render(Component(props || {}), root);
+      root.childNodes.forEach((node) => console.log(node));
+    } else {
       console.error(where);
     }
 

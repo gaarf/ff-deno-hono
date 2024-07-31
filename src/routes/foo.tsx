@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { LoremIpsum as LoremRenamed } from "@/components/LoremIpsum.tsx";
+import { LoremIpsum as LoremRenamed } from "@/islands/LoremIpsum.tsx";
 import { clientMount } from "@/layout/middleware.tsx";
 
 export default new Hono()
@@ -8,7 +8,10 @@ export default new Hono()
     c.render(
       <>
         <h1 class="text-5xl">foo on the server!</h1>
-        <div id="lorem" />
+        <section class="my-5">
+          <h2>client side says:</h2>
+          <div id="lorem" class="border p-2">mount here</div>
+        </section>
       </>,
       { title: "foo!" }
     )

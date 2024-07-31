@@ -1,6 +1,5 @@
 import { cn, type PropsWithChildren } from "@/utils.ts";
 import { usePathname } from "@/hooks.ts";
-import { Counter } from "@/components/Counter.tsx";
 
 type HeaderProps = {
   class?: string;
@@ -25,7 +24,6 @@ export const Header = ({
         FUNKY FLEEK FUNCTION FRAMEWORK
       </h1>
 
-      <Counter class="mx-5 shrink-0 hover:scale-110 focus:ring outline-none" />
       <nav>
         <ul class="flex gap-2">
           <NavItem href="/">Home</NavItem>

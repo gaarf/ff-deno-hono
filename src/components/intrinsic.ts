@@ -21,7 +21,7 @@ function intrinsic<T extends keyof JSX.IntrinsicElements>(
 }
 
 export const Button = intrinsic("button", {
-  class: "border hover:border-orange-500 bg-blue-300 rounded-lg py-1 px-2",
+  class: "border hover:border-orange-500 font-bold rounded-lg py-1 px-2",
 });
 export const Input = intrinsic("input", {
   class: "border",

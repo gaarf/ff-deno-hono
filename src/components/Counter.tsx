@@ -1,15 +1,20 @@
-import { useState } from "@/hooks.ts";
-import { cn, type JSX } from "@/utils.ts";
+import { useCallback, useState } from "@/hooks.ts";
+import { Button } from "@/components/intrinsic.ts";
 
-export const Counter = (props: JSX.IntrinsicElements["button"]) => {
+export const Counter = () => {
   const [count, setCount] = useState(0);
+
+  const handleClick = useCallback<EventListener>((event) => {
+    console.log(event);
+    setCount(c => c + 1);
+  }, []);
+
   return (
-    <button
-      {...props}
-      class={cn("border rounded-full aspect-square w-8", props.class)}
-      onClick={() => setCount((c) => c + 1)}
+    <Button
+      class="rounded-full aspect-square w-8"
+      onClick={handleClick}
     >
       {count}
-    </button>
+    </Button>
   );
 };

@@ -1,5 +1,6 @@
 import { DateTime, type PropsWithChildren } from "@/utils.ts";
-import { LoremIpsum } from "@/components/LoremIpsum.tsx";
+import { LoremIpsum } from "@/islands/LoremIpsum.tsx";
+
 
 export const Landing = ({ children }: PropsWithChildren) => {
   const uptime = DateTime.fromHTTP(String(children));
