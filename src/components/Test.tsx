@@ -8,10 +8,10 @@ export const Test = ({ children }: PropsWithChildren) => {
   const browser = isBrowser();
 
   return (
-    <Box class="flex-col gap-5">
-      <h1 class="text-xl text-center">this is the Test component</h1>
+    <Box className="flex-col gap-5">
+      <h1 className="text-xl text-center">this is the Test component</h1>
       <Json value={{ ...ssr, browser }} />
-      <Box>
+      <Box className="items-center">
         {children}
         <Button disabled>hello</Button>
       </Box>

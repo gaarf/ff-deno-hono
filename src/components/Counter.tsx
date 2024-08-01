@@ -12,7 +12,7 @@ export const Counter = clientOnly(() => {
 
   return (
     <Button
-      class="rounded-full aspect-square w-8"
+      className="rounded-full aspect-square w-8"
       onClick={handleClick}
     >
       {count}

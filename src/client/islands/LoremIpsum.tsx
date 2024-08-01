@@ -1,6 +1,7 @@
 import { type ComponentType } from "@/utils.ts";
 import { Counter } from "@/components/Counter.tsx";
 import { Box } from "@/components/intrinsic.ts";
+import { Test } from "@/components/Test.tsx";
 
 type LoremIpsumProps = {
   count?: number;
@@ -11,12 +12,12 @@ export const LoremIpsum: ComponentType<LoremIpsumProps> = ({
   count = 1,
 }) => {
   return (
-    <>
+    <div>
       {children}
       {Array(count)
         .fill(null)
         .map((_, i) => (
-          <p class="italic my-2" key={i}>
+          <p className="italic my-2" key={i}>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. In ipsum
             quia consequatur odit quidem qui doloremque inventore unde quaerat.
             Cupiditate suscipit vel temporibus natus facilis debitis, aspernatur
@@ -27,6 +28,7 @@ export const LoremIpsum: ComponentType<LoremIpsumProps> = ({
           <Counter />
           👏
         </Box>
-    </>
+        <Test />
+    </div>
   );
 };

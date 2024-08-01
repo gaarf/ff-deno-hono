@@ -1,6 +1,6 @@
-/// <reference lib="dom" />
+import { createElement } from "react";
+import { createRoot } from "react-dom/client";
 import { mountables, type Mountable } from "@/client/islands/index.ts";
-import { render } from "hono/jsx/dom";
 
 export default function mount(
   opts: Record<string, [Mountable, Record<string, unknown>]>
@@ -13,8 +13,8 @@ export default function mount(
     const root = document.querySelector<HTMLElement>(where);
 
     if (root && Component) {
-      render(Component({ ...props }), root);
-      root.childNodes.forEach((node) => console.log(node));
+      createRoot(root).render(createElement(Component, props));
+      console.log(root);
     } else {
       console.error(where);
     }

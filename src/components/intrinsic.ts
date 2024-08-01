@@ -1,5 +1,5 @@
 import { cn, type ComponentType, type JSX } from "@/utils.ts";
-import { createElement, forwardRef } from "hono/jsx";
+import { forwardRef, createElement } from "@/components/compat.ts";
 
 function intrinsic<T extends keyof JSX.IntrinsicElements>(
   tag: T,
@@ -8,13 +8,13 @@ function intrinsic<T extends keyof JSX.IntrinsicElements>(
   return forwardRef(
     ({ children, ...props }, ref) =>
       // @ts-expect-error: JSXNode ¯\_(ツ)_/¯ JSX.Element
-      createElement(
+    createElement(
         String(tag),
         {
           ...baseProps,
           ...props,
           ref,
-          class: cn(baseProps?.class, props.class),
+          className: cn(baseProps?.className, props.className),
         },
         children as string
       )
@@ -22,26 +22,26 @@ function intrinsic<T extends keyof JSX.IntrinsicElements>(
 }
 
 export const Button = intrinsic("button", {
-  class: cn(
+  className: cn(
     "border hover:border-orange-500 font-bold rounded-lg py-1 px-2 select-none",
     "disabled:pointer-events-none disabled:opacity-50 disabled:cursor-forbidden",
   ),
 });
 
 export const Input = intrinsic("input", {
-  class: "border",
+  className: "border",
 });
 
 export const Textarea = intrinsic("textarea", {
-  class: "border",
+  className: "border",
 });
 
 export const Box = intrinsic("div", {
-  class: "flex justify-between",
+  className: "flex justify-between",
 });
 export const Link = intrinsic("a", {
-  class: "underline",
+  className: "underline",
 });
 export const Pre = intrinsic("pre", {
-  class: "bg-slate-200 rounded overflow-hidden p-2 my-4",
+  className: "bg-slate-200 rounded overflow-hidden p-2 my-4",
 });

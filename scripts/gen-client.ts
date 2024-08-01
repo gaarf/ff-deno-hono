@@ -20,7 +20,7 @@ await esbuild.build({
   bundle: true,
   sourcemap: prod ? false : "linked",
   jsx: "automatic",
-  jsxImportSource: "hono/jsx/dom",
+  jsxImportSource: "react",
 
   ...(prod && {
     dropLabels: ["DEV"],
