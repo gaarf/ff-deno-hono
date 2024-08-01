@@ -1,5 +1,5 @@
 import { ComponentType, PropsWithChildren } from "@/utils.ts";
-import { mountables } from "@/islands/index.ts";
+import { mountables } from "@/client/islands/index.ts";
 import { type JSXNode } from "hono/jsx";
 import { type NamedRunner } from "@/client/runners/index.ts";
 

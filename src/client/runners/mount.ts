@@ -1,5 +1,5 @@
 /// <reference lib="dom" />
-import { mountables, type Mountable } from "@/islands/index.ts";
+import { mountables, type Mountable } from "@/client/islands/index.ts";
 import { render } from "hono/jsx/dom";
 
 export default function mount(
@@ -13,7 +13,7 @@ export default function mount(
     const root = document.querySelector<HTMLElement>(where);
 
     if (root && Component) {
-      render(Component(props || {}), root);
+      render(Component({ ...props }), root);
       root.childNodes.forEach((node) => console.log(node));
     } else {
       console.error(where);

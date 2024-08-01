@@ -1,6 +1,6 @@
 import { createContext } from "hono/jsx";
-import { useContext } from "@/hooks.ts";
-import { getEmoji } from "@/layout/Favicon.tsx";
+import { useContext } from "@/server/hooks.ts";
+import { getEmoji } from "@/server/layout/Favicon.tsx";
 import { isBrowser } from "@/utils.ts";
 
 export type DocumentProps = {

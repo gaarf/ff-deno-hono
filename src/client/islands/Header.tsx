@@ -1,5 +1,5 @@
 import { cn, type PropsWithChildren } from "@/utils.ts";
-import { usePathname } from "@/hooks.ts";
+import { usePathname } from "@/server/hooks.ts";
 
 type HeaderProps = {
   class?: string;

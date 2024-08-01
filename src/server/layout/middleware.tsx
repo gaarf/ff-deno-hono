@@ -1,29 +1,32 @@
 import { createMiddleware } from "hono/factory";
 import { jsxRenderer } from "hono/jsx-renderer";
-import { mountables } from "@/islands/index.ts";
+import { mountables, mountableName } from "@/client/islands/index.ts";
 import { ClientRun } from "@/client/ClientRun.tsx";
-import Document from "@/layout/Document.tsx";
-import SsrContext from "@/layout/SsrContext.ts";
+import Document from "@/server/layout/Document.tsx";
+import SsrContext from "@/server/layout/SsrContext.ts";
 import type { ComponentType, FC } from "@/utils.ts";
 
-export const documentLayout = createMiddleware((c, next) => {
-  const url = new URL(c.req.url);
+export const documentLayout = [
+  createMiddleware((c, next) => {
+    const url = new URL(c.req.url);
 
-  c.setLayout(({ Layout: _, ...props }) => (
-    <SsrContext.Provider
-      value={{
-        url,
-        title: props.title,
-        icon: props.icon,
-        dev: c.get("dev"),
-      }}
-    >
-      <Document {...props} />
-    </SsrContext.Provider>
-  ));
+    c.setLayout(({ Layout: _, ...props }) => (
+      <SsrContext.Provider
+        value={{
+          url,
+          title: props.title,
+          icon: props.icon,
+          dev: c.get("dev"),
+        }}
+      >
+        <Document {...props} />
+      </SsrContext.Provider>
+    ));
 
-  return next();
-});
+    return next();
+  }),
+  nestedLayout(({ children }) => <>{children}</>),
+];
 
 export function nestedLayout<T>(
   Component: ComponentType<T>,
@@ -42,9 +45,7 @@ export function clientMount<T>(
   componentProps?: T,
   where = "main"
 ) {
-  const [what] = Object.entries(mountables).find(
-    ([_, Mountable]) => Component === Mountable
-  )!;
+  const what = mountableName(Component);
   return nestedLayout(({ children }) => (
     <>
       {children}

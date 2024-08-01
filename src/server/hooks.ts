@@ -1,4 +1,4 @@
-import { useSsrContext } from "@/layout/SsrContext.ts";
+import { useSsrContext } from "@/server/layout/SsrContext.ts";
 import { useEffect } from "hono/jsx";
 
 export { useEffect };

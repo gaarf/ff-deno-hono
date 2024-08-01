@@ -3,7 +3,9 @@ import { type PropsWithChildren } from "hono/jsx";
 import { type JSX } from "hono/jsx/jsx-runtime";
 
 export { JSX, PropsWithChildren };
-export type ComponentType<T> = (props: PropsWithChildren<T>) => JSX.Element;
+export type ComponentType<T = Record<string, unknown>> = (
+  props: PropsWithChildren<T>
+) => JSX.Element;
 
 // @deno-types="npm:@types/luxon"
 import { DateTime } from "luxon";

@@ -1,5 +1,5 @@
 import { DateTime, type PropsWithChildren } from "@/utils.ts";
-import { LoremIpsum } from "@/islands/LoremIpsum.tsx";
+import { LoremIpsum } from "@/client/islands/LoremIpsum.tsx";
 
 
 export const Landing = ({ children }: PropsWithChildren) => {

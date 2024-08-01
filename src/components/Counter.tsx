@@ -1,4 +1,4 @@
-import { useCallback, useState } from "@/hooks.ts";
+import { useCallback, useState } from "@/server/hooks.ts";
 import { Button } from "@/components/intrinsic.ts";
 import clientOnly from "@/client/only.tsx";
 

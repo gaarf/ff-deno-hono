@@ -1,6 +1,6 @@
 import { Hono } from "hono";
-import { nestedLayout } from "@/layout/middleware.tsx";
-import { BarLayout } from "@/routes/bar/BarLayout.tsx";
+import { nestedLayout } from "@/server/layout/middleware.tsx";
+import { BarLayout } from "@/server/routes/bar/BarLayout.tsx";
 import { Link } from "@/components/intrinsic.ts";
 import { Test } from "@/components/Test.tsx";
 

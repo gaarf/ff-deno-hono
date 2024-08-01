@@ -4,7 +4,7 @@ const TARGET = ".generated/routes.ts";
 
 async function parse(dir = "routes", path = "/") {
   const output: Record<string, string> = {};
-  for await (const route of Deno.readDir(`src/${dir}`)) {
+  for await (const route of Deno.readDir(`src/server/${dir}`)) {
     const { name, isDirectory } = route;
     const fname = basename(name, ".tsx");
     if (fname.match(/^[A-Z]+/)) { // uppercase first letter
@@ -29,7 +29,7 @@ Deno.writeTextFileSync(
   `/* generated, do not edit */\n`.concat(
     routes
       .map(
-        ([, file], index) => `import f${index} from "${join("../src/", file)}";`
+        ([, file], index) => `import f${index} from "${join("../src/server/", file)}";`
       )
       .join("\n"),
     `\n\nexport default {\n`,
