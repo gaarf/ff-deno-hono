@@ -1,5 +1,5 @@
 import { isBrowser, PropsWithChildren } from "@/utils.ts";
-import { useSsrContext } from "../server/layout/SsrContext.ts";
+import { useSsrContext } from "@/server/layout/SsrContext.ts";
 import { Json } from "@/components/Json.tsx";
 import { Box, Button } from "@/components/intrinsic.ts";
 

@@ -1,5 +1,5 @@
-import { cn, ComponentType, forwardRef, type JSX } from "@/utils.ts";
-import { createElement } from "hono/jsx";
+import { cn, type ComponentType, type JSX } from "@/utils.ts";
+import { createElement, forwardRef } from "hono/jsx";
 
 function intrinsic<T extends keyof JSX.IntrinsicElements>(
   tag: T,

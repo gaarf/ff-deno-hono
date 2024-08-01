@@ -1,15 +1,14 @@
 import { type PropsWithChildren, isoNow } from "@/utils.ts";
 import { Favicon } from "@/server/layout/Favicon.tsx";
-import { ClientRun } from "@/client/ClientRun.tsx";
-import { Header } from "@/client/islands/Header.tsx";
+import { ClientRun } from "@/server/ClientRun.tsx";
 import { Footer } from "@/server/layout/Footer.tsx";
-import { withHybrid } from "@/client/ClientRun.tsx";
 import {
   useSsrContext,
   type DocumentProps,
 } from "@/server/layout/SsrContext.ts";
+import { hybrid } from "@/client/islands/index.ts";
 
-const HybridHeader = withHybrid(Header);
+const HybridHeader = hybrid.Header;
 
 export default function Layout({
   children,

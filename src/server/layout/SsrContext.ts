@@ -1,5 +1,4 @@
-import { createContext } from "hono/jsx";
-import { useContext } from "@/server/hooks.ts";
+import { createContext, useContext } from "hono/jsx";
 import { getEmoji } from "@/server/layout/Favicon.tsx";
 import { isBrowser } from "@/utils.ts";
 
@@ -21,5 +20,7 @@ const SsrContext = createContext<
 });
 
 export const useSsrContext = () => useContext(SsrContext);
+
+export const usePathname = () => useSsrContext().url!.pathname;
 
 export default SsrContext;

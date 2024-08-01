@@ -1,5 +1,5 @@
 import { cn, type PropsWithChildren } from "@/utils.ts";
-import { usePathname } from "@/server/hooks.ts";
+import { usePathname } from "@/server/layout/SsrContext.ts"
 
 type HeaderProps = {
   class?: string;
@@ -9,7 +9,7 @@ type HeaderProps = {
 export const Header = ({
   fixed,
   class: className = "min-h-14",
-}: HeaderProps) => (
+}: PropsWithChildren<HeaderProps>) => (
   <header class={cn("flex", className)}>
     <div
       class={cn(

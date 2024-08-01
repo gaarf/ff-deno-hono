@@ -1,7 +1,7 @@
 import { createMiddleware } from "hono/factory";
 import { jsxRenderer } from "hono/jsx-renderer";
-import { mountables, mountableName } from "@/client/islands/index.ts";
-import { ClientRun } from "@/client/ClientRun.tsx";
+import { mountableName } from "@/client/islands/index.ts";
+import { ClientRun } from "@/server/ClientRun.tsx";
 import Document from "@/server/layout/Document.tsx";
 import SsrContext from "@/server/layout/SsrContext.ts";
 import type { ComponentType, FC } from "@/utils.ts";
