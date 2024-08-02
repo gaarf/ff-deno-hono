@@ -30,8 +30,8 @@ jobs:
         with:
           deno-version: v1.x
 
-      - name: Bundle
-        run: deno task bundle
+      - name: Check types
+        run: deno task check
   
       - name: Verify formatting
         run: deno fmt --check --ignore=.generated
