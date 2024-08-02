@@ -1,4 +1,4 @@
-import { Pre } from "@/components/intrinsic.ts";
+import { Pre } from "@/components";
 import { JSX } from "@/utils.ts";
 
 type JsonProps = {

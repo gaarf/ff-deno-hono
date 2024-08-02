@@ -1,5 +1,5 @@
 import { useCallback, useState } from "@/utils.ts";
-import { Button } from "@/components/intrinsic.ts";
+import { Button } from "@/components";
 
 export const BtcPrice = () => {
   const [count, setCount] = useState(0);

@@ -1,7 +1,7 @@
 import { isBrowser, PropsWithChildren } from "@/utils.ts";
 import { useSsrContext } from "@/server/layout/SsrContext.ts";
+import { Box, Button } from "@/components";
 import { Json } from "@/components/Json.tsx";
-import { Box, Button } from "@/components/intrinsic.ts";
 
 export const Test = (
   { children, btnLabel = "hello" }: PropsWithChildren<{ btnLabel?: string }>,

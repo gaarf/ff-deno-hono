@@ -1,5 +1,5 @@
 import { useCallback, useState } from "@/utils.ts";
-import { Button } from "@/components/intrinsic.ts";
+import { Button } from "@/components";
 import clientOnly from "@/client/only.tsx";
 
 export const Counter = clientOnly(() => {

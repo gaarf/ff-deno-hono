@@ -1,6 +1,7 @@
 import { type PropsWithChildren } from "@/utils.ts";
+
+import { Box } from "@/components";
 import { Counter } from "@/components/Counter.tsx";
-import { Box } from "@/components/intrinsic.ts";
 import { Test } from "@/components/Test.tsx";
 
 type LoremIpsumProps = {
