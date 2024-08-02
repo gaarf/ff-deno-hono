@@ -1,11 +1,11 @@
 import { Hono } from "hono";
 import { httpNow } from "@/utils.ts";
 
-import { documentLayout, nestedLayout } from "./server/layout/middleware.tsx";
+import { documentLayout, nestedLayout } from "@/server/layout/middleware.tsx";
 import { Landing } from "@/server/routes/Landing.tsx";
-import staticAssets from '@/static.ts';
+import staticAssets from "@/server/static.ts";
 
-import routes from "../.generated/routes.ts";
+import routes from "_generated/routes.ts";
 
 
 const app = new Hono();
