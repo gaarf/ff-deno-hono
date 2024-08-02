@@ -1,5 +1,10 @@
-import { cn, type ComponentType, type JSX } from "@/utils.ts";
-import { forwardRef, createElement } from "@/components/compat.ts";
+import {
+  cn,
+  type ComponentType,
+  type JSX,
+  forwardRef,
+  createElement,
+} from "@/utils.ts";
 
 function intrinsic<T extends keyof JSX.IntrinsicElements>(
   tag: T,
@@ -38,9 +43,11 @@ export const Textarea = intrinsic("textarea", {
 export const Box = intrinsic("div", {
   className: "flex justify-between",
 });
+
 export const Link = intrinsic("a", {
   className: "underline",
 });
+
 export const Pre = intrinsic("pre", {
-  className: "bg-slate-200 rounded overflow-hidden p-2 my-4",
+  className: "bg-slate-200 rounded overflow-auto p-2 my-4",
 });

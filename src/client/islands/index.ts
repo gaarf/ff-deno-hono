@@ -6,20 +6,19 @@ import { withHybrid } from "@/server/ClientRun.tsx";
 import { ComponentType } from "@/utils.ts";
 import { mapValues } from "std/collections/mod.ts";
 
-/* islands cannot have state! however their children can. */
-
-export const mountables: Record<string, ComponentType> = {
+export const mountables = {
   LoremIpsum,
   BtcPrice,
   Header,
 } as const;
 
-export type Mountable = keyof typeof mountables;
+export type Mountables = typeof mountables;
+export type NamedMountable = keyof Mountables;
 
-export const hybrid = mapValues(mountables, withHybrid);
+export const hybrid = mapValues(mountables, withHybrid) as Mountables;
 
 export function mountableName<T>(Component: ComponentType<T>) {
   return Object.entries(mountables).find(
     ([_, Candidate]) => Component === Candidate
-  )?.[0];
+  )?.[0] as NamedMountable;
 }

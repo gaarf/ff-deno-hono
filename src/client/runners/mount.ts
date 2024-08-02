@@ -1,10 +1,10 @@
 import React from "@/client/react.shim.ts";
 // @deno-types="npm:@types/react-dom/client"
 import { createRoot } from "react-dom/client";
-import { mountables, type Mountable } from "@/client/islands/index.ts";
+import { mountables, type NamedMountable } from "@/client/islands/index.ts";
 
 export default function mount(
-  opts: Record<string, [Mountable, Record<string, unknown>]>
+  opts: Record<string, [NamedMountable, Record<string, unknown>]>
 ) {
   console.group("mount");
   Object.entries(opts).forEach(([where, [what, props]]) => {

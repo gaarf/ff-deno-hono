@@ -1,4 +1,4 @@
-import { useCallback, useState } from "@/components/compat.ts";
+import { useCallback, useState } from "@/utils.ts";
 import { Button } from "@/components/intrinsic.ts";
 import clientOnly from "@/client/only.tsx";
 

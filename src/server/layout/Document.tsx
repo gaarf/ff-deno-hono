@@ -10,7 +10,7 @@ import { hybrid } from "@/client/islands/index.ts";
 
 const HybridHeader = hybrid.Header;
 
-export default function Layout({
+export default function Document({
   children,
   ...props
 }: PropsWithChildren<DocumentProps>) {
