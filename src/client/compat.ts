@@ -13,7 +13,7 @@ export { useCallback, useState };
 
 export function intrinsic<T extends keyof JSX.IntrinsicElements>(
   tag: T,
-  baseProps?: JSX.IntrinsicElements[T]
+  baseProps?: JSX.IntrinsicElements[T],
 ): ComponentType<JSX.IntrinsicElements[T]> {
   // @ts-expect-error: JSXNode ¯\_(ツ)_/¯ JSX.Element
   return forwardRef<unknown, typeof baseProps>((props, ref) => {

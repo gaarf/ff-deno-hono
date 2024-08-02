@@ -6,7 +6,7 @@ export * from "@/components/Json.tsx";
 export const Button = intrinsic("button", {
   className: cn(
     "border hover:border-orange-500 font-bold rounded-lg py-1 px-2 select-none",
-    "disabled:pointer-events-none disabled:opacity-50 disabled:cursor-forbidden"
+    "disabled:pointer-events-none disabled:opacity-50 disabled:cursor-forbidden",
   ),
 });
 
