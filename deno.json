@@ -25,7 +25,7 @@
     "dev": "deno task gen && deno task start",
     "check": "deno check main.js src/client/index.tsx",
     "hook": "deno run --allow-read --allow-run --allow-write https://deno.land/x/deno_hooks@0.1.1/mod.ts",
-    "bundle": "GEN_ENV=bundle deno task gen && deno run --allow-all scripts/bundle.ts",
+    "bundle": "NODE_ENV=production deno task gen && deno run --allow-all scripts/bundle.ts",
     "deploy": "deno task bundle && fleek functions deploy —noBundle --path .generated/o.js"
   },
   "compilerOptions": {

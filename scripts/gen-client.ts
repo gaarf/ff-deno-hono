@@ -7,7 +7,7 @@ const TARGET = ".generated/client";
 const TEMP_TARGET = TARGET + ".js";
 const FINAL_TARGET = TARGET + ".ts";
 
-const prod = Deno.env.get("GEN_ENV") === "bundle";
+const prod = Deno.env.get("NODE_ENV") === "production";
 
 await esbuild.build({
   plugins: [
