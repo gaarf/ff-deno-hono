@@ -11,10 +11,13 @@ const { createElement, forwardRef, useState, useCallback } = (
 
 export { useCallback, useState };
 
-export function intrinsic<T extends keyof JSX.IntrinsicElements>(
+type Tag = keyof JSX.IntrinsicElements;
+type IntrinsicProps<T extends Tag> = JSX.IntrinsicElements[T];
+
+export function intrinsic<T extends Tag>(
   tag: T,
-  baseProps?: JSX.IntrinsicElements[T],
-): ComponentType<JSX.IntrinsicElements[T]> {
+  baseProps?: IntrinsicProps<T>
+): ComponentType<IntrinsicProps<T>> {
   // @ts-expect-error: JSXNode ¯\_(ツ)_/¯ JSX.Element
   return forwardRef<unknown, typeof baseProps>((props, ref) => {
     const newProps = {
