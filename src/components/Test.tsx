@@ -3,7 +3,7 @@ import { useSsrContext } from "@/server/layout/SsrContext.ts";
 import { Json } from "@/components/Json.tsx";
 import { Box, Button } from "@/components/intrinsic.ts";
 
-export const Test = ({ children }: PropsWithChildren) => {
+export const Test = ({ children, btnLabel = 'hello' }: PropsWithChildren<{ btnLabel?: string }>) => {
   const ssr = useSsrContext();
   const browser = isBrowser();
 
@@ -13,7 +13,7 @@ export const Test = ({ children }: PropsWithChildren) => {
       <Json value={{ ...ssr, browser }} />
       <Box className="items-center">
         {children}
-        <Button disabled>hello</Button>
+        <Button disabled>{btnLabel}</Button>
       </Box>
     </Box>
   );
