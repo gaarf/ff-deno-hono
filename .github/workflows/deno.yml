@@ -31,11 +31,14 @@ jobs:
         with:
           deno-version: v1.x
 
+      - name: Bundle
+        run: deno task bundle
+  
       - name: Verify formatting
         run: deno fmt --check --ignore=.generated
 
       - name: Run linter
         run: deno lint --ignore=.generated
 
-      # - name: Run tests
-      #   run: deno test -A
+      - name: Run tests
+        run: deno test -A
