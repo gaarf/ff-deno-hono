@@ -33,9 +33,6 @@ jobs:
       - name: Generate code
         run: deno task gen
 
-      - name: Cache dependencies
-        run: deno cache main.js --quiet
-
       - name: Check types
         run: deno task check
   
