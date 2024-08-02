@@ -1,8 +1,8 @@
 import { assertEquals } from "std/assert/mod.ts";
 import HonoJsx from "hono/jsx";
+import * as compatExports from "@/compat.ts";
 
-const { ...exports } = await import("@/compat.ts");
-Object.entries(exports).forEach(([k, x]) => {
+Object.entries(compatExports).forEach(([k, x]) => {
   Deno.test(k, () => {
     assertEquals(x, HonoJsx[k as keyof typeof HonoJsx]);
   });
