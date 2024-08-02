@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/hook.sh"
 
-deno fmt --ignore=.generated
-git add .
+deno fmt --ignore=.generated --check
 
