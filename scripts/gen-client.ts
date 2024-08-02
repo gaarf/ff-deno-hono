@@ -28,7 +28,7 @@ await esbuild.build({
 
   ...(prod && {
     dropLabels: ["DEV"],
-    // minify: true,
+    minify: true,
   })
 });
 
