@@ -1,4 +1,4 @@
-import { join, basename } from "std/path/mod.ts";
+import { basename, join } from "std/path/mod.ts";
 
 const TARGET = ".generated/routes.ts";
 
@@ -29,12 +29,13 @@ Deno.writeTextFileSync(
   `/* generated, do not edit */\n`.concat(
     routes
       .map(
-        ([, file], index) => `import f${index} from "${join("../src/server/", file)}";`
+        ([, file], index) =>
+          `import f${index} from "${join("../src/server/", file)}";`,
       )
       .join("\n"),
     `\n\nexport default {\n`,
     routes.map(([path], index) => `\t"${path}": f${index},`).join("\n"),
-    "\n};\n"
-  )
+    "\n};\n",
+  ),
 );
 console.log("✍️ routes");

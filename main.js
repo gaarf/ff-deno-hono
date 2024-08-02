@@ -4,7 +4,7 @@ import { toText } from "std/streams/mod.ts";
 /** @param request {Fleek.HttpRequest} */
 export const main = async ({ path, method, headers, body, query }) => {
   const url = new URL(
-    "http://f" + path + "?" + new URLSearchParams(query).toString()
+    "http://f" + path + "?" + new URLSearchParams(query).toString(),
   );
   const req = new Request(url, {
     method,
@@ -20,7 +20,7 @@ export const main = async ({ path, method, headers, body, query }) => {
 
   return {
     status: res.status,
-    body: res.body && await toText(res.body),
+    body: res.body && (await toText(res.body)),
     headers: Object.fromEntries(res.headers),
   };
 };
