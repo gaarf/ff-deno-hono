@@ -4,6 +4,6 @@ export {
   createElement,
   default,
   forwardRef,
+  type PropsWithChildren,
   useContext,
-  type PropsWithChildren
 } from "react";

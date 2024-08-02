@@ -6,7 +6,7 @@ import { mountables, type NamedMountable } from "@/client/islands/index.ts";
 import { Providers } from "@/client/Providers.tsx";
 
 export default function mount(
-  opts: Record<string, [NamedMountable, Record<string, unknown>]>
+  opts: Record<string, [NamedMountable, Record<string, unknown>]>,
 ) {
   console.group("mount");
   Object.entries(opts).forEach(([where, [what, props]]) => {
@@ -20,8 +20,8 @@ export default function mount(
         createElement(
           Providers,
           props,
-          createElement(Component as React.FC, props)
-        )
+          createElement(Component as React.FC, props),
+        ),
       );
       console.log(el);
     } else {

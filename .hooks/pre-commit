@@ -2,3 +2,5 @@
 . "$(dirname -- "$0")/_/hook.sh"
 
 deno fmt --ignore=.generated
+git add .
+
