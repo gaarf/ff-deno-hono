@@ -1,4 +1,4 @@
-import { useCallback, useState } from "hono/jsx";
+import { useCallback, useState } from "@/components/compat.ts";
 import { Button } from "@/components/intrinsic.ts";
 import clientOnly from "@/client/only.tsx";
 

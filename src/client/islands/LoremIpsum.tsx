@@ -1,4 +1,4 @@
-import { type ComponentType } from "@/utils.ts";
+import { type PropsWithChildren } from "@/utils.ts";
 import { Counter } from "@/components/Counter.tsx";
 import { Box } from "@/components/intrinsic.ts";
 import { Test } from "@/components/Test.tsx";
@@ -7,10 +7,10 @@ type LoremIpsumProps = {
   count?: number;
 };
 
-export const LoremIpsum: ComponentType<LoremIpsumProps> = ({
+export const LoremIpsum = ({
   children,
   count = 1,
-}) => {
+}: PropsWithChildren<LoremIpsumProps>) => {
   return (
     <div>
       {children}
@@ -24,11 +24,11 @@ export const LoremIpsum: ComponentType<LoremIpsumProps> = ({
             autem nulla. Obcaecati!!
           </p>
         ))}
-        <Box>
-          <Counter />
-          👏
-        </Box>
-        <Test />
+      <Box>
+        <Counter />
+        👏
+      </Box>
+      <Test />
     </div>
   );
 };

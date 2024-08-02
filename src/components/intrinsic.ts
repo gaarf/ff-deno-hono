@@ -5,26 +5,25 @@ function intrinsic<T extends keyof JSX.IntrinsicElements>(
   tag: T,
   baseProps?: JSX.IntrinsicElements[T]
 ): ComponentType<JSX.IntrinsicElements[T]> {
-  return forwardRef(
-    ({ children, ...props }, ref) =>
-      // @ts-expect-error: JSXNode ¯\_(ツ)_/¯ JSX.Element
+  return forwardRef(({ children, ...props }, ref) =>
+    // @ts-expect-error: JSXNode ¯\_(ツ)_/¯ JSX.Element
     createElement(
-        String(tag),
-        {
-          ...baseProps,
-          ...props,
-          ref,
-          className: cn(baseProps?.className, props.className),
-        },
-        children as string
-      )
+      String(tag),
+      {
+        ...baseProps,
+        ...props,
+        ref,
+        className: cn(baseProps?.className, props.className),
+      },
+      children as string
+    )
   );
 }
 
 export const Button = intrinsic("button", {
   className: cn(
     "border hover:border-orange-500 font-bold rounded-lg py-1 px-2 select-none",
-    "disabled:pointer-events-none disabled:opacity-50 disabled:cursor-forbidden",
+    "disabled:pointer-events-none disabled:opacity-50 disabled:cursor-forbidden"
   ),
 });
 

@@ -4,7 +4,7 @@ import { Header } from "@/client/islands/Header.tsx";
 
 import { withHybrid } from "@/server/ClientRun.tsx";
 import { ComponentType } from "@/utils.ts";
-import { mapValues } from 'std/collections/mod.ts';
+import { mapValues } from "std/collections/mod.ts";
 
 /* islands cannot have state! however their children can. */
 
@@ -20,6 +20,6 @@ export const hybrid = mapValues(mountables, withHybrid);
 
 export function mountableName<T>(Component: ComponentType<T>) {
   return Object.entries(mountables).find(
-    ([_, Mountable]) => Component === Mountable
+    ([_, Candidate]) => Component === Candidate
   )?.[0];
 }
