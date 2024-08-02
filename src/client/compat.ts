@@ -16,7 +16,7 @@ type IntrinsicProps<T extends Tag> = JSX.IntrinsicElements[T];
 
 export function intrinsic<T extends Tag>(
   tag: T,
-  baseProps?: IntrinsicProps<T>
+  baseProps?: IntrinsicProps<T>,
 ): ComponentType<IntrinsicProps<T>> {
   // @ts-expect-error: JSXNode ¯\_(ツ)_/¯ JSX.Element
   return forwardRef<unknown, typeof baseProps>((props, ref) => {
