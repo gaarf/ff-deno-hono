@@ -4,7 +4,7 @@ import { createRoot } from "react-dom/client";
 import { mountables, type NamedMountable } from "@/client/islands/index.ts";
 
 export default function mount(
-  opts: Record<string, [NamedMountable, Record<string, unknown>]>
+  opts: Record<string, [NamedMountable, Record<string, unknown>]>,
 ) {
   console.group("mount");
   Object.entries(opts).forEach(([where, [what, props]]) => {

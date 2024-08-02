@@ -30,7 +30,7 @@ export const documentLayout = [
 
 export function nestedLayout<T>(
   Component: ComponentType<T>,
-  componentProps?: T
+  componentProps?: T,
 ) {
   const FComponent = Component as FC; // fixme?
   return jsxRenderer(({ Layout, children, ...props }) => (
@@ -43,7 +43,7 @@ export function nestedLayout<T>(
 export function clientMount<T>(
   Component: ComponentType<T>,
   componentProps?: T,
-  where = "main"
+  where = "main",
 ) {
   const what = mountableName(Component);
   return nestedLayout(({ children }) => (

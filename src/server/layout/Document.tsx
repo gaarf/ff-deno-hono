@@ -1,10 +1,10 @@
-import { type PropsWithChildren, isoNow } from "@/utils.ts";
+import { isoNow, type PropsWithChildren } from "@/utils.ts";
 import { Favicon } from "@/server/layout/Favicon.tsx";
 import { ClientRun } from "@/server/ClientRun.tsx";
 import { Footer } from "@/server/layout/Footer.tsx";
 import {
-  useSsrContext,
   type DocumentProps,
+  useSsrContext,
 } from "@/server/layout/SsrContext.ts";
 import { hybrid } from "@/client/islands/index.ts";
 

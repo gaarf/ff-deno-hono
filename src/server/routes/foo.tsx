@@ -15,7 +15,6 @@ export default new Hono()
           </div>
         </section>
       </>,
-      { title: "foo!" }
-    )
-  )
-  .get('/btc', (c) => c.render(<hybrid.BtcPrice />));
+      { title: "foo!" },
+    ))
+  .get("/btc", (c) => c.render(<hybrid.BtcPrice />));

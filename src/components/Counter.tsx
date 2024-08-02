@@ -7,7 +7,7 @@ export const Counter = clientOnly(() => {
 
   const handleClick = useCallback<EventListener>((event) => {
     console.log(event);
-    setCount(c => c + 1);
+    setCount((c) => c + 1);
   }, []);
 
   return (

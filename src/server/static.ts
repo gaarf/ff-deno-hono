@@ -4,8 +4,7 @@ import styles, { cssMap } from "_generated/styles.ts";
 import client, { jsMap } from "_generated/client.ts";
 import { type Hono } from "hono";
 
-export default function(app: Hono, bootTime: string) {
-
+export default function (app: Hono, bootTime: string) {
   const cache = [
     etag(),
     createMiddleware((c, next) => {
@@ -13,7 +12,7 @@ export default function(app: Hono, bootTime: string) {
       return next();
     }),
   ];
-  
+
   app.get("/client.*", ...cache, (c) => {
     switch (c.req.path.substring(8)) {
       case "js":
@@ -28,7 +27,7 @@ export default function(app: Hono, bootTime: string) {
         return c.notFound();
     }
   });
-  
+
   app.get("/styles.*", ...cache, (c) => {
     switch (c.req.path.substring(8)) {
       case "css":

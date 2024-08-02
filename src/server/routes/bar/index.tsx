@@ -6,11 +6,12 @@ import { Test } from "@/components/Test.tsx";
 
 export default new Hono()
   .use(nestedLayout(BarLayout))
-  .get("/", (c) =>
-    c.render(<Link href="/bar/baz">baz</Link>, { title: "barrr" })
+  .get(
+    "/",
+    (c) => c.render(<Link href="/bar/baz">baz</Link>, { title: "barrr" }),
   )
   .get(
     "/baz",
     nestedLayout(Test),
-    (c) => c.render('baz in bar', { title: "baz!", icon: '😃' })
+    (c) => c.render("baz in bar", { title: "baz!", icon: "😃" }),
   );

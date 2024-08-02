@@ -7,4 +7,4 @@ const { createElement, forwardRef, useState, useCallback } = (
   globalThis.Deno ? HonoJsx : React
 ) as typeof HonoJsx;
 
-export { createElement, forwardRef, useState, useCallback };
+export { createElement, forwardRef, useCallback, useState };

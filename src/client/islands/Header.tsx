@@ -17,7 +17,7 @@ export const Header = ({
           "flex w-full items-center justify-between p-3 border-b": true,
           "fixed bg-white z-10": fixed,
         },
-        className
+        className,
       )}
     >
       <h1 className="text-center text-lg font-bold text-ellipsis whitespace-nowrap overflow-hidden">
@@ -44,7 +44,7 @@ const NavItem = ({ href, children }: NavItemProps) => {
     <li
       className={cn(
         "border flex rounded-full text-sm overflow-hidden",
-        "focus-within:outline outline-[-webkit-focus-ring-color]"
+        "focus-within:outline outline-[-webkit-focus-ring-color]",
       )}
     >
       <a

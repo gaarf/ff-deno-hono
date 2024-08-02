@@ -7,7 +7,6 @@ import staticAssets from "@/server/static.ts";
 
 import routes from "_generated/routes.ts";
 
-
 const app = new Hono();
 const bootTime = httpNow();
 
@@ -31,9 +30,7 @@ staticAssets(app, bootTime);
 
 app.use(...documentLayout);
 
-app.all("/", nestedLayout(Landing), (c) =>
-  c.render(bootTime, { icon: "🚀" })
-);
+app.all("/", nestedLayout(Landing), (c) => c.render(bootTime, { icon: "🚀" }));
 
 Object.entries(routes).forEach(([path, route]) => {
   app.route(path, route);
@@ -51,7 +48,7 @@ declare module "hono" {
   interface ContextRenderer {
     (
       content: string | Promise<string>,
-      props?: import("./server/layout/SsrContext.ts").DocumentProps
+      props?: import("./server/layout/SsrContext.ts").DocumentProps,
     ): Response;
   }
   interface ContextVariableMap {
