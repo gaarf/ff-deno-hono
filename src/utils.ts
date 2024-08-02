@@ -19,3 +19,4 @@ export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
 
 export * from "@/client/browser.ts";
 export * from "@/client/compat.ts";
+export { default as clientOnly } from "@/client/only.tsx";
