@@ -14,7 +14,6 @@
     "postcss": "npm:postcss@^8.4.39",
     "react": "npm:react@^18.3.1",
     "react-dom": "npm:react-dom@^18.3.1",
-    "react-icons": "npm:react-icons@^5.2.1",
     "std/": "https://deno.land/std@0.224.0/",
     "tailwind-merge": "npm:tailwind-merge@^2.4.0",
     "tailwindcss": "npm:tailwindcss@^3.4.6"

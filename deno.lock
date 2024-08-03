@@ -13,8 +13,8 @@
       "npm:hono@4.5.3": "npm:hono@4.5.3",
       "npm:luxon@^3.4.4": "npm:luxon@3.4.4",
       "npm:postcss": "npm:postcss@8.4.40",
+      "npm:react": "npm:react@18.3.1",
       "npm:react-dom@^18.3.1": "npm:react-dom@18.3.1_react@18.3.1",
-      "npm:react-icons@^5.2.1": "npm:react-icons@5.2.1_react@18.3.1",
       "npm:react-jsx": "npm:react-jsx@1.0.0_react@0.14.10",
       "npm:react-jsx@^1.0.0": "npm:react-jsx@1.0.0_react@0.14.10",
       "npm:react@^18.3.1": "npm:react@18.3.1",
@@ -1228,12 +1228,6 @@
           "scheduler": "scheduler@0.23.2"
         }
       },
-      "react-icons@5.2.1_react@18.3.1": {
-        "integrity": "sha512-zdbW5GstTzXaVKvGSyTaBalt7HSfuK5ovrzlpyiWHAFXndXTdd/1hdDHI4xBM1Mn7YriT6aqESucFl9kEXzrdw==",
-        "dependencies": {
-          "react": "react@18.3.1"
-        }
-      },
       "react-jsx@1.0.0_react@0.14.10": {
         "integrity": "sha512-aCAOWb6ecKn3vfSqMgMMyBZ2LgP6Mht0KN2CF3wGYT3xEuyTLfUoGVIHZgFCiv6YmeJACG7WiNkAwO6+GFnnrQ==",
         "dependencies": {
@@ -1867,7 +1861,6 @@
       "npm:luxon@^3.4.4",
       "npm:postcss@^8.4.39",
       "npm:react-dom@^18.3.1",
-      "npm:react-icons@^5.2.1",
       "npm:react@^18.3.1",
       "npm:tailwind-merge@^2.4.0",
       "npm:tailwindcss@^3.4.6"

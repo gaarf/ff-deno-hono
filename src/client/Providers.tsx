@@ -1,4 +1,4 @@
-/** @jsxImportSource npm:react-jsx */
+/** @jsxImportSource npm:react */
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "@/client/react.shim.ts";
 

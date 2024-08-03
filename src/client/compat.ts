@@ -9,7 +9,7 @@ const { createElement, forwardRef, useState, useCallback } = (
   isBrowser() ? React : HonoJsx
 ) as typeof HonoJsx;
 
-export { useCallback, useState };
+export { createElement, useCallback, useState };
 
 type Tag = keyof JSX.IntrinsicElements;
 type IntrinsicProps<T extends Tag> = JSX.IntrinsicElements[T];
