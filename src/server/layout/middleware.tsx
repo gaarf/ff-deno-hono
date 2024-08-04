@@ -5,7 +5,9 @@ import { Document } from "@/server/layout/Document.tsx";
 import type { ComponentType, PropsWithChildren } from "@/utils.ts";
 
 export const layoutRenderer = reactRenderer(
-  (props: PropsWithChildren) => <Document {...props} />,
+  ({ c: _c, ...props }: PropsWithChildren<RendererProps & { c: unknown }>) => (
+    <Document {...props} />
+  ),
   {
     docType: true,
   },
@@ -16,13 +18,15 @@ export function nestedLayout<T extends React.JSX.IntrinsicAttributes>(
   nestedProps: T = {} as T,
 ) {
   return reactRenderer(
+    // @ts-expect-error FIXME
     ({
       children,
       Layout,
       ...props
-    }: PropsWithChildren<{
-      Layout: typeof Document;
-    }>) => {
+    }: {
+      children?: React.ReactNode;
+      Layout: (p: RendererProps) => React.ReactNode;
+    } & RendererProps) => {
       return (
         <Layout {...props}>
           <Nested {...nestedProps}>{children}</Nested>

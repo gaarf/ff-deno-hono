@@ -1,6 +1,5 @@
-import React from "@/react.shim.ts";
 import { ComponentType, PropsWithChildren } from "@/utils.ts";
-import { mountables } from "@/client/islands/index.ts";
+import { mountableName } from "@/client/islands/index.ts";
 import { type NamedRunner } from "@/client/runners/index.ts";
 
 export const ClientRun = ({
@@ -17,32 +16,33 @@ export const ClientRun = ({
   );
 };
 
-type HybridProps = PropsWithChildren<{
-  id?: string;
-}>;
+type HybridProps<T> = T & {
+  slotId?: string;
+  Component: ComponentType<T>;
+};
 
-export function Hybrid({ children, id: inputId }: HybridProps) {
-  const Component = React.Children.only(children);
-  const [name] =
-    Object.entries(mountables).find(([, v]) => v === Component.tag) || [];
+export function Hybrid<T>({
+  Component,
+  slotId,
+  ...componentProps
+}: HybridProps<T>) {
+  const name = mountableName(Component);
   if (!name) {
-    throw new Error("Cannot mount " + children);
+    throw new Error("Cannot mount: " + Component);
   }
 
-  const id = inputId || `hybrid-${name}`;
-
+  const id = slotId || `hybrid-${name}`;
   return (
     <slot id={id} className="contents">
-      {children}
-      <ClientRun name="mount" opts={{ [`#${id}`]: [name, Component.props] }} />
+      {/* @ts-expect-error FIXME */}
+      <Component {...componentProps} />
+      <ClientRun name="mount" opts={{ [`#${id}`]: [name, componentProps] }} />
     </slot>
   );
 }
 
 export function withHybrid<T>(Component: ComponentType<T>) {
   return (props: PropsWithChildren<T>) => (
-    <Hybrid>
-      <Component {...props} />
-    </Hybrid>
+    <Hybrid Component={Component} {...props} />
   );
 }

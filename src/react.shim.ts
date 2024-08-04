@@ -5,6 +5,7 @@ export {
   createElement,
   default,
   forwardRef,
+  type JSX,
   type PropsWithChildren,
   useCallback,
   useContext,

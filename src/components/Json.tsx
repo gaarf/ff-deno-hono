@@ -1,5 +1,5 @@
 import { Pre } from "@/components";
-import { JSX } from "@/utils.ts";
+import { JSX } from "@/react.shim.ts";
 
 type JsonProps = {
   value: unknown;

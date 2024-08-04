@@ -5,7 +5,7 @@ import clientOnly from "@/client/only.tsx";
 export const Counter = clientOnly(() => {
   const [count, setCount] = useState(0);
 
-  const handleClick = useCallback<EventListener>((event) => {
+  const handleClick = useCallback<React.MouseEventHandler>((event) => {
     console.log(event);
     setCount((c) => c + 1);
   }, []);
