@@ -1,4 +1,4 @@
-import { useCallback, useState } from "@/utils.ts";
+import { useCallback, useState } from "@/react.shim.ts";
 import { Button } from "@/components";
 import clientOnly from "@/client/only.tsx";
 
