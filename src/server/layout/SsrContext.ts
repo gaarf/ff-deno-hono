@@ -1,18 +1,18 @@
-import { createContext, useContext } from "hono/jsx";
+import { createContext, useContext } from "@/react.shim.ts";
 import { getEmoji } from "@/server/layout/Favicon.tsx";
 import { isBrowser } from "@/utils.ts";
 
-export type DocumentProps = {
+export type RendererProps = {
   title?: string;
   icon?: string;
 };
 
-const SsrContext = createContext<
-  {
-    url: URL | null;
-    dev: boolean;
-  } & DocumentProps
->({
+export type SsrContextValue = {
+  url: URL | null;
+  dev: boolean;
+} & RendererProps;
+
+export const SsrContext = createContext<SsrContextValue>({
   url: isBrowser() ? new URL(location.href) : null,
   dev: isBrowser() && !!document.querySelector('[data-client-run="hmr"]'),
   title: isBrowser() ? document.title : undefined,

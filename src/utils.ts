@@ -1,10 +1,4 @@
-import { type FC, type PropsWithChildren } from "hono/jsx";
-import { type JSX } from "hono/jsx/jsx-runtime";
-
-export { FC, JSX, PropsWithChildren };
-export type ComponentType<T = Record<string, unknown>> = (
-  props: PropsWithChildren<T>,
-) => JSX.Element;
+export * from "@/react.shim.ts";
 
 // @deno-types="npm:@types/luxon"
 import { DateTime } from "luxon";
@@ -18,5 +12,4 @@ import { type ClassValue, clsx } from "clsx";
 export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
 
 export * from "@/client/browser.ts";
-export * from "@/client/compat.ts";
 export { default as clientOnly } from "@/client/only.tsx";

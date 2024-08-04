@@ -7,10 +7,10 @@ export default new Hono()
   .get("/", clientMount(LoremRenamed, { count: 2 }, "#lorem"), (c) =>
     c.render(
       <>
-        <h1 class="text-5xl">foo on the server!</h1>
-        <section class="my-5">
+        <h1 className="text-5xl">foo on the server!</h1>
+        <section className="my-5">
           <h2>client side says:</h2>
-          <div id="lorem" class="border p-2">
+          <div id="lorem" className="border p-2">
             mount here
           </div>
         </section>

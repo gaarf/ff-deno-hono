@@ -1,9 +1,8 @@
-import React, { createElement } from "@/client/react.shim.ts";
+import React, { createElement } from "@/react.shim.ts";
 // @deno-types="npm:@types/react-dom/client"
 import { createRoot } from "react-dom/client";
 import { mountables, type NamedMountable } from "@/client/islands/index.ts";
-
-import { Providers } from "@/client/Providers.tsx";
+import { Providers } from "@/Providers.tsx";
 
 export default function mount(
   opts: Record<string, [NamedMountable, Record<string, unknown>]>,

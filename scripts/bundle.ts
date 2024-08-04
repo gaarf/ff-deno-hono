@@ -15,7 +15,7 @@ await esbuild.build({
   platform: "neutral",
   outfile: OUTFILE,
   jsx: "automatic",
-  jsxImportSource: "hono/jsx",
+  jsxImportSource: "react-jsx",
   dropLabels: ["DEV"], // works fine
   bundle: true,
   minify: true,

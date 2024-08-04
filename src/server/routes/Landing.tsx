@@ -7,12 +7,12 @@ export const Landing = ({ children }: PropsWithChildren) => {
 
   return (
     <>
-      <p class="bg-blue-100 rounded p-2 mb-2">Landing layout</p>
+      <p className="bg-blue-100 rounded p-2 mb-2">Landing layout</p>
 
       {diff.isValid && (
         <aside>
           server uptime:{" "}
-          <time datetime={diff.toISO()}>
+          <time dateTime={diff.toISO()}>
             {diff.negate().toHuman()}
           </time>
         </aside>

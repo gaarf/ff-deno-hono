@@ -1,6 +1,6 @@
+import React from "@/react.shim.ts";
 import { ComponentType, PropsWithChildren } from "@/utils.ts";
 import { mountables } from "@/client/islands/index.ts";
-import { type JSXNode } from "hono/jsx";
 import { type NamedRunner } from "@/client/runners/index.ts";
 
 export const ClientRun = ({
@@ -22,7 +22,7 @@ type HybridProps = PropsWithChildren<{
 }>;
 
 export function Hybrid({ children, id: inputId }: HybridProps) {
-  const Component = children as JSXNode;
+  const Component = React.Children.only(children);
   const [name] =
     Object.entries(mountables).find(([, v]) => v === Component.tag) || [];
   if (!name) {
@@ -32,7 +32,7 @@ export function Hybrid({ children, id: inputId }: HybridProps) {
   const id = inputId || `hybrid-${name}`;
 
   return (
-    <slot id={id} class="contents">
+    <slot id={id} className="contents">
       {children}
       <ClientRun name="mount" opts={{ [`#${id}`]: [name, Component.props] }} />
     </slot>

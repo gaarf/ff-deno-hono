@@ -1,7 +1,6 @@
 import * as esbuild from "esbuild";
 import { denoPlugins } from "esbuild_deno_loader";
 import { resolve } from "std/path/mod.ts";
-import alias from "esbuild-plugin-alias";
 
 const TARGET = ".generated/client";
 const TEMP_TARGET = TARGET + ".js";
@@ -11,9 +10,6 @@ const prod = Deno.env.get("NODE_ENV") === "production";
 
 await esbuild.build({
   plugins: [
-    alias({
-      "hono/jsx": resolve("src/client/react.shim.ts"),
-    }),
     ...(denoPlugins({
       configPath: resolve(".", "deno.json"),
     }) as esbuild.Plugin[]),

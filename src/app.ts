@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { httpNow } from "@/utils.ts";
 
-import { documentLayout, nestedLayout } from "@/server/layout/middleware.tsx";
+import { layoutRenderer, nestedLayout } from "@/server/layout/middleware.tsx";
 import { Landing } from "@/server/routes/Landing.tsx";
 import staticAssets from "@/server/static.ts";
 
@@ -28,7 +28,7 @@ app.use((c, next) => {
 
 staticAssets(app, bootTime);
 
-app.use(...documentLayout);
+app.use(layoutRenderer);
 
 app.all("/", nestedLayout(Landing), (c) => c.render(bootTime, { icon: "🚀" }));
 
@@ -44,11 +44,13 @@ DEV: {
 
 export default app;
 
+import { type RendererProps } from "@/server/layout/SsrContext.ts";
+
 declare module "hono" {
   interface ContextRenderer {
     (
-      content: string | Promise<string>,
-      props?: import("./server/layout/SsrContext.ts").DocumentProps,
+      content: string | Promise<string> | React.ReactNode,
+      props?: RendererProps,
     ): Response;
   }
   interface ContextVariableMap {
