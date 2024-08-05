@@ -5,8 +5,8 @@ import { format } from "std/fmt/bytes.ts";
 
 const OUTFILE = ".generated/o.js";
 const NODE_ENV = Deno.env.get("NODE_ENV");
-const minify = !Deno.env.get("NO_MINIFY");
-console.log({ NODE_ENV, minify });
+const minify = NODE_ENV==='production';
+console.log('Bundling...', { NODE_ENV, minify });
 
 await esbuild.build({
   plugins: [
