@@ -1,4 +1,4 @@
-import { cn, PropsWithChildren } from "@/utils.ts";
+import { cn } from "@/utils.ts";
 import { intrinsic } from "@/components/intrinsic.ts";
 import Icon from "@/components/Icon.tsx";
 
