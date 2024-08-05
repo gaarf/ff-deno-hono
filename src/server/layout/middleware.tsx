@@ -18,7 +18,6 @@ export function nestedLayout<T extends React.JSX.IntrinsicAttributes>(
   nestedProps: T = {} as T,
 ) {
   return reactRenderer(
-    // @ts-expect-error FIXME
     ({
       children,
       Layout,
