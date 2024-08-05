@@ -15,7 +15,7 @@ export const Test = (
       <Json value={{ ...ssr, browser }} />
       <Box className="items-center">
         {children}
-        <Button disabled>{btnLabel}</Button>
+        <Button loading>{btnLabel}</Button>
       </Box>
     </Box>
   );

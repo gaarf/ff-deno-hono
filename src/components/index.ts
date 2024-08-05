@@ -1,32 +1,7 @@
-import { createElement, forwardRef } from "@/react.shim.ts";
-import { cn } from "@/utils.ts";
-
-type Tag = keyof JSX.IntrinsicElements;
-type IntrinsicProps<T extends Tag> = JSX.IntrinsicElements[T];
-
-export function intrinsic<T extends Tag>(
-  tag: T,
-  baseProps?: IntrinsicProps<T>,
-) {
-  return forwardRef<unknown, typeof baseProps>((props, ref) => {
-    const newProps = {
-      ...baseProps,
-      ...props,
-      ref,
-      className: cn(baseProps?.className, props?.className),
-    };
-    return createElement(String(tag), newProps, props?.children as string);
-  });
-}
+import { intrinsic } from "@/components/intrinsic.ts";
 
 export * from "@/components/Json.tsx";
-
-export const Button = intrinsic("button", {
-  className: cn(
-    "border hover:border-orange-500 font-bold rounded-lg py-1 px-2 select-none",
-    "disabled:pointer-events-none disabled:opacity-50 disabled:cursor-forbidden",
-  ),
-});
+export * from "@/components/Button.tsx";
 
 export const Input = intrinsic("input", {
   className: "border",

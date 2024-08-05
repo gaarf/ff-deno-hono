@@ -1,6 +1,7 @@
 import { Button, Json } from "@/components";
 import { useBtcPrice } from "@/client/queries.ts";
 import { clientOnly } from "@/utils.ts";
+import Icon from "@/components/Icon.tsx";
 
 export const BtcPrice = clientOnly(
   () => {
@@ -8,7 +9,7 @@ export const BtcPrice = clientOnly(
     if (!data) {
       return (
         <Button onClick={() => refetch()} disabled={isFetching}>
-          Fetch
+          Fetch <Icon.Bitcoin />
         </Button>
       );
     } else {
