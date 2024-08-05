@@ -12,13 +12,13 @@ export const BaseButton = intrinsic("button", {
 
 type ButtonProps = {
   loading?: boolean;
-};
+} & Parameters<typeof BaseButton>[0];
 
 export const Button = ({
   loading,
   children,
   ...props
-}: PropsWithChildren<ButtonProps>) => (
+}: ButtonProps) => (
   <BaseButton disabled={loading} {...props}>
     {loading && (
       <span className="absolute inset-0 flex items-center justify-center text-black">
