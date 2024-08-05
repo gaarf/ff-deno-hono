@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { LoremIpsum as LoremRenamed } from "../../client/islands/LoremIpsum.tsx";
-import { clientMount } from "@/server/layout/middleware.tsx";
+import { clientMount } from "@/server/middleware.tsx";
 import { hybrid } from "@/client/islands/index.ts";
 
 export default new Hono()

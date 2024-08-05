@@ -1,6 +1,6 @@
 import { reactRenderer } from "@/server/renderer.ts";
 import { mountableName } from "@/client/islands/index.ts";
-import { ClientRun } from "@/server/ClientRun.tsx";
+import { ClientRun } from "@/server/Hybrid.tsx";
 import { Document } from "@/server/layout/Document.tsx";
 import type { ComponentType, PropsWithChildren } from "@/utils.ts";
 import { type RendererProps } from "@/server/layout/SsrContext.ts";

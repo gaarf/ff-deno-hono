@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { httpNow } from "@/utils.ts";
 
-import { layoutRenderer, nestedLayout } from "@/server/layout/middleware.tsx";
+import { layoutRenderer, nestedLayout } from "@/server/middleware.tsx";
 import { Landing } from "@/server/routes/Landing.tsx";
 import staticAssets from "@/server/static.ts";
 

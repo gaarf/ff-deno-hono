@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { nestedLayout } from "@/server/layout/middleware.tsx";
+import { nestedLayout } from "@/server/middleware.tsx";
 import { BarLayout } from "@/server/routes/bar/BarLayout.tsx";
 import { Link } from "@/components";
 import { Test } from "@/components/Test.tsx";

@@ -1,14 +1,13 @@
 import { isoNow, type PropsWithChildren } from "@/utils.ts";
 import { Favicon } from "@/server/layout/Favicon.tsx";
-import { ClientRun } from "@/server/ClientRun.tsx";
+import { ClientRun } from "@/server/Hybrid.tsx";
 import { Footer } from "@/server/layout/Footer.tsx";
 import { type RendererProps } from "@/server/layout/SsrContext.ts";
-// import { hybrid } from "@/client/islands/index.ts";
-import { Header } from "@/client/islands/Header.tsx";
+import { hybrid } from "@/client/islands/index.ts";
 import { Providers } from "@/Providers.tsx";
 import { useRequestContext } from "@/server/renderer.ts";
 
-// const HybridHeader = hybrid.Header;
+const HybridHeader = hybrid.Header;
 
 export function Document({
   children,
@@ -34,8 +33,7 @@ export function Document({
           <script defer src="/client.js" />
         </head>
         <body className="min-h-svh flex flex-col">
-          {/* <HybridHeader fixed /> */}
-          <Header fixed />
+          <HybridHeader fixed />
           <main className="flex-1 w-full relative p-3">{children}</main>
           <Footer>
             {dev && "[DEV]"} SSR: <time dateTime={now}>{now}</time>
