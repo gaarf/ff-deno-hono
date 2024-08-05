@@ -12,7 +12,7 @@ export const Textarea = intrinsic("textarea", {
 });
 
 export const Box = intrinsic("div", {
-  className: "flex justify-between",
+  className: "flex justify-between items-center",
 });
 
 export const Link = intrinsic("a", {
