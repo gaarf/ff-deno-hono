@@ -1,4 +1,4 @@
-// @deno-types="npm:@types/react"
+// @ts-types="npm:@types/react"
 export {
   type ComponentType,
   createContext,

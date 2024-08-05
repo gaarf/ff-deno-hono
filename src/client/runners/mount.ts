@@ -1,5 +1,5 @@
 import React, { createElement } from "@/react.shim.ts";
-// @deno-types="npm:@types/react-dom/client"
+// @ts-types="npm:@types/react-dom/client"
 import { createRoot } from "react-dom/client";
 import { mountables, type NamedMountable } from "@/client/islands/index.ts";
 import { Providers } from "@/Providers.tsx";

@@ -2,6 +2,7 @@
   "version": "3",
   "packages": {
     "specifiers": {
+      "npm:@hono/react-renderer": "npm:@hono/react-renderer@0.2.1_hono@4.5.3",
       "npm:@hono/react-renderer@^0.2.1": "npm:@hono/react-renderer@0.2.1_hono@4.5.3",
       "npm:@tanstack/react-query@^5.51.21": "npm:@tanstack/react-query@5.51.21_react@18.3.1",
       "npm:@types/luxon": "npm:@types/luxon@3.4.2",
@@ -1485,6 +1486,7 @@
     "https://deno.land/x/importmap@0.2.1/mod.ts": "ae3d1cd7eabd18c01a4960d57db471126b020f23b37ef14e1359bbb949227ade",
     "https://esm.sh/@hono/react-renderer@0.2.1?external=*": "ad1c4567ee4ee5c5e9211a16fdc4276275e5d3695640c772ee7fe314c0c90229",
     "https://esm.sh/@hono/react-renderer@0.2.1?external=hono,react,react-dom": "2e844ea5def92fa8b00c2f1f6e4f4200c60936d6593c018adac1fb7a8eb6b469",
+    "https://esm.sh/@hono/react-renderer@0.2.1?external=react,react-dom": "f4ea9019ff53551aee7b0415f7210704a0008b877981228493d368b5e90800e1",
     "https://esm.sh/v135/@hono/react-renderer@0.2.1/X-ZS8q/denonext/react-renderer.mjs": "3db8b419f8f64383eed43ca51977b1b0e733e84fb1e88a0dbeb822745f05c395",
     "https://esm.sh/v135/@hono/react-renderer@0.2.1/X-ZS9ob25vLHJlYWN0LHJlYWN0LWRvbQ/denonext/react-renderer.mjs": "3db8b419f8f64383eed43ca51977b1b0e733e84fb1e88a0dbeb822745f05c395"
   },

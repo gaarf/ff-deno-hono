@@ -16,13 +16,13 @@ await esbuild.build({
   ],
   entryPoints: ["main.js"],
   platform: "browser", // smaller bundle?
-  format: 'esm',
+  format: "esm",
   outfile: OUTFILE,
   jsx: "automatic",
   jsxImportSource: "react",
   dropLabels: ["DEV"], // works fine
   bundle: true,
-  minify
+  minify,
 });
 
 esbuild.stop();

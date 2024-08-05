@@ -17,7 +17,9 @@ export const Test = (
       <Box className="gap-10">
         <span className="flex-1">{children}</span>
         {browser && (
-          <Button loading={loading} onClick={() => setLoading(true)}>another button</Button>
+          <Button loading={loading} onClick={() => setLoading(true)}>
+            another button
+          </Button>
         )}
         <Button href="/foo" disabled={browser}>{btnLabel}</Button>
       </Box>

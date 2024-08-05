@@ -2,7 +2,7 @@
   "imports": {
     "@/": "./src/",
     "@/components": "./src/components/index.ts",
-    "@hono/react-renderer": "https://esm.sh/@hono/react-renderer@0.2.1?external=*",
+    "@hono/react-renderer": "https://esm.sh/@hono/react-renderer@0.2.1?external=react,react-dom",
     "@tanstack/react-query": "npm:@tanstack/react-query@^5.51.21",
     "@types/react": "npm:@types/react@^18.3.3",
     "@types/react-dom": "npm:@types/react-dom@^18.3.0",

@@ -1,6 +1,6 @@
 export * from "@/react.shim.ts";
 
-// @deno-types="npm:@types/luxon"
+// @ts-types="npm:@types/luxon"
 import { DateTime } from "luxon";
 export { DateTime };
 export const isoNow = () => DateTime.now().toUTC().toISO();

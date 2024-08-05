@@ -1,8 +1,9 @@
-import { reactRenderer } from "@hono/react-renderer";
+import { reactRenderer } from "@/server/renderer.ts";
 import { mountableName } from "@/client/islands/index.ts";
 import { ClientRun } from "@/server/ClientRun.tsx";
 import { Document } from "@/server/layout/Document.tsx";
 import type { ComponentType, PropsWithChildren } from "@/utils.ts";
+import { type RendererProps } from "@/server/layout/SsrContext.ts";
 
 export const layoutRenderer = reactRenderer(
   ({ c: _c, ...props }: PropsWithChildren<RendererProps & { c: unknown }>) => (
@@ -53,10 +54,4 @@ export function clientMount<T>(
     );
   }
   return nestedLayout(Mount);
-}
-
-import { type RendererProps } from "@/server/layout/SsrContext.ts";
-
-declare module "@hono/react-renderer" {
-  interface Props extends RendererProps {}
 }

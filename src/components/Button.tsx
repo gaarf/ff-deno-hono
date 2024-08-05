@@ -6,7 +6,7 @@ export const BaseButton = intrinsic("button", {
   className: cn(
     "inline-flex items-center justify-center gap-2 relative active:translate-y-px",
     "border hover:border-orange-500 font-bold rounded-lg py-1 px-2 select-none",
-    "disabled:border-dashed disabled:text-gray-300 disabled:pointer-events-none"
+    "disabled:border-dashed disabled:text-gray-300 disabled:pointer-events-none",
   ),
 });
 
