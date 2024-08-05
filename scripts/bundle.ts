@@ -4,6 +4,9 @@ import { resolve } from "std/path/mod.ts";
 import { format } from "std/fmt/bytes.ts";
 
 const OUTFILE = ".generated/o.js";
+const NODE_ENV = Deno.env.get("NODE_ENV");
+const minify = !Deno.env.get("NO_MINIFY");
+console.log({ NODE_ENV, minify });
 
 await esbuild.build({
   plugins: [
@@ -12,13 +15,14 @@ await esbuild.build({
     }) as esbuild.Plugin[]),
   ],
   entryPoints: ["main.js"],
-  platform: "neutral",
+  platform: "browser", // smaller bundle?
+  format: 'esm',
   outfile: OUTFILE,
   jsx: "automatic",
-  jsxImportSource: "react-jsx",
+  jsxImportSource: "react",
   dropLabels: ["DEV"], // works fine
   bundle: true,
-  minify: true,
+  minify
 });
 
 esbuild.stop();

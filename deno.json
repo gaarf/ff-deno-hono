@@ -2,7 +2,7 @@
   "imports": {
     "@/": "./src/",
     "@/components": "./src/components/index.ts",
-    "@hono/react-renderer": "npm:@hono/react-renderer@^0.2.1",
+    "@hono/react-renderer": "https://esm.sh/@hono/react-renderer@0.2.1?external=*",
     "@tanstack/react-query": "npm:@tanstack/react-query@^5.51.21",
     "@types/react": "npm:@types/react@^18.3.3",
     "@types/react-dom": "npm:@types/react-dom@^18.3.0",
@@ -31,8 +31,8 @@
     "check": "deno check main.js src/client/index.tsx",
     "fmt": "deno fmt --ignore=.generated",
     "hook": "deno run --allow-read --allow-run --allow-write https://deno.land/x/deno_hooks@0.1.1/mod.ts",
-    "bundle": "NODE_ENV=production deno task gen && deno run --allow-all scripts/bundle.ts",
-    "deploy": "deno task bundle && fleek functions deploy —noBundle --path .generated/o.js"
+    "bundle": "deno task gen && deno run --allow-all scripts/bundle.ts",
+    "deploy": "NODE_ENV=production deno task bundle && fleek functions deploy —noBundle --path .generated/o.js"
   },
   "compilerOptions": {
     "jsx": "react-jsx",
