@@ -13,7 +13,7 @@ export const BtcPrice = clientOnly(
         </Button>
       );
     } else {
-      return <Json value={data} />;
+      return <Json value={data} className="whitespace-pre-wrap" />;
     }
   },
   () => <Button disabled>JS required</Button>,

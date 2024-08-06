@@ -7,8 +7,8 @@
 
   :root[data-theme='light'] {
     /* Light - Monochrome */
-    --color-ftw-monochrome-normal: 255 255 255;
-    --color-ftw-monochrome-reverse: 0 0 0;
+    --color-default-text: 0 0 0;
+    --color-default-bg: 255 255 255;
 
     /* Light - Neutral */
     --color-ftw-neutral-1: 252 252 252;
@@ -83,8 +83,8 @@
 
   :root[data-theme='dark'] {
     /* Dark - Monochrome */
-    --color-ftw-monochrome-normal: 0 0 0;
-    --color-ftw-monochrome-reverse: 255 255 255;
+    --color-default-text: 255 255 255;
+    --color-default-bg: 0 0 0;
 
     /* Dark - Neutral */
     --color-ftw-neutral-0: 0 0 0;

@@ -6,6 +6,7 @@ import { type RendererProps } from "@/server/layout/SsrContext.ts";
 import { hybrid } from "@/client/islands/index.ts";
 import { Providers } from "@/Providers.tsx";
 import { useRequestContext } from "@/server/renderer.ts";
+import { Container } from "@/server/layout/Container.tsx";
 
 const HybridHeader = hybrid.Header;
 
@@ -17,6 +18,7 @@ export function Document({
   const c = useRequestContext();
   const dev = c.get("dev");
   const { title, icon = "🌐" } = props;
+
   return (
     <Providers
       ssr={{
@@ -25,16 +27,18 @@ export function Document({
         ...props,
       }}
     >
-      <html data-theme="light">
+      <html data-theme="dark">
         <head>
           {title && <title>{title}</title>}
           <Favicon icon={icon} />
           <link rel="stylesheet" href="/styles.css" />
           <script defer src="/client.js" />
         </head>
-        <body className="min-h-svh flex flex-col">
+        <body className="min-h-svh flex flex-col text-default-text bg-default-bg">
           <HybridHeader fixed />
-          <main className="flex-1 w-full relative p-3">{children}</main>
+          <main className="flex-1 w-full flex justify-center items-start">
+            <Container className="relative my-3 block">{children}</Container>
+          </main>
           <Footer>
             {dev && "[DEV]"} SSR: <time dateTime={now}>{now}</time>
           </Footer>

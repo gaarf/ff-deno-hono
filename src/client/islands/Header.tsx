@@ -1,37 +1,41 @@
 import { cn, type PropsWithChildren } from "@/utils.ts";
 import { usePathname } from "@/server/layout/SsrContext.ts";
 import { Button } from "@/components/Button.tsx";
+import { Container } from "@/server/layout/Container.tsx";
 
 type HeaderProps = {
-  className?: string;
+  heightClass?: string;
   fixed?: boolean;
 };
 
 export const Header = ({
   fixed,
-  className = "min-h-14",
+  heightClass = "min-h-12",
 }: PropsWithChildren<HeaderProps>) => (
-  <header className={cn("flex", className)}>
+  <header className={cn("flex", heightClass)}>
     <div
       className={cn(
+        "flex w-full justify-center",
+        "border-b bg-neutral-3",
         {
-          "flex w-full items-center justify-between p-3 border-b": true,
-          "fixed bg-neutral-3 z-10": fixed,
+          "fixed z-10": fixed,
         },
-        className,
+        heightClass,
       )}
     >
-      <h1 className="text-center text-lg font-bold text-ellipsis whitespace-nowrap overflow-hidden">
-        FUNKY FLEEK FUNCTION FRAMEWORK
-      </h1>
+      <Container>
+        <h1 className="text-center text-lg font-bold text-ellipsis whitespace-nowrap overflow-hidden">
+          FUNKY FLEEK FUNCTION FRAMEWORK
+        </h1>
 
-      <nav>
-        <ul className="flex gap-2">
-          <NavItem href="/">Home</NavItem>
-          <NavItem href="/foo">Foo</NavItem>
-          <NavItem href="/bar">Bar</NavItem>
-        </ul>
-      </nav>
+        <nav>
+          <ul className="flex gap-2">
+            <NavItem href="/">Home</NavItem>
+            <NavItem href="/foo">Foo</NavItem>
+            <NavItem href="/bar">Bar</NavItem>
+          </ul>
+        </nav>
+      </Container>
     </div>
   </header>
 );
@@ -43,10 +47,7 @@ const NavItem = ({ href, children }: NavItemProps) => {
   const active = href === "/" ? href === p : p.startsWith(href);
   return (
     <li>
-      <Button
-        href={href}
-        disabled={active}
-      >
+      <Button href={href} disabled={active}>
         {children}
       </Button>
     </li>
