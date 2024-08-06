@@ -13,6 +13,7 @@
     "hono": "npm:hono@4.5.3",
     "luxon": "npm:luxon@^3.4.4",
     "postcss": "npm:postcss@^8.4.39",
+    "postcss-import": "npm:postcss-import@^16.1.0",
     "react": "npm:react@^18.3.1",
     "react-dom": "npm:react-dom@^18.3.1",
     "react-icons": "npm:react-icons@^5.2.1",

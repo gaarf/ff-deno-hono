@@ -5,8 +5,8 @@ import Icon from "@/components/Icon.tsx";
 export const BaseButton = intrinsic("button", {
   className: cn(
     "relative active:translate-y-px",
-    "border hover:border-orange-500 font-bold rounded-lg py-1 px-2 select-none",
-    "disabled:border-dashed disabled:text-opacity-50 text-gray-900 disabled:pointer-events-none",
+    "border hover:border-warning-10 font-bold rounded-lg py-1 px-2 select-none",
+    "disabled:border-dashed disabled:text-opacity-50 text-neutral-12 disabled:pointer-events-none",
   ),
 });
 
@@ -27,7 +27,6 @@ export const Button = ({
     <BaseButton
       disabled={loading}
       {...props}
-      tabIndex={props.tabIndex || (href ? -1 : undefined)}
     >
       {loading && (
         <span className="absolute inset-0 flex items-center justify-center">
@@ -47,7 +46,7 @@ export const Button = ({
 
   if (href && !loading && !props.disabled) {
     return (
-      <a href={href} {...anchorProps}>
+      <a href={href} {...anchorProps} tabIndex={-1}>
         {button}
       </a>
     );

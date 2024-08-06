@@ -25,7 +25,7 @@ export function Document({
         ...props,
       }}
     >
-      <html>
+      <html data-theme="light">
         <head>
           {title && <title>{title}</title>}
           <Favicon icon={icon} />

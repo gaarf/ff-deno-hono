@@ -20,5 +20,5 @@ export const Link = intrinsic("a", {
 });
 
 export const Pre = intrinsic("pre", {
-  className: "bg-slate-200 rounded overflow-auto p-2 my-4",
+  className: "bg-neutral-3 rounded overflow-auto p-2 my-4",
 });

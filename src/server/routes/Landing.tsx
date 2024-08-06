@@ -7,7 +7,7 @@ export const Landing = ({ children }: PropsWithChildren) => {
 
   return (
     <>
-      <p className="bg-blue-100 rounded p-2 mb-2">Landing layout</p>
+      <p className="bg-warning-5 rounded p-2 mb-2">Landing layout</p>
 
       {diff.isValid && (
         <aside>

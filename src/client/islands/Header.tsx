@@ -1,5 +1,6 @@
 import { cn, type PropsWithChildren } from "@/utils.ts";
 import { usePathname } from "@/server/layout/SsrContext.ts";
+import { Button } from "@/components/Button.tsx";
 
 type HeaderProps = {
   className?: string;
@@ -15,7 +16,7 @@ export const Header = ({
       className={cn(
         {
           "flex w-full items-center justify-between p-3 border-b": true,
-          "fixed bg-white z-10": fixed,
+          "fixed bg-neutral-3 z-10": fixed,
         },
         className,
       )}
@@ -41,22 +42,13 @@ const NavItem = ({ href, children }: NavItemProps) => {
   const p = usePathname();
   const active = href === "/" ? href === p : p.startsWith(href);
   return (
-    <li
-      className={cn(
-        "border flex rounded-full text-sm overflow-hidden",
-        "focus-within:outline outline-[-webkit-focus-ring-color]",
-      )}
-    >
-      <a
+    <li>
+      <Button
         href={href}
-        className={cn({
-          "px-3": true,
-          "hover:bg-slate-300": !active,
-          "bg-yellow-100": active,
-        })}
+        disabled={active}
       >
         {children}
-      </a>
+      </Button>
     </li>
   );
 };

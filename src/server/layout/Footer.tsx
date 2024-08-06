@@ -8,7 +8,7 @@ export const Footer = ({ children, fixed }: FooterProps) => (
   <footer
     className={cn({
       "border-t p-1 flex gap-4 justify-between text-xs text-nowrap": true,
-      "fixed inset-0 top-auto bg-white": fixed,
+      "fixed inset-0 top-auto bg-neutral-8": fixed,
     })}
   >
     <span className="text-ellipsis overflow-hidden">{children}</span>
