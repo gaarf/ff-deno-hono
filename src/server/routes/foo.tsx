@@ -17,4 +17,4 @@ export default new Hono()
       </>,
       { title: "foo!" },
     ))
-  .get("/btc", (c) => c.render(<hybrid.BtcPrice />));
+  .get("/btc", (c) => c.render(<hybrid.BtcPrice />, { title: 'going up forever'}));

@@ -5,7 +5,7 @@ import { IconBaseProps, IconType } from "react-icons";
 function icon(
   Icon: IconType,
   injectClassName?: string,
-  injectProps?: IconBaseProps,
+  injectProps?: IconBaseProps
 ) {
   return ({ className, ...props }: { className?: string } & IconBaseProps) => (
     <span className={cn(injectClassName, className)}>
@@ -16,5 +16,5 @@ function icon(
 
 export default {
   Spinner: icon(FaSpinner, "animate-spin"),
-  Bitcoin: icon(FaBtc, "text-orange-500"),
+  Bitcoin: icon(FaBtc, undefined, { color: "rgb(249 115 22 / var(--tw-text-opacity))" }),
 };
