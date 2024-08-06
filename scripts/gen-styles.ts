@@ -9,7 +9,11 @@ const cssIn = "src/app.css";
 
 const prod = Deno.env.get("NODE_ENV") === "production";
 
-const plugins: Parameters<typeof postcss> = [tailwindcss, atImport(), autoprefixer];
+const plugins: Parameters<typeof postcss> = [
+  tailwindcss,
+  atImport(),
+  autoprefixer,
+];
 if (prod) {
   plugins.push(cssnano);
 }
@@ -26,7 +30,7 @@ Deno.writeTextFileSync(
     `export default ${JSON.stringify(result.css)};\n`,
     `export const cssMap = ${
       prod ? "undefined" : JSON.stringify(result.map)
-    };\n`
-  )
+    };\n`,
+  ),
 );
 console.log(`✍️ styles (${prod ? "prod" : "dev"})`);

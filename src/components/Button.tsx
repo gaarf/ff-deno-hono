@@ -36,7 +36,7 @@ export const Button = ({
       <span
         className={cn({
           invisible: loading,
-          'flex items-center justify-center gap-2': true
+          "flex items-center justify-center gap-2": true,
         })}
       >
         {children}
