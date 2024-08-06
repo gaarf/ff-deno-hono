@@ -3,12 +3,9 @@ import { mountableName } from "@/client/islands/index.ts";
 import { ClientRun } from "@/server/Hybrid.tsx";
 import { Document } from "@/server/layout/Document.tsx";
 import type { ComponentType, PropsWithChildren } from "@/utils.ts";
-import { type RendererProps } from "@/server/layout/SsrContext.ts";
 
 export const layoutRenderer = reactRenderer(
-  ({ c: _c, ...props }: PropsWithChildren<RendererProps & { c: unknown }>) => (
-    <Document {...props} />
-  ),
+  ({ c: _c, ...props }) => <Document {...props} />,
   {
     docType: true,
   },
@@ -18,22 +15,13 @@ export function nestedLayout<T extends React.JSX.IntrinsicAttributes>(
   Nested: (p: PropsWithChildren<T>) => React.ReactNode,
   nestedProps: T = {} as T,
 ) {
-  return reactRenderer(
-    ({
-      children,
-      Layout,
-      ...props
-    }: {
-      children?: React.ReactNode;
-      Layout: (p: RendererProps) => React.ReactNode;
-    } & RendererProps) => {
-      return (
-        <Layout {...props}>
-          <Nested {...nestedProps}>{children}</Nested>
-        </Layout>
-      );
-    },
-  );
+  return reactRenderer(({ children, Layout, ...props }) => {
+    return (
+      <Layout {...props}>
+        <Nested {...nestedProps}>{children}</Nested>
+      </Layout>
+    );
+  });
 }
 
 export function clientMount<T>(
