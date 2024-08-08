@@ -2,9 +2,9 @@ import { etag } from "hono/etag";
 import { createMiddleware } from "hono/factory";
 import styles, { cssMap } from "_generated/styles.ts";
 import client, { jsMap } from "_generated/client.ts";
-import { type Hono } from "hono";
+import { type Env, type Hono } from "hono";
 
-export default function (app: Hono, bootTime: string) {
+export default function <T extends Env>(app: Hono<T>, bootTime: string) {
   const cache = [
     etag(),
     createMiddleware((c, next) => {

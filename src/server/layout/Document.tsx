@@ -15,6 +15,7 @@ export function Document({
   const now = isoNow();
   const c = useRequestContext();
   const dev = c.get("dev");
+  const theme = c.get("theme");
   const { title, icon = "🌐" } = props;
 
   return (
@@ -25,7 +26,7 @@ export function Document({
         ...props,
       }}
     >
-      <html data-theme="dark">
+      <html data-theme={theme}>
         <head>
           {title && <title>{title}</title>}
           <Favicon icon={icon} />

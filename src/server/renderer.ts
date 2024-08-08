@@ -9,7 +9,8 @@ import {
   RenderToReadableStreamOptions,
   renderToString,
 } from "react-dom/server";
-import { ContextRenderer } from "hono";
+import { type ContextRenderer } from "hono";
+import { Theme } from "@/theme/index.ts";
 
 type RendererOptions = {
   docType?: boolean | string;
@@ -31,9 +32,13 @@ type ComponentProps = BaseProps & RendererProps & {
 declare module "hono" {
   interface ContextRenderer {
     (
-      children: React.ReactElement,
+      content: string | Promise<string> | React.ReactNode,
       props?: RendererProps,
     ): Response | Promise<Response>;
+  }
+  interface ContextVariableMap {
+    dev: boolean;
+    theme: Theme;
   }
 }
 

@@ -3,8 +3,8 @@ import { getEmoji } from "@/server/layout/Favicon.tsx";
 import { isBrowser } from "@/utils.ts";
 
 export type RendererProps = {
-  title?: string;
   icon?: string;
+  title?: string;
 };
 
 export type SsrContextValue = {
@@ -15,8 +15,8 @@ export type SsrContextValue = {
 export const SsrContext = createContext<SsrContextValue>({
   url: isBrowser() ? new URL(location.href) : null,
   dev: isBrowser() && !!document.querySelector('[data-client-run="hmr"]'),
-  title: isBrowser() ? document.title : undefined,
   icon: isBrowser() ? getEmoji() : undefined,
+  title: isBrowser() ? document.title : undefined,
 });
 
 export const useSsrContext = () => useContext(SsrContext);

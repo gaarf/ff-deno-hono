@@ -1,4 +1,4 @@
-import { FaBtc, FaSpinner } from "react-icons/fa6";
+import { FaBtc, FaLightbulb, FaMoon, FaSpinner } from "react-icons/fa6";
 import { cn } from "@/utils.ts";
 import { IconBaseProps, IconType } from "react-icons";
 
@@ -19,4 +19,6 @@ export default {
   Bitcoin: icon(FaBtc, undefined, {
     color: "rgb(249 115 22 / var(--tw-text-opacity))",
   }),
+  ThemeDark: icon(FaMoon),
+  ThemeLight: icon(FaLightbulb),
 };

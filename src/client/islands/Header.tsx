@@ -2,7 +2,8 @@ import { cn, type PropsWithChildren } from "@/utils.ts";
 import { usePathname } from "@/server/layout/SsrContext.ts";
 import { Button } from "@/components/Button.tsx";
 import { Container } from "@/server/layout/Container.tsx";
-
+import { Switch as ThemeSwitch } from "@/theme/Switch.tsx";
+import { Box } from "@/components";
 type HeaderProps = {
   heightClass?: string;
   fixed?: boolean;
@@ -28,12 +29,14 @@ export const Header = ({
           FUNKY FLEEK FUNCTION FRAMEWORK
         </h1>
 
-        <nav>
-          <ul className="flex gap-2">
+        <nav className="flex self-stretch items-stretch">
+          <ul className="flex gap-2 items-center">
             <NavItem href="/">Home</NavItem>
             <NavItem href="/foo">Foo</NavItem>
             <NavItem href="/bar">Bar</NavItem>
           </ul>
+          <Box className="border-l self-stretch ml-2" />
+          <ThemeSwitch />
         </nav>
       </Container>
     </div>

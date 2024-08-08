@@ -6,6 +6,8 @@ import { Landing } from "@/server/routes/Landing.tsx";
 import staticAssets from "@/server/static.ts";
 
 import routes from "_generated/routes.ts";
+import { Theme, validThemes } from "@/theme/index.ts";
+import { getCookie } from "hono/cookie";
 
 const app = new Hono();
 const bootTime = httpNow();
@@ -23,6 +25,11 @@ DEV: {
 
 app.use((c, next) => {
   c.set("dev", dev);
+  let theme = getCookie(c, "theme") as Theme;
+  if (!validThemes.includes(theme)) {
+    theme = "dark";
+  }
+  c.set("theme", theme);
   return next();
 });
 
@@ -43,17 +50,3 @@ DEV: {
 }
 
 export default app;
-
-import { type RendererProps } from "@/server/layout/SsrContext.ts";
-
-declare module "hono" {
-  interface ContextRenderer {
-    (
-      content: string | Promise<string> | React.ReactNode,
-      props?: RendererProps,
-    ): Response;
-  }
-  interface ContextVariableMap {
-    dev: boolean;
-  }
-}
