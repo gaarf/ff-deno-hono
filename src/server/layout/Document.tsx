@@ -8,8 +8,6 @@ import { Providers } from "@/Providers.tsx";
 import { useRequestContext } from "@/server/renderer.ts";
 import { Container } from "@/server/layout/Container.tsx";
 
-const HybridHeader = hybrid.Header;
-
 export function Document({
   children,
   ...props
@@ -35,7 +33,8 @@ export function Document({
           <script defer src="/client.js" />
         </head>
         <body className="min-h-svh flex flex-col text-default-text bg-default-bg">
-          <HybridHeader fixed />
+          <hybrid.Toaster />
+          <hybrid.Header fixed />
           <main className="flex-1 w-full flex justify-center items-start">
             <Container className="relative my-3 block">{children}</Container>
           </main>

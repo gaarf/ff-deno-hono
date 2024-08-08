@@ -1,12 +1,13 @@
-import { isBrowser, PropsWithChildren } from "@/utils.ts";
+import { isBrowser, PropsWithChildren, toast } from "@/utils.ts";
 import { useSsrContext } from "@/server/layout/SsrContext.ts";
 import { Box, Button } from "@/components";
 import { Json } from "@/components/Json.tsx";
 import { useState } from "@/react.shim.ts";
 
-export const Test = (
-  { children, btnLabel = "goto foo" }: PropsWithChildren<{ btnLabel?: string }>,
-) => {
+export const Test = ({
+  children,
+  btnLabel = "goto foo",
+}: PropsWithChildren<{ btnLabel?: string }>) => {
   const ssr = useSsrContext();
   const browser = isBrowser();
   const [loading, setLoading] = useState(false);
@@ -17,11 +18,25 @@ export const Test = (
       <Box className="gap-10">
         <span className="flex-1">{children}</span>
         {browser && (
-          <Button loading={loading} onClick={() => setLoading(true)}>
-            another button
-          </Button>
+          <>
+            <Button
+              variant="warning"
+              onClick={() => toast.success("yay")}
+            >
+              click for toast
+            </Button>
+            <Button
+              loading={loading}
+              onClick={() => setLoading(true)}
+              href="/foo/btc"
+            >
+              another button
+            </Button>
+          </>
         )}
-        <Button href="/foo" disabled={browser}>{btnLabel}</Button>
+        <Button href="/foo" disabled={browser}>
+          {btnLabel}
+        </Button>
       </Box>
     </Box>
   );

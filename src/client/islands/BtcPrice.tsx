@@ -8,7 +8,7 @@ export const BtcPrice = clientOnly(
     const { data, refetch, isFetching } = useBtcPrice(false);
     if (!data) {
       return (
-        <Button onClick={() => refetch()} disabled={isFetching}>
+        <Button onClick={() => refetch()} loading={isFetching}>
           Fetch <Icon.Bitcoin />
         </Button>
       );

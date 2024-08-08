@@ -1,12 +1,14 @@
 import { BtcPrice } from "@/client/islands/BtcPrice.tsx";
 import { LoremIpsum } from "@/client/islands/LoremIpsum.tsx";
 import { Header } from "@/client/islands/Header.tsx";
+import { Toaster } from "@/client/islands/Toaster.tsx";
 
 import { withHybrid } from "@/server/Hybrid.tsx";
 import { ComponentType } from "@/utils.ts";
 import { mapValues } from "std/collections/mod.ts";
 
 export const mountables = {
+  Toaster,
   LoremIpsum,
   BtcPrice,
   Header,

@@ -15,6 +15,7 @@
       "npm:postcss": "npm:postcss@8.4.40",
       "npm:postcss-import": "npm:postcss-import@16.1.0_postcss@8.4.40",
       "npm:react-dom@^18.3.1": "npm:react-dom@18.3.1_react@18.3.1",
+      "npm:react-hot-toast@^2.4.1": "npm:react-hot-toast@2.4.1_react@18.3.1_react-dom@18.3.1__react@18.3.1",
       "npm:react-icons@^5.2.1": "npm:react-icons@5.2.1_react@18.3.1",
       "npm:react@^18.3.1": "npm:react@18.3.1",
       "npm:tailwind-merge@^2.4.0": "npm:tailwind-merge@2.4.0",
@@ -481,6 +482,12 @@
           "minipass": "minipass@7.1.2",
           "package-json-from-dist": "package-json-from-dist@1.0.0",
           "path-scurry": "path-scurry@1.11.1"
+        }
+      },
+      "goober@2.1.14_csstype@3.1.3": {
+        "integrity": "sha512-4UpC0NdGyAFqLNPnhCT2iHpza2q+RAY3GV85a/mRPdzyPQMsj0KmMMuetdIkzWRbJ+Hgau1EZztq8ImmiMGhsg==",
+        "dependencies": {
+          "csstype": "csstype@3.1.3"
         }
       },
       "hasown@2.0.2": {
@@ -950,6 +957,14 @@
           "loose-envify": "loose-envify@1.4.0",
           "react": "react@18.3.1",
           "scheduler": "scheduler@0.23.2"
+        }
+      },
+      "react-hot-toast@2.4.1_react@18.3.1_react-dom@18.3.1__react@18.3.1": {
+        "integrity": "sha512-j8z+cQbWIM5LY37pR6uZR6D4LfseplqnuAO4co4u8917hBUvXlEqyP1ZzqVLcqoyUesZZv/ImreoCeHVDpE5pQ==",
+        "dependencies": {
+          "goober": "goober@2.1.14_csstype@3.1.3",
+          "react": "react@18.3.1",
+          "react-dom": "react-dom@18.3.1_react@18.3.1"
         }
       },
       "react-icons@5.2.1_react@18.3.1": {
@@ -1498,6 +1513,7 @@
       "npm:postcss-import@^16.1.0",
       "npm:postcss@^8.4.39",
       "npm:react-dom@^18.3.1",
+      "npm:react-hot-toast@^2.4.1",
       "npm:react-icons@^5.2.1",
       "npm:react@^18.3.1",
       "npm:tailwind-merge@^2.4.0",
