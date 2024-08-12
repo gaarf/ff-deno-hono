@@ -21,7 +21,7 @@ export const Test = ({
           <>
             <Button
               variant="warning"
-              onClick={() => toast.success("yay")}
+              onClick={() => toast.success("yay", { duration: Infinity })}
             >
               click for toast
             </Button>
