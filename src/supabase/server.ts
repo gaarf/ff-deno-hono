@@ -2,6 +2,19 @@ import { createServerClient } from "@supabase/ssr";
 import { Context } from "hono";
 import { getCookie, setCookie } from "hono/cookie";
 import { type Database } from "@/supabase/schema.gen.ts";
+import { createMiddleware } from "hono/factory";
+
+export const middleware = createMiddleware(async (c, next) => {
+  const supabase = createClient(c);
+  c.set("supabase", supabase);
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  c.set("user", user);
+
+  return next();
+});
 
 export function createClient(c: Context) {
   return createServerClient<Database>(

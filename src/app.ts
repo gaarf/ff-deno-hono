@@ -8,7 +8,7 @@ import staticAssets from "@/server/static.ts";
 import routes from "_generated/routes.ts";
 import { Theme, validThemes } from "@/theme/index.ts";
 import { getCookie } from "hono/cookie";
-import { createClient } from "@/supabase/server.ts";
+import { middleware as supabase } from "@/supabase/server.ts";
 
 const app = new Hono();
 const bootTime = httpNow();
@@ -31,15 +31,12 @@ app.use((c, next) => {
     theme = "dark";
   }
   c.set("theme", theme);
-
-  c.set("supabase", createClient(c));
-
   return next();
 });
 
 staticAssets(app, bootTime);
 
-app.use(layoutRenderer);
+app.use(supabase, layoutRenderer);
 
 app.all("/", nestedLayout(Landing), (c) => c.render(bootTime, { icon: "🚀" }));
 
