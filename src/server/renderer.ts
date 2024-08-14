@@ -11,7 +11,7 @@ import {
 } from "react-dom/server";
 import { type ContextRenderer } from "hono";
 import { Theme } from "@/theme/index.ts";
-import { type User, type SupabaseClient } from "@supabase/supabase-js";
+import { type SupabaseClient } from "@supabase/supabase-js";
 
 type RendererOptions = {
   docType?: boolean | string;
@@ -40,8 +40,7 @@ declare module "hono" {
   interface ContextVariableMap {
     dev: boolean;
     theme: Theme;
-    supabase: SupabaseClient;
-    user: User | null;
+    db: SupabaseClient;
   }
 }
 

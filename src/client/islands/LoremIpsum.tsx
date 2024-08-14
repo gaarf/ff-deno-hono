@@ -13,7 +13,7 @@ export const LoremIpsum = ({
   count = 1,
 }: PropsWithChildren<LoremIpsumProps>) => {
   return (
-    <div>
+    <>
       {children}
       {Array(count)
         .fill(null)
@@ -30,6 +30,6 @@ export const LoremIpsum = ({
         👏
       </Box>
       <Test />
-    </div>
+    </>
   );
 };

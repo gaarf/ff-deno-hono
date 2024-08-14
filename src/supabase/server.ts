@@ -4,15 +4,9 @@ import { getCookie, setCookie } from "hono/cookie";
 import { type Database } from "@/supabase/schema.gen.ts";
 import { createMiddleware } from "hono/factory";
 
-export const middleware = createMiddleware(async (c, next) => {
+export const middleware = createMiddleware((c, next) => {
   const supabase = createClient(c);
-  c.set("supabase", supabase);
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  c.set("user", user);
-
+  c.set("db", supabase);
   return next();
 });
 

@@ -1,7 +1,6 @@
 {
-  "deno.enablePaths": [
-    "./"
-  ],
-  "deno.enable": true,
+  "deno.suggest.imports.hosts": {
+    "https://deno.land": false
+  },
   "editor.inlayHints.enabled": "off"
 }

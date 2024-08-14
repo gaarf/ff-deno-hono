@@ -6,7 +6,7 @@ import { useState } from "@/react.shim.ts";
 
 export const Test = ({
   children,
-  btnLabel = "goto foo",
+  btnLabel = "goto test",
 }: PropsWithChildren<{ btnLabel?: string }>) => {
   const ssr = useSsrContext();
   const browser = isBrowser();
@@ -28,13 +28,13 @@ export const Test = ({
             <Button
               loading={loading}
               onClick={() => setLoading(true)}
-              href="/foo/btc"
+              href="/"
             >
               another button
             </Button>
           </>
         )}
-        <Button href="/foo" disabled={browser}>
+        <Button href="/test" disabled={browser}>
           {btnLabel}
         </Button>
       </Box>

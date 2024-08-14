@@ -32,8 +32,7 @@ export const Header = ({
         <nav className="flex self-stretch items-stretch">
           <ul className="flex gap-2 items-center">
             <NavItem href="/">Home</NavItem>
-            <NavItem href="/foo">Foo</NavItem>
-            <NavItem href="/bar">Bar</NavItem>
+            <NavItem href="/test">Test</NavItem>
           </ul>
           <Box className="border-l self-stretch ml-2" />
           <ThemeSwitch />

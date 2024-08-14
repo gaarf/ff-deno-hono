@@ -46,7 +46,10 @@ export function clientMount<T>(
 }
 
 export const requireAuth = createMiddleware(async (c, next) => {
-  const user = c.get('user');
+  const {
+    data: { user },
+  } = await c.get('db').auth.getUser();
+  c.set("user", user);
   if (!user) {
     return c.redirect("/login");
   } 
