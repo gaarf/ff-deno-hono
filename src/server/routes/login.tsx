@@ -1,7 +1,6 @@
 import { Hono } from "hono";
 
 const Login = () => {
-
   return (
     <>
       Login form

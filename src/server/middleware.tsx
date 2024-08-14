@@ -9,12 +9,12 @@ export const layoutRenderer = reactRenderer(
   ({ c: _c, ...props }) => <Document {...props} />,
   {
     docType: true,
-  }
+  },
 );
 
 export function nestedLayout<T extends React.JSX.IntrinsicAttributes>(
   Nested: (p: PropsWithChildren<T>) => React.ReactNode,
-  nestedProps: T = {} as T
+  nestedProps: T = {} as T,
 ) {
   return reactRenderer(({ children, Layout, ...props }) => {
     return (
@@ -28,7 +28,7 @@ export function nestedLayout<T extends React.JSX.IntrinsicAttributes>(
 export function clientMount<T>(
   Component: ComponentType<T>,
   componentProps?: T,
-  where = "main"
+  where = "main",
 ) {
   const what = mountableName(Component);
   function Mount({ children }: PropsWithChildren) {
@@ -48,10 +48,10 @@ export function clientMount<T>(
 export const requireAuth = createMiddleware(async (c, next) => {
   const {
     data: { user },
-  } = await c.get('db').auth.getUser();
+  } = await c.get("db").auth.getUser();
   c.set("user", user);
   if (!user) {
     return c.redirect("/login");
-  } 
+  }
   await next();
 });

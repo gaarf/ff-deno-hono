@@ -25,6 +25,8 @@ const Landing = ({ children }: PropsWithChildren) => {
   );
 };
 
-export default new Hono().all("/", nestedLayout(Landing), (c) =>
-  c.render(httpNow())
+export default new Hono().all(
+  "/",
+  nestedLayout(Landing),
+  (c) => c.render(httpNow()),
 );

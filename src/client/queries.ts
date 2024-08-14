@@ -10,7 +10,7 @@ function q<T>(url: RequestInfo) {
 
 export const useBtcPrice = (enabled = true) => {
   return useQuery({
-    ...q<{ data: unknown; renderedAt: string; }>("/api/btc"),
+    ...q<{ data: unknown; renderedAt: string }>("/api/btc"),
     enabled,
   });
 };

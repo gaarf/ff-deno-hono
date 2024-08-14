@@ -34,6 +34,6 @@ export function createClient(c: Context) {
           }
         },
       },
-    }
+    },
   );
 }
