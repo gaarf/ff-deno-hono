@@ -20,18 +20,18 @@ const Login = () => {
 export default new Hono()
   .post("/", async (c, next) => {
     const body = await c.req.formData();
-    const email = body.get('email')?.toString();
-    const password = body.get('password')?.toString();
-    if(!email || !password) {
-      setMessage(c, 'Missing credentials!', 'warning');
+    const email = body.get("email")?.toString();
+    const password = body.get("password")?.toString();
+    if (!email || !password) {
+      setMessage(c, "Missing credentials!", "warning");
       return next();
     }
 
-    const db = c.get('db');
+    const db = c.get("db");
     const { data } = await db.auth.signInWithPassword({ email, password });
 
     if (!data.user) {
-      setMessage(c, 'Invalid credentials!', 'danger');
+      setMessage(c, "Invalid credentials!", "danger");
       return next();
     }
 

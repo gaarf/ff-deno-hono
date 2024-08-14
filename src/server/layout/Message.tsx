@@ -10,7 +10,7 @@ export const setMessage = (c: Context, message: string, intent?: Intent) => {
 };
 
 export function useMessage() {
-  return useRequestContext().get('message');
+  return useRequestContext().get("message");
 }
 
 export const Message = ({
@@ -31,7 +31,7 @@ export const Message = ({
           "bg-success-8 text-success-1": intent === "success",
           "border-neutral-8 bg-neutral-2": intent === "neutral",
         },
-        className
+        className,
       )}
     >
       {intent === "warning" && <Icon.Warning />}

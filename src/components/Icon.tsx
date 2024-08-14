@@ -1,12 +1,12 @@
 import {
+  FaBomb,
   FaBtc,
+  FaCircleCheck,
   FaLightbulb,
+  FaMessage,
   FaMoon,
   FaSpinner,
   FaTriangleExclamation,
-  FaBomb,
-  FaCircleCheck,
-  FaMessage
 } from "react-icons/fa6";
 import { cn } from "@/utils.ts";
 import { IconBaseProps, IconType } from "react-icons";
@@ -14,7 +14,7 @@ import { IconBaseProps, IconType } from "react-icons";
 function icon(
   Icon: IconType,
   injectClassName?: string,
-  injectProps?: IconBaseProps
+  injectProps?: IconBaseProps,
 ) {
   return ({ className, ...props }: { className?: string } & IconBaseProps) => (
     <span className={cn(injectClassName, className)}>

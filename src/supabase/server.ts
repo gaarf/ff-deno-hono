@@ -19,7 +19,7 @@ export const middleware = createMiddleware((c, next) => {
 });
 
 export function useSupabase() {
-  return useRequestContext().get('db');
+  return useRequestContext().get("db");
 }
 
 export function createClient(c: Context) {
