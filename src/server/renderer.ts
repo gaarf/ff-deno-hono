@@ -1,7 +1,7 @@
 // adapted from https://github.com/honojs/middleware/tree/main/packages/react-renderer
 
 import { type RendererProps } from "@/server/layout/SsrContext.ts";
-import { Context, Env, MiddlewareHandler } from "hono";
+import type { Context, ContextRenderer, MiddlewareHandler } from "hono";
 import React from "@/react.shim.ts";
 // @ts-types="npm:@types/react-dom/server"
 import {
@@ -9,9 +9,7 @@ import {
   RenderToReadableStreamOptions,
   renderToString,
 } from "react-dom/server";
-import { type ContextRenderer } from "hono";
-import { Theme } from "@/theme/index.ts";
-import { type SupabaseClient } from "@supabase/supabase-js";
+import { RequestContext } from "@/server/context.ts";
 
 type RendererOptions = {
   docType?: boolean | string;
@@ -26,9 +24,12 @@ type BaseProps = {
 
 type LayoutType = React.FC<BaseProps & RendererProps>;
 
-type ComponentProps = BaseProps & RendererProps & {
-  Layout: LayoutType;
-};
+type ComponentProps =
+  & BaseProps
+  & RendererProps
+  & {
+    Layout: LayoutType;
+  };
 
 declare module "hono" {
   interface ContextRenderer {
@@ -37,14 +38,7 @@ declare module "hono" {
       props?: RendererProps,
     ): Response | Promise<Response>;
   }
-  interface ContextVariableMap {
-    dev: boolean;
-    theme: Theme;
-    db: SupabaseClient;
-  }
 }
-
-const RequestContext = React.createContext<Context | null>(null);
 
 const createRenderer = (
   c: Context,
@@ -101,11 +95,3 @@ export const reactRenderer = (
     );
     return next();
   };
-
-export const useRequestContext = <E extends Env>(): Context<E> => {
-  const c = React.useContext(RequestContext);
-  if (!c) {
-    throw new Error("RequestContext is not provided.");
-  }
-  return c;
-};

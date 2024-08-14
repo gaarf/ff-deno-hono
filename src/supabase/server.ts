@@ -3,6 +3,13 @@ import { Context } from "hono";
 import { getCookie, setCookie } from "hono/cookie";
 import { type Database } from "@/supabase/schema.gen.ts";
 import { createMiddleware } from "hono/factory";
+import { type SupabaseClient } from "@supabase/supabase-js";
+
+declare module "hono" {
+  interface ContextVariableMap {
+    db: SupabaseClient<Database>;
+  }
+}
 
 export const middleware = createMiddleware((c, next) => {
   const supabase = createClient(c);

@@ -18,3 +18,23 @@ export function intrinsic<T extends Tag>(
     return createElement(String(tag), newProps, props?.children);
   });
 }
+
+export const Input = intrinsic("input", {
+  className: "border rounded bg-neutral-1 p-1",
+});
+
+export const Textarea = intrinsic("textarea", {
+  className: "border rounded bg-neutral-1 p-1",
+});
+
+export const Box = intrinsic("div", {
+  className: "flex justify-between items-center",
+});
+
+export const Link = intrinsic("a", {
+  className: "underline",
+});
+
+export const Pre = intrinsic("pre", {
+  className: "bg-neutral-3 rounded overflow-auto p-2",
+});

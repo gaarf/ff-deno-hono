@@ -5,7 +5,7 @@ import { Footer } from "@/server/layout/Footer.tsx";
 import { type RendererProps } from "@/server/layout/SsrContext.ts";
 import { hybrid } from "@/client/islands/index.ts";
 import { Providers } from "@/Providers.tsx";
-import { useRequestContext } from "@/server/renderer.ts";
+import { useRequestContext } from "@/server/context.ts";
 import { Container } from "@/server/layout/Container.tsx";
 
 export function Document({
