@@ -1,5 +1,5 @@
 import { cn, type PropsWithChildren } from "@/utils.ts";
-import { usePathname } from "@/server/layout/SsrContext.ts";
+import { usePathname } from "@/client/SsrContext.ts";
 import { Button } from "@/components/Button.tsx";
 import { Container } from "@/server/layout/Container.tsx";
 import { Switch as ThemeSwitch } from "@/theme/Switch.tsx";
@@ -34,6 +34,7 @@ export const Header = ({
           <ul className="flex gap-2 items-center">
             <NavItem href="/">Home</NavItem>
             <NavItem href="/test">Test</NavItem>
+            <NavItem href="/login">Login</NavItem>
           </ul>
         </nav>
       </Container>

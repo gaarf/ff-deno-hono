@@ -1,5 +1,5 @@
 import { isBrowser, PropsWithChildren, toast } from "@/utils.ts";
-import { useSsrContext } from "@/server/layout/SsrContext.ts";
+import { useSsrContext } from "@/client/SsrContext.ts";
 import { Box, Button } from "@/components";
 import { Json } from "@/components/Json.tsx";
 import { useState } from "@/react.shim.ts";
@@ -20,7 +20,7 @@ export const Test = ({
         {browser && (
           <>
             <Button
-              variant="warning"
+              intent="warning"
               onClick={() => toast.success("yay")}
             >
               click for toast

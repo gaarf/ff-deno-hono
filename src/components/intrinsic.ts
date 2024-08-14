@@ -19,12 +19,14 @@ export function intrinsic<T extends Tag>(
   });
 }
 
+const inputKlass = "border rounded bg-neutral-1 p-1 shadow-inner";
+
 export const Input = intrinsic("input", {
-  className: "border rounded bg-neutral-1 p-1",
+  className: inputKlass,
 });
 
 export const Textarea = intrinsic("textarea", {
-  className: "border rounded bg-neutral-1 p-1",
+  className: inputKlass,
 });
 
 export const Box = intrinsic("div", {

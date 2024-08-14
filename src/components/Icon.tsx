@@ -1,11 +1,20 @@
-import { FaBtc, FaLightbulb, FaMoon, FaSpinner } from "react-icons/fa6";
+import {
+  FaBtc,
+  FaLightbulb,
+  FaMoon,
+  FaSpinner,
+  FaTriangleExclamation,
+  FaBomb,
+  FaCircleCheck,
+  FaMessage
+} from "react-icons/fa6";
 import { cn } from "@/utils.ts";
 import { IconBaseProps, IconType } from "react-icons";
 
 function icon(
   Icon: IconType,
   injectClassName?: string,
-  injectProps?: IconBaseProps,
+  injectProps?: IconBaseProps
 ) {
   return ({ className, ...props }: { className?: string } & IconBaseProps) => (
     <span className={cn(injectClassName, className)}>
@@ -15,6 +24,11 @@ function icon(
 }
 
 export default {
+  Warning: icon(FaTriangleExclamation),
+  Danger: icon(FaBomb),
+  Success: icon(FaCircleCheck),
+  Message: icon(FaMessage),
+
   Spinner: icon(FaSpinner, "animate-spin"),
   Bitcoin: icon(FaBtc, undefined, {
     color: "rgb(249 115 22 / var(--tw-text-opacity))",

@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { httpNow } from "@/utils.ts";
+import React from "@/react.shim.ts";
 import staticAssets from "@/server/static.ts";
 import routes from "_generated/routes.ts";
 import { middleware as theme } from "@/theme/server.ts";
@@ -7,7 +7,6 @@ import { middleware as supabase } from "@/supabase/server.ts";
 import { layoutRenderer } from "@/server/middleware.tsx";
 
 const app = new Hono();
-const bootTime = httpNow();
 
 let dev = false;
 DEV: {
@@ -20,7 +19,7 @@ DEV: {
   break DEV;
 }
 
-staticAssets(app, bootTime);
+staticAssets(app);
 
 app.use(
   (c, next) => {
@@ -47,5 +46,6 @@ export default app;
 declare module "hono" {
   interface ContextVariableMap {
     dev: boolean;
+    message?: React.ReactNode;
   }
 }

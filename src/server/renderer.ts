@@ -1,6 +1,6 @@
 // adapted from https://github.com/honojs/middleware/tree/main/packages/react-renderer
 
-import { type RendererProps } from "@/server/layout/SsrContext.ts";
+import { type RendererProps } from "@/client/SsrContext.ts";
 import type { Context, ContextRenderer, MiddlewareHandler } from "hono";
 import React from "@/react.shim.ts";
 // @ts-types="npm:@types/react-dom/server"

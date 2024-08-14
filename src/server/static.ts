@@ -3,8 +3,11 @@ import { createMiddleware } from "hono/factory";
 import styles, { cssMap } from "_generated/styles.ts";
 import client, { jsMap } from "_generated/client.ts";
 import { type Env, type Hono } from "hono";
+import { httpNow } from "@/utils.ts";
 
-export default function <T extends Env>(app: Hono<T>, bootTime: string) {
+const bootTime = httpNow();
+
+export default function <T extends Env>(app: Hono<T>) {
   const cache = [
     etag(),
     createMiddleware((c, next) => {

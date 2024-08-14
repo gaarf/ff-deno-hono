@@ -1,7 +1,7 @@
 import { cn } from "@/utils.ts";
 import { intrinsic } from "@/components/intrinsic.ts";
 import Icon from "@/components/Icon.tsx";
-import { Variant } from "@/theme/index.ts";
+import { Intent } from "@/theme/index.ts";
 
 export const BaseButton = intrinsic("button", {
   className: cn(
@@ -12,7 +12,7 @@ export const BaseButton = intrinsic("button", {
 });
 
 type ButtonProps = {
-  variant?: Variant;
+  intent?: Intent;
   loading?: boolean;
   href?: string;
   anchorProps?: JSX.IntrinsicElements["a"];
@@ -20,7 +20,7 @@ type ButtonProps = {
 
 export const Button = ({
   loading,
-  variant = "neutral",
+  intent = "neutral",
   href,
   anchorProps = {},
   children,
@@ -31,10 +31,10 @@ export const Button = ({
       disabled={loading}
       {...props}
       className={cn({
-        "bg-danger-8 border-danger-9": variant === "danger",
-        "bg-warning-8 border-warning-9": variant === "warning",
-        "bg-success-10 border-success-10": variant === "success",
-        "bg-neutral-2": variant === "neutral",
+        "bg-danger-8 border-danger-9": intent === "danger",
+        "bg-warning-8 border-warning-9": intent === "warning",
+        "bg-success-10 border-success-10": intent === "success",
+        "bg-neutral-2": intent === "neutral",
       }, props.className)}
     >
       {loading && (

@@ -2,7 +2,7 @@ import { isoNow, type PropsWithChildren } from "@/utils.ts";
 import { Favicon } from "@/server/layout/Favicon.tsx";
 import { ClientRun } from "@/server/Hybrid.tsx";
 import { Footer } from "@/server/layout/Footer.tsx";
-import { type RendererProps } from "@/server/layout/SsrContext.ts";
+import { type RendererProps } from "@/client/SsrContext.ts";
 import { hybrid } from "@/client/islands/index.ts";
 import { Providers } from "@/Providers.tsx";
 import { useRequestContext } from "@/server/context.ts";

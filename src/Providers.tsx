@@ -1,4 +1,4 @@
-import { SsrContext, SsrContextValue } from "@/server/layout/SsrContext.ts";
+import { SsrContext, SsrContextValue } from "@/client/SsrContext.ts";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "@/react.shim.ts";
 

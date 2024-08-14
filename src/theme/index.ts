@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "@/react.shim.ts";
 import { isBrowser } from "@/utils.ts";
 import { useRequestContext } from "@/server/context.ts";
 
-export type Variant = "danger" | "warning" | "success" | "neutral";
+export type Intent = "danger" | "warning" | "success" | "neutral";
 
 export const validThemes = ["dark", "light"] as const;
 export type Theme = typeof validThemes[number];
