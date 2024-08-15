@@ -3,7 +3,13 @@ import { cn } from "@/utils.ts";
 import { useRequestContext } from "@/server/context.ts";
 import { type Intent } from "@/theme/index.ts";
 import { type Context } from "hono";
-import { PropsWithChildren } from "@/react.shim.ts";
+import React, { type PropsWithChildren } from "@/react.shim.ts";
+
+declare module "hono" {
+  interface ContextVariableMap {
+    message?: React.ReactNode;
+  }
+}
 
 export const setMessage = (c: Context, message: string, intent?: Intent) => {
   c.set("message", <Message intent={intent}>{message}</Message>);

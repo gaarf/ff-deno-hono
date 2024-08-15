@@ -34,7 +34,7 @@ export const Header = ({
           <ul className="flex gap-2 items-center">
             <NavItem href="/">Home</NavItem>
             <NavItem href="/test">Test</NavItem>
-            <NavItem href="/login">Login</NavItem>
+            <NavItem href="/auth">Login</NavItem>
           </ul>
         </nav>
       </Container>

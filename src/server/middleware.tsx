@@ -3,7 +3,6 @@ import { mountableName } from "@/client/islands/index.ts";
 import { ClientRun } from "@/server/Hybrid.tsx";
 import { Document } from "@/server/layout/Document.tsx";
 import type { ComponentType, PropsWithChildren } from "@/utils.ts";
-import { createMiddleware } from "hono/factory";
 
 export const layoutRenderer = reactRenderer(
   ({ c: _c, ...props }) => <Document {...props} />,
@@ -45,13 +44,3 @@ export function clientMount<T>(
   return nestedLayout(Mount);
 }
 
-export const requireAuth = createMiddleware(async (c, next) => {
-  const {
-    data: { user },
-  } = await c.get("db").auth.getUser();
-  c.set("user", user);
-  if (!user) {
-    return c.redirect("/login");
-  }
-  await next();
-});

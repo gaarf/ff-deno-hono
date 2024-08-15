@@ -40,3 +40,7 @@ export const Link = intrinsic("a", {
 export const Pre = intrinsic("pre", {
   className: "bg-neutral-3 rounded overflow-auto p-2",
 });
+
+export const Code = intrinsic("code", {
+  className: "border border-neutral-5 font-mono text-xs rounded p-1 break-all",
+});
