@@ -43,4 +43,3 @@ export function clientMount<T>(
   }
   return nestedLayout(Mount);
 }
-

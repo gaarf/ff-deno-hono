@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { Button, LabeledInput, Code } from "@/components";
+import { Button, Code, LabeledInput } from "@/components";
 import { setMessage, useMessage } from "@/server/layout/Message.tsx";
 import { requireAuth } from "@/supabase/server.ts";
 import { useRequestContext } from "@/server/context.ts";
@@ -23,11 +23,13 @@ const Logout = () => {
   const c = useRequestContext();
   return (
     <section>
-      <p className="mb-4">Hello user <Code>{c.get("userId")}</Code></p>
+      <p className="mb-4">
+        Hello user <Code>{c.get("userId")}</Code>
+      </p>
       <Button href="/auth/logout">Logout</Button>
     </section>
   );
-}
+};
 
 export default new Hono()
   .all("/", (c) => c.redirect("/auth/login"))
@@ -40,8 +42,7 @@ export default new Hono()
       return next();
     }
 
-    const db = c.get("db");
-    const { error } = await db.auth.signInWithPassword({
+    const { error } = await c.get("db").auth.signInWithPassword({
       email,
       password,
     });
@@ -65,6 +66,6 @@ export default new Hono()
   .get("/protected", requireAuth, (c) => c.render(<Logout />))
   .all("/login", (c) => c.render(<Login />, { title: "Login" }))
   .all("/logout", async (c) => {
-    await c.get('db').auth.signOut();
+    await c.get("db").auth.signOut();
     return c.redirect("/");
-  })
+  });

@@ -45,7 +45,7 @@ export function createClient(c: Context) {
     setAll(cookiesToSet) {
       try {
         cookiesToSet.forEach(({ name, value, options }) => {
-          setCookie(c, name, value, {...options, maxAge: 60 * 60 });
+          setCookie(c, name, value, { ...options, maxAge: 60 * 60 });
         });
       } catch (e) {
         console.error(e);
@@ -58,6 +58,6 @@ export function createClient(c: Context) {
     Deno.env.get("SUPABASE_ANON_KEY")!,
     {
       cookies,
-    }
+    },
   );
 }
