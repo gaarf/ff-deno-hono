@@ -34,7 +34,11 @@ type ComponentProps =
 declare module "hono" {
   interface ContextRenderer {
     (
-      content: string | Promise<string> | React.ReactNode,
+      content:
+        | string
+        | Promise<string>
+        | React.ReactNode
+        | Promise<React.ReactNode>,
       props?: RendererProps,
     ): Response | Promise<Response>;
   }

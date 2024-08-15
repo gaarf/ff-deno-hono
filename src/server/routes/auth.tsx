@@ -1,8 +1,6 @@
 import { Hono } from "hono";
-import { Button, Code, LabeledInput } from "@/components";
+import { Button, LabeledInput } from "@/components";
 import { setMessage, useMessage } from "@/server/layout/Message.tsx";
-import { requireAuth } from "@/supabase/server.ts";
-import { useRequestContext } from "@/server/context.ts";
 
 const Login = () => {
   const message = useMessage();
@@ -16,18 +14,6 @@ const Login = () => {
       </fieldset>
       <Button type="submit">Submit</Button>
     </form>
-  );
-};
-
-const Logout = () => {
-  const c = useRequestContext();
-  return (
-    <section>
-      <p className="mb-4">
-        Hello user <Code>{c.get("userId")}</Code>
-      </p>
-      <Button href="/auth/logout">Logout</Button>
-    </section>
   );
 };
 
@@ -52,18 +38,16 @@ export default new Hono()
       return next();
     }
 
-    return c.redirect("/auth/protected");
+    return c.redirect("/secret");
   })
   .get("/login", async (c, next) => {
     const { data } = await c.get("db").auth.getUser();
-    console.log(data);
     if (data.user) {
       // already logged in
-      return c.redirect("/auth/protected");
+      return c.redirect("/secret");
     }
     return next();
   })
-  .get("/protected", requireAuth, (c) => c.render(<Logout />))
   .all("/login", (c) => c.render(<Login />, { title: "Login" }))
   .all("/logout", async (c) => {
     await c.get("db").auth.signOut();
