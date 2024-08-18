@@ -19,7 +19,7 @@ export function useTheme(): [Theme | undefined, () => void] {
   const [theme, setThemeState] = useState(getTheme());
 
   useEffect(() => {
-    if (theme) {
+    if (theme && isBrowser()) {
       console.log("theme", theme);
       document.cookie = `theme=${theme};max-age=31536000`;
     }
