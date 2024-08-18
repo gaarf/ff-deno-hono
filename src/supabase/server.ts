@@ -4,7 +4,6 @@ import { getCookie, setCookie } from "hono/cookie";
 import { type Database } from "@/supabase/schema.gen.ts";
 import { createMiddleware } from "hono/factory";
 import { type SupabaseClient } from "@supabase/supabase-js";
-import { useRequestContext } from "@/server/context.ts";
 
 declare module "hono" {
   interface ContextVariableMap {
@@ -13,26 +12,25 @@ declare module "hono" {
   }
 }
 
-export const middleware = createMiddleware((c, next) => {
+export const middleware = () => createMiddleware((c, next) => {
   const supabase = createClient(c);
   c.set("db", supabase);
   return next();
 });
 
-export const requireAuth = createMiddleware(async (c, next) => {
-  const {
-    data: { user },
-  } = await c.get("db").auth.getUser();
+export async function userPromise(c: Context) {
+  const { data } = await c.get('db').auth.getUser();
+  return data.user;
+}
+
+export const requireAuth = () => createMiddleware(async (c, next) => {
+  const user = await userPromise(c);
   if (!user) {
-    return c.redirect("/login");
+    return c.redirect("/auth/login");
   }
   c.set("userId", user.id);
   await next();
 });
-
-export function useSupabase() {
-  return useRequestContext().get("db");
-}
 
 export function createClient(c: Context) {
   const cookies: CookieMethodsServer = {

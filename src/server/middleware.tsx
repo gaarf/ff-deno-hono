@@ -4,7 +4,7 @@ import { ClientRun } from "@/server/Hybrid.tsx";
 import { Document } from "@/server/layout/Document.tsx";
 import type { ComponentType, PropsWithChildren } from "@/utils.ts";
 
-export const layoutRenderer = reactRenderer(
+export const layoutRenderer = () => reactRenderer(
   ({ c: _c, ...props }) => <Document {...props} />,
   {
     docType: true,

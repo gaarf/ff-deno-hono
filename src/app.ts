@@ -25,9 +25,9 @@ app.use(
     c.set("dev", dev);
     return next();
   },
-  theme,
-  supabase,
-  layoutRenderer,
+  theme(),
+  supabase(),
+  layoutRenderer(),
 );
 
 Object.entries(routes).forEach(([path, route]) => {

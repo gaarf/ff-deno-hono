@@ -6,6 +6,7 @@
       "npm:@supabase/supabase-js@^2.45.1": "npm:@supabase/supabase-js@2.45.1",
       "npm:@tanstack/react-query@^5.51.21": "npm:@tanstack/react-query@5.51.21_react@18.3.1",
       "npm:@types/luxon": "npm:@types/luxon@3.4.2",
+      "npm:@types/node": "npm:@types/node@18.16.19",
       "npm:@types/react": "npm:@types/react@18.3.3",
       "npm:@types/react-dom": "npm:@types/react-dom@18.3.0",
       "npm:@types/react@^18.3.3": "npm:@types/react@18.3.3",
