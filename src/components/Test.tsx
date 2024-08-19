@@ -1,4 +1,4 @@
-import { isBrowser, PropsWithChildren, toast } from "@/utils.ts";
+import { isBrowser, PropsWithChildren } from "@/utils.ts";
 import { useSsrContext } from "@/client/SsrContext.ts";
 import { Box, Button } from "@/components";
 import { Json } from "@/components/Json.tsx";
@@ -19,12 +19,12 @@ export const Test = ({
         <span className="flex-1">{children}</span>
         {browser && (
           <>
-            <Button
+            {/* <Button
               intent="warning"
               onClick={() => toast.success("yay")}
             >
               click for toast
-            </Button>
+            </Button> */}
             <Button
               loading={loading}
               onClick={() => setLoading(true)}

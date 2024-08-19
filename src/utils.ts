@@ -13,4 +13,4 @@ export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
 
 export * from "@/client/browser.ts";
 export { default as clientOnly } from "@/client/only.tsx";
-export { toast } from "react-hot-toast";
+// export { toast } from "react-hot-toast";
