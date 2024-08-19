@@ -9,8 +9,8 @@ const Login = () => {
     <form method="post" className="flex flex-col items-start gap-4">
       {message}
       <fieldset className="flex flex-col gap-2">
-        <LabeledInput label="Email" name="email" />
-        <LabeledInput label="Password" name="password" type="password" />
+        <LabeledInput label="Email" name="email" autoComplete="username" />
+        <LabeledInput label="Password" name="password" type="password" autoComplete="current-password" />
       </fieldset>
       <Button type="submit">Submit</Button>
     </form>
