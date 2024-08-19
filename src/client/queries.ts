@@ -1,16 +1,16 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { type ApiBtc } from "@/server/routes/api.tsx";
 export { useQuery, useQueryClient };
 
-function q<T>(url: RequestInfo) {
-  return ({
-    queryKey: [url.toString()],
+function j<T>(url: string) {
+  return {
+    queryKey: [url],
     queryFn: () => fetch(url).then<T>((res) => res.json()),
-  });
+  };
 }
 
-export const useBtcPrice = (enabled = true) => {
-  return useQuery({
-    ...q<{ data: unknown; renderedAt: string }>("/api/btc"),
-    enabled,
+export const useBtcPrice = () =>
+  useQuery({
+    ...j<ApiBtc>("/api/btc"),
+    enabled: false,
   });
-};

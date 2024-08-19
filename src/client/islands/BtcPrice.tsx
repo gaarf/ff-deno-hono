@@ -1,20 +1,29 @@
-import { Button, Json } from "@/components";
+import { Button } from "@/components";
 import { useBtcPrice } from "@/client/queries.ts";
 import { clientOnly } from "@/utils.ts";
 import Icon from "@/components/Icon.tsx";
 
 export const BtcPrice = clientOnly(
   () => {
-    const { data, refetch, isFetching } = useBtcPrice(false);
-    if (!data) {
-      return (
+    const { data, refetch, isFetching } = useBtcPrice();
+
+    return (
+      <>
         <Button onClick={() => refetch()} loading={isFetching}>
-          Fetch <Icon.Bitcoin />
+          <Icon.Bitcoin />
+          Fetch price
         </Button>
-      );
-    } else {
-      return <Json value={data} className="whitespace-pre-wrap" />;
-    }
+        {data && (
+          <p className="text-5xl">
+            {data.bpi.USD.rate_float.toLocaleString(undefined, {
+              style: "currency",
+              currency: "USD",
+              maximumFractionDigits: 0,
+            })}
+          </p>
+        )}
+      </>
+    );
   },
   () => <Button disabled>JS required</Button>,
 );
