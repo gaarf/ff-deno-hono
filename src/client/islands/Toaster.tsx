@@ -1,16 +1,14 @@
-// import { Toaster as ReactHotToaster } from "react-hot-toast";
+import { ToastContainer } from "react-toastify";
 import clientOnly from "@/client/only.tsx";
+import { useTheme } from "@/theme/index.ts";
 
-export const Toaster = clientOnly(() => (
-  <></>
-  // <ReactHotToaster
-  //   position="bottom-right"
-  //   toastOptions={{
-  //     className: "border",
-  //     style: {
-  //       background: "rgb(var(--color-default-bg))",
-  //       color: "rgb(var(--color-default-text))",
-  //     },
-  //   }}
-  // />
-));
+export const Toaster = clientOnly(() => {
+  const [theme] = useTheme(true);
+
+  return (
+    <ToastContainer
+      position="bottom-right"
+      theme={theme}
+    />
+  )
+});

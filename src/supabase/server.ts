@@ -39,6 +39,14 @@ declare global {
   const SUPABASE_ANON_KEY: string;
 }
 
+DEV: {
+  /* @ts-expect-error */
+  globalThis.SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
+  /* @ts-expect-error */
+  globalThis.SUPABASE_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY")!;
+  break DEV;
+}
+
 export function createClient(c: Context) {
   const cookies: CookieMethodsServer = {
     getAll() {

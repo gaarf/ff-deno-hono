@@ -34,7 +34,6 @@ export function Document({
           <script defer src="/client.js" />
         </head>
         <body className="min-h-svh flex flex-col text-default-text bg-default-bg">
-          <hybrid.Toaster />
           <hybrid.Header fixed />
           <main className="flex-1 w-full flex justify-center items-start">
             <Container className="relative my-3 block">{children}</Container>
@@ -43,6 +42,7 @@ export function Document({
             {dev && "[DEV]"} SSR: <time dateTime={now}>{now}</time>
           </Footer>
           {dev && <ClientRun name="hmr" />}
+          <hybrid.Toaster />
         </body>
       </html>
     </Providers>

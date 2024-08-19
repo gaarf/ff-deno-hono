@@ -1,11 +1,11 @@
-import { useCallback, useEffect, useState } from "@/react.shim.ts";
+import { useCallback, useEffect, useState, useMemo } from "@/react.shim.ts";
 import { isBrowser } from "@/utils.ts";
 import { useRequestContext } from "@/server/context.ts";
 
 export type Intent = "danger" | "warning" | "success" | "neutral";
 
 export const validThemes = ["dark", "light"] as const;
-export type Theme = typeof validThemes[number];
+export type Theme = (typeof validThemes)[number];
 
 export function getTheme() {
   if (isBrowser()) {
@@ -15,21 +15,36 @@ export function getTheme() {
   }
 }
 
-export function useTheme(): [Theme | undefined, () => void] {
+export function useTheme(observer = false): [Theme | undefined, () => void] {
   const [theme, setThemeState] = useState(getTheme());
+
+  const nextTheme = useMemo(
+    () => (theme === "dark" ? "light" : "dark"),
+    [theme]
+  );
 
   useEffect(() => {
     if (theme && isBrowser()) {
-      console.log("theme", theme);
-      document.cookie = `theme=${theme};max-age=31536000`;
+      if (observer) {
+        const o = new MutationObserver(() => {
+          o.disconnect();
+          setThemeState(nextTheme);
+        });
+        o.observe(document.documentElement, { attributeFilter: ["data-theme"] });
+  
+        return () => o.disconnect();  
+      }
+      else {
+        console.log("theme", theme);
+        document.cookie = `theme=${theme};max-age=31536000`;
+      }
     }
-  }, [theme]);
+  }, [theme, nextTheme]);
 
   const toggleTheme = useCallback(() => {
-    const nextTheme = theme === "dark" ? "light" : "dark";
-    document.documentElement.dataset.theme = nextTheme;
     setThemeState(nextTheme);
-  }, [theme]);
+    document.documentElement.dataset.theme = nextTheme;
+  }, [nextTheme]);
 
   return [theme, toggleTheme];
 }
