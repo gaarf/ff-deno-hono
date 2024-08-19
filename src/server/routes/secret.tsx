@@ -12,6 +12,6 @@ export default new Hono().use(requireAuth()).get("/", async (c) => {
       </p>
       <Button href="/auth/logout">Logout</Button>
       <Json value={user} />
-    </section>
+    </section>,
   );
 });

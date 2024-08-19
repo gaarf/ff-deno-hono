@@ -10,7 +10,12 @@ const Login = () => {
       {message}
       <fieldset className="flex flex-col gap-2">
         <LabeledInput label="Email" name="email" autoComplete="username" />
-        <LabeledInput label="Password" name="password" type="password" autoComplete="current-password" />
+        <LabeledInput
+          label="Password"
+          name="password"
+          type="password"
+          autoComplete="current-password"
+        />
       </fieldset>
       <Button type="submit">Submit</Button>
     </form>

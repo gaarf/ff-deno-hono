@@ -12,25 +12,27 @@ declare module "hono" {
   }
 }
 
-export const middleware = () => createMiddleware((c, next) => {
-  const supabase = createClient(c);
-  c.set("db", supabase);
-  return next();
-});
+export const middleware = () =>
+  createMiddleware((c, next) => {
+    const supabase = createClient(c);
+    c.set("db", supabase);
+    return next();
+  });
 
 export async function userPromise(c: Context) {
-  const { data } = await c.get('db').auth.getUser();
+  const { data } = await c.get("db").auth.getUser();
   return data.user;
 }
 
-export const requireAuth = () => createMiddleware(async (c, next) => {
-  const user = await userPromise(c);
-  if (!user) {
-    return c.redirect("/auth/login");
-  }
-  c.set("userId", user.id);
-  await next();
-});
+export const requireAuth = () =>
+  createMiddleware(async (c, next) => {
+    const user = await userPromise(c);
+    if (!user) {
+      return c.redirect("/auth/login");
+    }
+    c.set("userId", user.id);
+    await next();
+  });
 
 export function createClient(c: Context) {
   const cookies: CookieMethodsServer = {

@@ -25,4 +25,7 @@ const Landing = () => {
   );
 };
 
-export default new Hono().all("/", (c) => c.render(<Landing />, { title: 'FFFF', icon: '☝️' }));
+export default new Hono().all(
+  "/",
+  (c) => c.render(<Landing />, { title: "FFFF", icon: "☝️" }),
+);
