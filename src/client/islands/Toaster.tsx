@@ -10,5 +10,5 @@ export const Toaster = clientOnly(() => {
       position="bottom-right"
       theme={theme}
     />
-  )
+  );
 });

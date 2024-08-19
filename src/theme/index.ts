@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, useMemo } from "@/react.shim.ts";
+import { useCallback, useEffect, useMemo, useState } from "@/react.shim.ts";
 import { isBrowser } from "@/utils.ts";
 import { useRequestContext } from "@/server/context.ts";
 
@@ -20,7 +20,7 @@ export function useTheme(observer = false): [Theme | undefined, () => void] {
 
   const nextTheme = useMemo(
     () => (theme === "dark" ? "light" : "dark"),
-    [theme]
+    [theme],
   );
 
   useEffect(() => {
@@ -30,11 +30,12 @@ export function useTheme(observer = false): [Theme | undefined, () => void] {
           o.disconnect();
           setThemeState(nextTheme);
         });
-        o.observe(document.documentElement, { attributeFilter: ["data-theme"] });
-  
-        return () => o.disconnect();  
-      }
-      else {
+        o.observe(document.documentElement, {
+          attributeFilter: ["data-theme"],
+        });
+
+        return () => o.disconnect();
+      } else {
         console.log("theme", theme);
         document.cookie = `theme=${theme};max-age=31536000`;
       }
