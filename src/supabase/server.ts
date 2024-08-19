@@ -34,6 +34,11 @@ export const requireAuth = () =>
     await next();
   });
 
+declare global {
+  const SUPABASE_URL: string;
+  const SUPABASE_ANON_KEY: string;
+}
+
 export function createClient(c: Context) {
   const cookies: CookieMethodsServer = {
     getAll() {
@@ -53,11 +58,7 @@ export function createClient(c: Context) {
     },
   };
 
-  return createServerClient<Database>(
-    Deno.env.get("SUPABASE_URL")!,
-    Deno.env.get("SUPABASE_ANON_KEY")!,
-    {
-      cookies,
-    },
-  );
+  return createServerClient<Database>(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    cookies,
+  });
 }

@@ -3,6 +3,11 @@ import { debounce } from "std/async/debounce.ts";
 
 let hmrSockets: WebSocket[] = [];
 
+/* @ts-expect-error */
+globalThis.SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
+/* @ts-expect-error */
+globalThis.SUPABASE_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY")!;
+
 Deno.serve((request) => {
   if (request.headers.get("upgrade") === "websocket") {
     const { socket, response } = Deno.upgradeWebSocket(request);
