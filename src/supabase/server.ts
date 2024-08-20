@@ -3,24 +3,30 @@ import { Context } from "hono";
 import { getCookie, setCookie } from "hono/cookie";
 import { type Database } from "@/supabase/schema.gen.ts";
 import { createMiddleware } from "hono/factory";
-import { type SupabaseClient } from "@supabase/supabase-js";
+import { User, type SupabaseClient } from "@supabase/supabase-js";
 
 declare module "hono" {
   interface ContextVariableMap {
     db: SupabaseClient<Database>;
-    userId?: string;
+    user: User | null;
   }
 }
 
 export const middleware = () =>
-  createMiddleware((c, next) => {
+  createMiddleware(async (c, next) => {
     const supabase = createClient(c);
     c.set("db", supabase);
+    await userPromise(c);
     return next();
   });
 
 export async function userPromise(c: Context) {
+  const user = c.get("user");
+  if (user) {
+    return user;
+  }
   const { data } = await c.get("db").auth.getUser();
+  c.set("user", data.user);
   return data.user;
 }
 
@@ -30,7 +36,6 @@ export const requireAuth = () =>
     if (!user) {
       return c.redirect("/auth/login");
     }
-    c.set("userId", user.id);
     await next();
   });
 
