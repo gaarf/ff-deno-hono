@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { type ApiBtc } from "@/server/routes/api.tsx";
+import { type ApiBtc } from "@/routes/api.tsx";
 export { useQuery, useQueryClient };
 
 function j<T>(url: string) {

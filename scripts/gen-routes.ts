@@ -4,7 +4,7 @@ const TARGET = ".generated/routes.ts";
 
 async function parse(dir = "routes", path = "/") {
   const output: Record<string, string> = {};
-  for await (const route of Deno.readDir(`src/server/${dir}`)) {
+  for await (const route of Deno.readDir(`src/${dir}`)) {
     const { name, isDirectory } = route;
     const fname = basename(name, ".tsx");
     const routePath = join(path, fname.toLowerCase());
@@ -27,7 +27,7 @@ Deno.writeTextFileSync(
     routes
       .map(
         ([, file], index) =>
-          `import f${index} from "${join("../src/server/", file)}";`,
+          `import f${index} from "${join("../src/", file)}";`,
       )
       .join("\n"),
     `\n\nexport default {\n`,
