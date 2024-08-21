@@ -22,8 +22,8 @@ await esbuild.build({
   jsx: "automatic",
   jsxImportSource: "react",
   define: {
-    "PUBLIC_SUPABASE_URL": `"${Deno.env.get("SUPABASE_URL")}"`,
-    "PUBLIC_SUPABASE_ANON_KEY": `"${Deno.env.get("SUPABASE_ANON_KEY")}"`,
+    "SUPABASE_URL": `"${Deno.env.get("SUPABASE_URL")}"`,
+    "SUPABASE_ANON_KEY": `"${Deno.env.get("SUPABASE_ANON_KEY")}"`,
   },
   ...(prod && {
     dropLabels: ["DEV"],

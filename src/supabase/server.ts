@@ -4,6 +4,10 @@ import { getCookie, setCookie } from "hono/cookie";
 import { type Database } from "@/supabase/schema.gen.ts";
 import { createMiddleware } from "hono/factory";
 import { type AuthUser, type SupabaseClient } from "@supabase/supabase-js";
+import {
+  PUBLIC_SUPABASE_URL,
+  PUBLIC_SUPABASE_ANON_KEY,
+} from "@/supabase/env.ts";
 
 declare module "hono" {
   interface ContextVariableMap {
@@ -39,19 +43,6 @@ export const requireAuth = () =>
     await next();
   });
 
-declare global {
-  const SUPABASE_URL: string;
-  const SUPABASE_ANON_KEY: string;
-}
-
-DEV: {
-  /* @ts-expect-error */
-  globalThis.SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
-  /* @ts-expect-error */
-  globalThis.SUPABASE_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY")!;
-  break DEV;
-}
-
 export function createClient(c: Context) {
   const cookies: CookieMethodsServer = {
     getAll() {
@@ -71,7 +62,11 @@ export function createClient(c: Context) {
     },
   };
 
-  return createServerClient<Database>(SUPABASE_URL, SUPABASE_ANON_KEY, {
-    cookies,
-  });
+  return createServerClient<Database>(
+    PUBLIC_SUPABASE_URL,
+    PUBLIC_SUPABASE_ANON_KEY,
+    {
+      cookies,
+    }
+  );
 }

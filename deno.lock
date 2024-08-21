@@ -17,6 +17,7 @@
       "npm:luxon@^3.4.4": "npm:luxon@3.4.4",
       "npm:postcss": "npm:postcss@8.4.40",
       "npm:postcss-import": "npm:postcss-import@16.1.0_postcss@8.4.40",
+      "npm:postcss-import-url": "npm:postcss-import-url@7.2.0_postcss@8.4.40",
       "npm:react-dom@^18.3.1": "npm:react-dom@18.3.1_react@18.3.1",
       "npm:react-icons@^5.2.1": "npm:react-icons@5.2.1_react@18.3.1",
       "npm:react-toastify@^10.0.5": "npm:react-toastify@10.0.5_react@18.3.1_react-dom@18.3.1__react@18.3.1",
@@ -577,6 +578,10 @@
         "integrity": "sha512-r26WwwbKD3BAYdfB294knNnegNda7VfV1tVn66D9Kvl9WQTdrR+5eKdoeaQNHQcC3Gr0KBikzAtjd6VsRGVSaw==",
         "dependencies": {}
       },
+      "http-https@1.0.0": {
+        "integrity": "sha512-o0PWwVCSp3O0wS6FvNr6xfBCHgt0m1tvPLFOCc2iFDKTRAXhB7m8klDf7ErowFH8POa6dVdGatKU5I1YYwzUyg==",
+        "dependencies": {}
+      },
       "is-binary-path@2.1.0": {
         "integrity": "sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==",
         "dependencies": {
@@ -605,6 +610,10 @@
       },
       "is-number@7.0.0": {
         "integrity": "sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==",
+        "dependencies": {}
+      },
+      "is-url@1.2.4": {
+        "integrity": "sha512-ITvGim8FhRiYe4IQ5uHSkj7pVaPDrCTkNd3yq3cV7iZAcJdHTUMPMEHcqSOy9xZ9qFenQCvi+2wjH9a1nXqHww==",
         "dependencies": {}
       },
       "isexe@2.0.0": {
@@ -638,8 +647,16 @@
         "integrity": "sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==",
         "dependencies": {}
       },
+      "lodash.assign@4.2.0": {
+        "integrity": "sha512-hFuH8TY+Yji7Eja3mGiuAxBqLagejScbG8GbG0j6o9vzn0YL14My+ktnqtZgFTosKymC9/44wP6s7xyuLfnClw==",
+        "dependencies": {}
+      },
       "lodash.memoize@4.1.2": {
         "integrity": "sha512-t7j+NzmgnQzTAYXcsHYLgimltOV1MXHtlOWf6GjL9Kj8GK5FInw5JotxvbOs+IvV1/Dzo04/fCGfLVs7aXb4Ag==",
+        "dependencies": {}
+      },
+      "lodash.trim@4.5.1": {
+        "integrity": "sha512-nJAlRl/K+eiOehWKDzoBVrSMhK0K3A3YQsUNXHQa5yIrKBAhsZgSu3KoAFoFT+mEgiyBHddZ0pRk1ITpIp90Wg==",
         "dependencies": {}
       },
       "lodash.uniq@4.5.0": {
@@ -811,6 +828,17 @@
         "integrity": "sha512-GmNAzx88u3k2+sBTZrJSDauR0ccpE24omTQCVmaTTZFz1du6AasspjaUPMJ2ud4RslZpoFKyf+6MSPETLojc6w==",
         "dependencies": {
           "postcss": "postcss@8.4.40"
+        }
+      },
+      "postcss-import-url@7.2.0_postcss@8.4.40": {
+        "integrity": "sha512-El61K/5+Rv753G9mBiHyQlOIN2mBfN0YHPMXLlgIo/m1+tPDLM32wd97WoUjc8FHUnC6EyyfVA8RDuKoyuVl0Q==",
+        "dependencies": {
+          "http-https": "http-https@1.0.0",
+          "is-url": "is-url@1.2.4",
+          "lodash.assign": "lodash.assign@4.2.0",
+          "lodash.trim": "lodash.trim@4.5.1",
+          "postcss": "postcss@8.4.40",
+          "resolve-relative-url": "resolve-relative-url@1.0.0"
         }
       },
       "postcss-import@15.1.0_postcss@8.4.40": {
@@ -1024,6 +1052,14 @@
           "source-map-js": "source-map-js@1.2.0"
         }
       },
+      "punycode@1.3.2": {
+        "integrity": "sha512-RofWgt/7fL5wP1Y7fxE7/EmTLzQVnB0ycyibJ0OOHIlJqTNzglYFxVwETOcIoJqJmpDXJ9xImDv+Fq34F/d4Dw==",
+        "dependencies": {}
+      },
+      "querystring@0.2.0": {
+        "integrity": "sha512-X/xY82scca2tau62i9mDyU9K+I+djTMUsvwf7xnUX5GLvVzgJybOJf4Y6o9Zx3oJK/LSXg5tTZBjwzqVPaPO2g==",
+        "dependencies": {}
+      },
       "queue-microtask@1.2.3": {
         "integrity": "sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==",
         "dependencies": {}
@@ -1066,6 +1102,12 @@
         "integrity": "sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==",
         "dependencies": {
           "picomatch": "picomatch@2.3.1"
+        }
+      },
+      "resolve-relative-url@1.0.0": {
+        "integrity": "sha512-zpcelQBAmrwckiyRmym9os1goECU3EzuTU/UrYkGzXV0i14n8FkyGUvwkOYA5klqVLq1Hz/EiFZMS7bZQdd+EA==",
+        "dependencies": {
+          "url": "url@0.10.3"
         }
       },
       "resolve@1.22.8": {
@@ -1237,6 +1279,13 @@
           "browserslist": "browserslist@4.23.3",
           "escalade": "escalade@3.1.2",
           "picocolors": "picocolors@1.0.1"
+        }
+      },
+      "url@0.10.3": {
+        "integrity": "sha512-hzSUW2q06EqL1gKM/a+obYHLIO6ct2hwPuviqTTOcfFVc61UbfJ2Q32+uGL/HCPxKqrdGB5QUwIe7UqlDgwsOQ==",
+        "dependencies": {
+          "punycode": "punycode@1.3.2",
+          "querystring": "querystring@0.2.0"
         }
       },
       "util-deprecate@1.0.2": {
@@ -1640,6 +1689,7 @@
       "npm:cssnano@^7.0.4",
       "npm:hono@4.5.3",
       "npm:luxon@^3.4.4",
+      "npm:postcss-import-url@^7.2.0",
       "npm:postcss-import@^16.1.0",
       "npm:postcss@^8.4.39",
       "npm:react-dom@^18.3.1",
