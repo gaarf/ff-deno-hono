@@ -5,7 +5,7 @@ import { Intent } from "@/theme/index.ts";
 
 export const BaseButton = intrinsic("button", {
   className: cn(
-    "relative active:translate-y-px hover:scale-105",
+    "relative active:translate-y-px hover:scale-105 flex items-center gap-2",
     "border text-neutral-12 font-bold rounded-lg py-1 px-2 select-none",
     "disabled:border-dashed disabled:text-opacity-50 disabled:pointer-events-none",
   ),
@@ -45,7 +45,7 @@ export const Button = ({
       <span
         className={cn({
           invisible: loading,
-          "flex items-center justify-center gap-2": true,
+          "flex flex-1 items-center justify-center gap-2": true,
         })}
       >
         {children}

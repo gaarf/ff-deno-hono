@@ -16,13 +16,15 @@ export function Document({
   const c = useRequestContext();
   const dev = c.get("dev");
   const theme = c.get("theme");
+  const user = c.get("user");
   const { title, icon = "🌐" } = props;
 
   return (
     <Providers
       ssr={{
-        dev,
         url: new URL(c.req.url),
+        user,
+        dev,
         ...props,
       }}
     >
@@ -32,10 +34,15 @@ export function Document({
           <Favicon icon={icon} />
           <link rel="stylesheet" href="/styles.css" />
           <script defer src="/client.js" />
+          <script
+            id="user"
+            type="application/json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(user) }}
+          />
         </head>
         <body className="min-h-svh flex flex-col text-default-text bg-default-bg">
           <hybrid.Header fixed />
-          <main className="flex-1 w-full flex justify-center items-start">
+          <main className="flex-1 w-full flex justify-center">
             <Container className="relative my-3 block">{children}</Container>
           </main>
           <Footer>

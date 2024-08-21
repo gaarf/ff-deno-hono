@@ -17,7 +17,7 @@ export const Footer = ({ children, fixed }: FooterProps) => (
   >
     <Container className="text-xs leading-loose">
       <span className="text-ellipsis overflow-hidden">{children}</span>
-      <span className="text-right">&copy; Fleek Labs</span>
+      <span className="text-right">github.com/gaarf/ff-deno-hono</span>
     </Container>
   </footer>
 );

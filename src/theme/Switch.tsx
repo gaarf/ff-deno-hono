@@ -7,7 +7,7 @@ export const Switch = () => {
 
   return (
     <BaseButton
-      className="border-none"
+      className="self-stretch border-0 shadow-inner"
       onClick={toggleTheme}
     >
       {theme === "dark" ? <Icon.ThemeLight /> : <Icon.ThemeDark />}

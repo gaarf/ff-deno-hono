@@ -1,31 +1,22 @@
 import { Hono } from "hono";
 import { DateTime, httpNow } from "@/utils.ts";
-import { LoremIpsum } from "@/client/islands/LoremIpsum.tsx";
+import { hybrid } from "@/client/islands/index.ts";
 
 const bootTime = httpNow();
 
-const Landing = () => {
+export default new Hono().all("/", (c) => {
   const diff = DateTime.fromHTTP(bootTime).diffNow();
+  return c.render(
+    <>
+      <hybrid.Landing />
 
-  return (
-    <div className="flex flex-col gap-5">
-      <div className="flex items-center justify-between">
-        <h1 className="text-5xl">Welcome!</h1>
-
-        {diff.isValid && (
-          <aside className="font-mono text-right">
-            server uptime:{" "}
-            <time dateTime={diff.toISO()}>{diff.negate().toHuman()}</time>
-          </aside>
-        )}
-      </div>
-
-      <LoremIpsum count={2} />
-    </div>
+      {diff.isValid && (
+        <aside className="mt-4 font-mono text-xs">
+          server uptime:{" "}
+          <time dateTime={diff.toISO()}>{diff.negate().toHuman()}</time>
+        </aside>
+      )}
+    </>,
+    { title: "Bliki", icon: "☝️" }
   );
-};
-
-export default new Hono().all(
-  "/",
-  (c) => c.render(<Landing />, { title: "FFFF", icon: "☝️" }),
-);
+});

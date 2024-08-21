@@ -14,7 +14,7 @@ export const Providers = ({
     </QueryClientProvider>
   );
 
-  if (!ssr) {
+  if (!ssr) { // client side...
     return providers;
   }
 
