@@ -8,7 +8,7 @@ export const BaseButton = intrinsic("button", {
   className: cn(
     "relative active:translate-y-px hover:scale-105 flex items-center gap-2",
     "border text-neutral-12 font-bold rounded-lg py-1 px-2 select-none",
-    "disabled:border-dashed disabled:text-opacity-50 disabled:pointer-events-none"
+    "disabled:border-dashed disabled:text-opacity-50 disabled:pointer-events-none",
   ),
 });
 
@@ -38,7 +38,7 @@ export const Button = ({
           "bg-success-10 border-success-10": intent === "success",
           "bg-neutral-2": intent === "neutral",
         },
-        props.className
+        props.className,
       )}
     >
       {loading && (

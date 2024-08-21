@@ -21,11 +21,11 @@ export type MountableName = keyof Mountables;
 
 export const hybrid = mapValues(
   mountables,
-  withHybrid as <T>(t: T) => T
+  withHybrid as <T>(t: T) => T,
 ) as Mountables;
 
 export function mountableName<T>(Component: ComponentType<T>) {
   return Object.entries(mountables).find(
-    ([_, Candidate]) => Component === Candidate
+    ([_, Candidate]) => Component === Candidate,
   )?.[0] as MountableName;
 }

@@ -1,7 +1,7 @@
 import React, { createElement } from "@/react.shim.ts";
 // @ts-types="npm:@types/react-dom/client"
 import { createRoot } from "react-dom/client";
-import { mountables, type MountableName } from "@/client/islands/index.ts";
+import { type MountableName, mountables } from "@/client/islands/index.ts";
 import { Providers } from "@/Providers.tsx";
 
 export default function mount(

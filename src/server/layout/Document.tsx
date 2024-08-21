@@ -7,12 +7,14 @@ import { hybrid } from "@/client/islands/index.ts";
 import { Providers } from "@/Providers.tsx";
 import { useRequestContext } from "@/server/context.ts";
 import { Container } from "@/server/layout/Container.tsx";
+import { TimeAgo } from "@/components";
+
+const bootTime = isoNow();
 
 export function Document({
   children,
   ...props
 }: PropsWithChildren<RendererProps>) {
-  const now = isoNow();
   const c = useRequestContext();
   const dev = c.get("dev");
   const theme = c.get("theme");
@@ -46,7 +48,7 @@ export function Document({
             <Container className="relative my-3 block">{children}</Container>
           </main>
           <Footer>
-            {dev && "[DEV]"} SSR: <time dateTime={now}>{now}</time>
+            {dev && "[DEV]"} boot <TimeAgo when={bootTime} />
           </Footer>
           {dev && <ClientRun name="hmr" />}
           <hybrid.Toaster />

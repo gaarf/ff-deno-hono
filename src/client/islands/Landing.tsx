@@ -1,18 +1,22 @@
 // islands are rendered on the server first, then on the client.
 
-import { Json } from "@/components/Json.tsx";
-import { Database } from "@/supabase/schema.gen.ts";
+import { BlogPost } from "@/components/BlogPost.tsx";
+import { Tables } from "@/supabase/schema.gen.ts";
 
 type LandingProps = {
-  posts: Array<Database["public"]["Tables"]["posts"]["Row"]>;
+  posts: Tables<"posts">[];
 };
 
 export const Landing = ({ posts }: LandingProps) => {
-  console.log('here', posts);
+  console.log("here", posts);
 
   return (
-    <section>
-      <Json value={posts} />
-    </section>
+    <ul>
+      {posts.map((post) => (
+        <li key={post.id}>
+          <BlogPost post={post} />
+        </li>
+      ))}
+    </ul>
   );
 };
