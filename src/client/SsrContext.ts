@@ -17,7 +17,9 @@ export type SsrContextValue = {
 const b = isBrowser();
 export const SsrContext = createContext<SsrContextValue>({
   url: b ? new URL(location.href) : null,
-  user: b ? JSON.parse(document.querySelector('head > #user')!.textContent!) : null,
+  user: b
+    ? JSON.parse(document.querySelector("head > #user")!.textContent!)
+    : null,
   dev: b && !!document.querySelector('[data-client-run="hmr"]'),
   icon: b ? getEmoji() : undefined,
   title: b ? document.title : undefined,

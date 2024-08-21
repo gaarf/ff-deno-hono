@@ -25,5 +25,5 @@ export const BtcPrice = clientOnly(
       </div>
     );
   },
-  () => <Button disabled>JS required</Button>
+  () => <Button disabled>JS required</Button>,
 );

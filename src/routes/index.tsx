@@ -17,6 +17,6 @@ export default new Hono().all("/", (c) => {
         </aside>
       )}
     </>,
-    { title: "Bliki", icon: "☝️" }
+    { title: "Bliki", icon: "☝️" },
   );
 });

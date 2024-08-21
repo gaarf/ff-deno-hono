@@ -24,7 +24,7 @@ export const Header = ({
           {
             "fixed z-10": fixed,
           },
-          heightClass
+          heightClass,
         )}
       >
         <Container>
@@ -37,11 +37,9 @@ export const Header = ({
             <ul className="flex gap-2 items-center">
               <NavItem href="/">Home</NavItem>
               <NavItem href="/test">Test</NavItem>
-              {ssr.user ? (
-                <NavItem href="/auth/logout">Logout</NavItem>
-              ) : (
-                <NavItem href="/auth/login">Login</NavItem>
-              )}
+              {ssr.user
+                ? <NavItem href="/auth/logout">Logout</NavItem>
+                : <NavItem href="/auth/login">Login</NavItem>}
             </ul>
           </nav>
         </Container>

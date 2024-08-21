@@ -14,15 +14,13 @@ export const Counter = clientOnly(() => {
     <Button
       className="rounded-full min-w-10 aspect-square"
       onClick={handleClick}
-      intent={
-        !count
-          ? "neutral"
-          : count % 3
-          ? "danger"
-          : count % 2
-          ? "warning"
-          : "success"
-      }
+      intent={!count
+        ? "neutral"
+        : count % 3
+        ? "danger"
+        : count % 2
+        ? "warning"
+        : "success"}
     >
       {count}
     </Button>

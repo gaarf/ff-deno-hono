@@ -3,7 +3,7 @@ import { Context } from "hono";
 import { getCookie, setCookie } from "hono/cookie";
 import { type Database } from "@/supabase/schema.gen.ts";
 import { createMiddleware } from "hono/factory";
-import { type SupabaseClient, type AuthUser } from "@supabase/supabase-js";
+import { type AuthUser, type SupabaseClient } from "@supabase/supabase-js";
 
 declare module "hono" {
   interface ContextVariableMap {
