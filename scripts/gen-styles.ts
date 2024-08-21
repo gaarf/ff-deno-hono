@@ -12,7 +12,7 @@ const prod = Deno.env.get("NODE_ENV") === "production";
 
 const plugins: Parameters<typeof postcss> = [
   atImport({
-    plugins: [urlImport({ dataUrls: true })]
+    plugins: [urlImport({ dataUrls: true })],
   }),
   tailwindcss,
   autoprefixer,

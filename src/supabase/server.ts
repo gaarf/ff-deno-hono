@@ -5,8 +5,8 @@ import { type Database } from "@/supabase/schema.gen.ts";
 import { createMiddleware } from "hono/factory";
 import { type AuthUser, type SupabaseClient } from "@supabase/supabase-js";
 import {
-  PUBLIC_SUPABASE_URL,
   PUBLIC_SUPABASE_ANON_KEY,
+  PUBLIC_SUPABASE_URL,
 } from "@/supabase/env.ts";
 
 declare module "hono" {
@@ -67,6 +67,6 @@ export function createClient(c: Context) {
     PUBLIC_SUPABASE_ANON_KEY,
     {
       cookies,
-    }
+    },
   );
 }

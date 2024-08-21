@@ -21,5 +21,5 @@ export const Landing = clientOnly(
   },
   () => {
     return <section>server rendered</section>;
-  }
+  },
 );
