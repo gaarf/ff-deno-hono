@@ -1,25 +1,18 @@
 // islands are rendered on the server first, then on the client.
 
-import { clientOnly } from "@/utils.ts";
-import { usePosts } from "@/client/queries.ts";
 import { Json } from "@/components/Json.tsx";
-import Icon from "@/components/Icon.tsx";
+import { Database } from "@/supabase/schema.gen.ts";
 
-export const Landing = clientOnly(
-  () => {
-    const { data, error, isLoading } = usePosts();
+type LandingProps = {
+  posts: Array<Database["public"]["Tables"]["posts"]["Row"]>;
+};
 
-    if (isLoading) {
-      return <Icon.Spinner />;
-    }
+export const Landing = ({ posts }: LandingProps) => {
+  console.log('here', posts);
 
-    return (
-      <section>
-        <Json value={{ data, error }} />
-      </section>
-    );
-  },
-  () => {
-    return <section>server rendered</section>;
-  },
-);
+  return (
+    <section>
+      <Json value={posts} />
+    </section>
+  );
+};

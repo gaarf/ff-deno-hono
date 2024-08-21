@@ -4,11 +4,14 @@ import { hybrid } from "@/client/islands/index.ts";
 
 const bootTime = httpNow();
 
-export default new Hono().all("/", (c) => {
+export default new Hono().all("/", async (c) => {
   const diff = DateTime.fromHTTP(bootTime).diffNow();
+
+  const { data: posts } = await c.get("db").from("posts").select();
+
   return c.render(
     <>
-      <hybrid.Landing />
+      <hybrid.Landing posts={posts!} />
 
       {diff.isValid && (
         <aside className="mt-4 font-mono text-xs">
@@ -17,6 +20,6 @@ export default new Hono().all("/", (c) => {
         </aside>
       )}
     </>,
-    { title: "Bliki", icon: "☝️" },
+    { title: "Bliki", icon: "☝️" }
   );
 });

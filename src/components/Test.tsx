@@ -1,8 +1,7 @@
 import { isBrowser, PropsWithChildren, toast } from "@/utils.ts";
 import { useSsrContext } from "@/client/SsrContext.ts";
-import { Box, Button } from "@/components";
+import { Box, Button, LoadingButton } from "@/components";
 import { Json } from "@/components/Json.tsx";
-import { useState } from "@/react.shim.ts";
 
 export const Test = ({
   children,
@@ -10,7 +9,7 @@ export const Test = ({
 }: PropsWithChildren<{ btnLabel?: string }>) => {
   const ssr = useSsrContext();
   const browser = isBrowser();
-  const [loading, setLoading] = useState(false);
+
   return (
     <Box className="flex-col gap-5 items-stretch border p-2 my-2">
       <h1 className="text-xl">this is the Test component</h1>
@@ -22,9 +21,9 @@ export const Test = ({
             <Button intent="warning" onClick={() => toast.success("yay")}>
               click for toast
             </Button>
-            <Button loading={loading} onClick={() => setLoading(true)} href="/">
+            <LoadingButton href="/">
               another button
-            </Button>
+            </LoadingButton>
           </>
         )}
         <Button href="/test" disabled={browser}>

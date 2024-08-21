@@ -17,12 +17,15 @@ export const mountables = {
 } as const;
 
 export type Mountables = typeof mountables;
-export type NamedMountable = keyof Mountables;
+export type MountableName = keyof Mountables;
 
-export const hybrid = mapValues(mountables, withHybrid) as Mountables;
+export const hybrid = mapValues(
+  mountables,
+  withHybrid as <T>(t: T) => T
+) as Mountables;
 
 export function mountableName<T>(Component: ComponentType<T>) {
   return Object.entries(mountables).find(
-    ([_, Candidate]) => Component === Candidate,
-  )?.[0] as NamedMountable;
+    ([_, Candidate]) => Component === Candidate
+  )?.[0] as MountableName;
 }

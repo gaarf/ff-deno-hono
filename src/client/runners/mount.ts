@@ -1,11 +1,11 @@
 import React, { createElement } from "@/react.shim.ts";
 // @ts-types="npm:@types/react-dom/client"
 import { createRoot } from "react-dom/client";
-import { mountables, type NamedMountable } from "@/client/islands/index.ts";
+import { mountables, type MountableName } from "@/client/islands/index.ts";
 import { Providers } from "@/Providers.tsx";
 
 export default function mount(
-  opts: Record<string, [NamedMountable, Record<string, unknown>]>,
+  opts: Record<string, [MountableName, Record<string, unknown>]>,
 ) {
   console.group("mount");
   Object.entries(opts).forEach(([where, [what, props]]) => {
