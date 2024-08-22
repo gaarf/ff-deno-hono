@@ -1,5 +1,4 @@
-import { BaseButton } from "@/components/Button.tsx";
-import Icon from "@/components/Icon.tsx";
+import { BaseButton, Icon } from "@/components/index.ts";
 import { useTheme } from "@/theme/index.ts";
 
 export const Switch = () => {

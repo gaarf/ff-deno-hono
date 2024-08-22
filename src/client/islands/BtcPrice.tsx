@@ -1,7 +1,6 @@
-import { Button } from "@/components";
+import { Button, Icon } from "@/components";
 import { useBtcPrice } from "@/client/queries.ts";
 import { clientOnly } from "@/utils.ts";
-import Icon from "@/components/Icon.tsx";
 
 export const BtcPrice = clientOnly(
   () => {

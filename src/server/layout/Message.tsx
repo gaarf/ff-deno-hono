@@ -1,4 +1,4 @@
-import { Box, Icon } from "@/components";
+import { Box, IntentIcon } from "@/components";
 import { cn } from "@/utils.ts";
 import { useRequestContext } from "@/server/context.ts";
 import { type Intent } from "@/theme/index.ts";
@@ -30,20 +30,18 @@ export const Message = ({
   return (
     <Box
       className={cn(
-        "w-full justify-start gap-2 p-2 rounded border border-transparent",
+        "w-full justify-start gap-2 p-2 rounded shadow",
         {
-          "border-warning-8 text-warning-11": intent === "warning",
-          "bg-danger-9 text-danger-1": intent === "danger",
-          "bg-success-8 text-success-1": intent === "success",
-          "border-neutral-8 bg-neutral-2": intent === "neutral",
+          "bg-warning-1": intent === "warning",
+          "bg-danger-1": intent === "danger",
+          "bg-success-1": intent === "success",
+          "bg-accent-2": intent === "accent",
+          "bg-neutral-2": intent === "neutral",
         },
         className,
       )}
     >
-      {intent === "warning" && <Icon.Warning />}
-      {intent === "danger" && <Icon.Danger />}
-      {intent === "success" && <Icon.Success />}
-      {intent === "neutral" && <Icon.Message />}
+      <IntentIcon intent={intent} />
       {children}
     </Box>
   );

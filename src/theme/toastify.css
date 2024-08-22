@@ -1,1 +1,10 @@
 @import url("https://unpkg.com/react-toastify@10.0.5/dist/ReactToastify.min.css");
+
+:root {
+  --toastify-color-light: rgb(var(--color-default-bg));
+  --toastify-color-dark: rgb(var(--color-default-bg));
+  --toastify-color-info: rgb(var(--color-grf-accent-10));
+  --toastify-color-success: rgb(var(--color-grf-success-10));
+  --toastify-color-warning: rgb(var(--color-grf-warning-10));
+  --toastify-color-error: rgb(var(--color-grf-danger-10));
+}

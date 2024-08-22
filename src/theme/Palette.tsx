@@ -8,14 +8,17 @@ const ColorSwatch = ({ colorClass }: { colorClass: string }) => {
     <div
       className={cn(
         "aspect-square overflow-hidden rounded relative font-mono",
-        {
-          "text-default-bg": colorLevel > 6,
-        },
         `border-2 border-${intent}-${level}`,
-        colorClass,
+        colorClass
       )}
     >
-      <span className="text-xs hidden md:inline p-1">{intent}</span>
+      <span
+        className={cn("text-xs hidden md:inline p-1", {
+          "text-default-bg": colorLevel > 6,
+        })}
+      >
+        {intent}
+      </span>
       <div className="md:text-3xl absolute md:bottom-0 right-1 opacity-30">
         {level}
       </div>

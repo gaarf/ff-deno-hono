@@ -1,7 +1,7 @@
 import { cn } from "@/utils.ts";
 import { useState } from "@/react.shim.ts";
 import { intrinsic } from "@/components/intrinsic.ts";
-import Icon from "@/components/Icon.tsx";
+import { Icon } from "@/components/Icon.tsx";
 import { Intent } from "@/theme/index.ts";
 
 export const BaseButton = intrinsic("button", {
@@ -33,9 +33,10 @@ export const Button = ({
       {...props}
       className={cn(
         {
-          "bg-danger-4 border-danger-8": intent === "danger",
+          "bg-danger-3 border-danger-8": intent === "danger",
           "bg-warning-4 border-warning-8": intent === "warning",
           "bg-success-4 border-success-8": intent === "success",
+          "bg-accent-4 border-accent-8": intent === "accent",
           "bg-neutral-3": intent === "neutral",
         },
         props.className,

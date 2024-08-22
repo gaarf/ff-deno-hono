@@ -3,6 +3,7 @@ import { useSsrContext } from "@/client/SsrContext.ts";
 import { Box, Button, LoadingButton } from "@/components";
 import { Json } from "@/components/Json.tsx";
 import { ColorGrid } from "@/theme/Palette.tsx";
+import { Message } from "@/server/layout/Message.tsx";
 
 export const Test = ({
   children,
@@ -15,12 +16,21 @@ export const Test = ({
     <Box className="flex-col gap-5 items-stretch my-2">
       <h1 className="text-xl">this is the Test component</h1>
       <Json value={{ ...ssr, browser }} />
-      <Box className="gap-10">
+      <Box className="gap-2">
         <span className="flex-1">{children}</span>
         {browser && (
           <>
-            <Button intent="warning" onClick={() => toast.success("yay")}>
-              click for toast
+            <Button intent="warning" onClick={() => toast.warning("yay")}>
+              warning
+            </Button>
+            <Button intent="danger" onClick={() => toast.error("yay")}>
+              danger
+            </Button>
+            <Button intent="success" onClick={() => toast.success("yay")}>
+              success
+            </Button>
+            <Button intent="accent" onClick={() => toast.info("yay")}>
+              accent
             </Button>
             <LoadingButton href="/">another button</LoadingButton>
           </>
@@ -29,6 +39,12 @@ export const Test = ({
           {btnLabel}
         </Button>
       </Box>
+
+      <Message intent="warning">warning</Message>
+      <Message intent="danger">danger</Message>
+      <Message intent="success">success</Message>
+      <Message intent="accent">accent</Message>
+      <Message intent="neutral">neutral</Message>
 
       <ColorGrid />
     </Box>
