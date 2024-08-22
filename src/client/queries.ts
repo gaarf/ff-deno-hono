@@ -2,15 +2,20 @@ import { useQuery } from "@tanstack/react-query";
 import { type ApiBtc } from "@/routes/api.tsx";
 import supabase from "@/supabase/client.ts";
 
-export const usePosts = () =>
-  useQuery({
-    queryKey: ["posts"],
-    retry: false,
-    queryFn: async () => {
-      const { data } = await supabase.from("posts").select().throwOnError();
-      return data;
-    },
-  });
+// export const usePosts = () =>
+//   useQuery({
+//     queryKey: ["posts"],
+//     retry: false,
+//     queryFn: async () => {
+//       const { data } = await supabase
+//         .from("posts")
+//         .select()
+//         .order("created_at", { ascending: false })
+//         .limit(8)
+//         .throwOnError();
+//       return data;
+//     },
+//   });
 
 export const useVotes = (postId: number) =>
   useQuery({
