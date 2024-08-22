@@ -20,7 +20,7 @@ export const Header = ({
       <div
         className={cn(
           "flex w-full justify-center",
-          "border-b bg-neutral-3",
+          "border-b bg-neutral-2",
           {
             "fixed z-10": fixed,
           },
