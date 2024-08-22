@@ -12,7 +12,7 @@ const ColorSwatch = ({ colorClass }: { colorClass: string }) => {
           "text-default-bg": colorLevel > 6,
         },
         `border-2 border-${intent}-${level}`,
-        colorClass
+        colorClass,
       )}
     >
       <span className="text-xs hidden md:inline p-1">{intent}</span>
