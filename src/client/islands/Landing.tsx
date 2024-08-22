@@ -8,10 +8,10 @@ type LandingProps = {
 };
 
 export const Landing = ({ posts }: LandingProps) => {
-  console.log("here", posts);
+  // console.log("here", posts);
 
   return (
-    <ul>
+    <ul className="flex flex-col gap-4">
       {posts.map((post) => (
         <li key={post.id}>
           <BlogPost post={post} />

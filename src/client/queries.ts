@@ -39,6 +39,7 @@ export const useVotes = (postId: number) =>
         const { data } = await supabase
           .from("votes")
           .select("up")
+          .eq("post_id", postId)
           .eq("user_id", user.id)
           .maybeSingle();
         userVote = data;
