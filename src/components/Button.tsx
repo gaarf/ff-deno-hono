@@ -6,10 +6,10 @@ import { Intent } from "@/theme/index.ts";
 
 export const BaseButton = intrinsic("button", {
   className: cn(
-    "active:translate-y-px hover:scale-105 transition-transform",
+    "active:translate-y-px",
     "relative inline-flex items-center gap-2",
     "border text-neutral-12 font-bold rounded-lg py-1 px-2 select-none",
-    "disabled:border-dashed disabled:text-opacity-50 disabled:pointer-events-none",
+    "disabled:text-opacity-30 disabled:border-dotted disabled:pointer-events-none"
   ),
 });
 
@@ -34,13 +34,15 @@ export const Button = ({
       disabled={loading || props.disabled}
       className={cn(
         {
-          "bg-danger-3 border-danger-8": intent === "danger",
-          "bg-warning-4 border-warning-8": intent === "warning",
-          "bg-success-4 border-success-8": intent === "success",
-          "bg-accent-4 border-accent-8": intent === "accent",
-          "bg-neutral-3": intent === "neutral",
+          "bg-danger-3 hover:bg-danger-4 border-danger-8": intent === "danger",
+          "bg-warning-4 hover:bg-warning-5 border-warning-8":
+            intent === "warning",
+          "bg-success-4 hover:bg-success-5 border-success-8":
+            intent === "success",
+          "bg-accent-4 hover:bg-accent-5 border-accent-8": intent === "accent",
+          "bg-neutral-3 hover:bg-neutral-4": intent === "neutral",
         },
-        props.className,
+        props.className
       )}
     >
       {loading && (
@@ -92,11 +94,8 @@ export const ButtonGroup = ({ children }: PropsWithChildren) => {
   return (
     <span
       className={cn(
-        "flex [&_button]:border-neutral-6 [&_button]:rounded-none",
-        "[&>*:not(:last-child)]:-mr-px",
-        "[&>button:last-child]:rounded-r-lg [&>a:last-child>button]:rounded-r-lg",
-        "[&>button:first-child]:rounded-l-lg [&>a:first-child>button]:rounded-l-lg",
-        "[&_button:hover]:z-10",
+        "flex [&_button]:border-transparent [&_button]:rounded-none gap-px",
+        "border rounded-lg overflow-hidden bg-neutral-6"
       )}
     >
       {children}
