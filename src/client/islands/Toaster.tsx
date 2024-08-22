@@ -4,19 +4,15 @@ import { Intent, useTheme } from "@/theme/index.ts";
 import { IntentIcon } from "@/components";
 
 const ToastIcon = ({ type }: IconProps) => {
-  return (
-    <IntentIcon
-      intent={
-        {
-          error: "danger",
-          info: "accent",
-          default: "neutral",
-          success: "success",
-          warning: "warning",
-        }[type] as Intent
-      }
-    />
-  );
+  const intent = {
+    default: null,
+    error: "danger",
+    info: "accent",
+    success: "success",
+    warning: "warning",
+  }[type];
+
+  return intent && <IntentIcon intent={intent as Intent} />;
 };
 
 export const Toaster = clientOnly(() => {

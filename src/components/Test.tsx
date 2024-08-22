@@ -20,6 +20,7 @@ export const Test = ({
         <span className="flex-1">{children}</span>
         {browser && (
           <>
+            <Button onClick={() => toast("yay")}>neutral</Button>
             <Button intent="warning" onClick={() => toast.warning("yay")}>
               warning
             </Button>
