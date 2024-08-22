@@ -9,7 +9,7 @@ export const BaseButton = intrinsic("button", {
     "active:translate-y-px hover:scale-105 transition-transform",
     "relative inline-flex items-center gap-2",
     "border text-neutral-12 font-bold rounded-lg py-1 px-2 select-none",
-    "disabled:border-dashed disabled:text-opacity-50 disabled:pointer-events-none"
+    "disabled:border-dashed disabled:text-opacity-50 disabled:pointer-events-none",
   ),
 });
 
@@ -40,7 +40,7 @@ export const Button = ({
           "bg-accent-4 border-accent-8": intent === "accent",
           "bg-neutral-3": intent === "neutral",
         },
-        props.className
+        props.className,
       )}
     >
       {loading && (
@@ -96,7 +96,7 @@ export const ButtonGroup = ({ children }: PropsWithChildren) => {
         "[&>*:not(:last-child)]:-mr-px",
         "[&>button:last-child]:rounded-r-lg [&>a:last-child>button]:rounded-r-lg",
         "[&>button:first-child]:rounded-l-lg [&>a:first-child>button]:rounded-l-lg",
-        "[&_button:hover]:z-10"
+        "[&_button:hover]:z-10",
       )}
     >
       {children}

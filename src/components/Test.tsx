@@ -47,7 +47,6 @@ export const Test = ({
       <Message intent="success">success</Message>
       <Message intent="accent">accent</Message>
 
-
       <ColorGrid />
     </Box>
   );

@@ -21,5 +21,5 @@ export const useVoteUpsert = (postId: number) =>
     onError(err) {
       console.error(err);
       toast.error(`${err}`);
-    }
+    },
   });
