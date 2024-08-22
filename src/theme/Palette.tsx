@@ -9,7 +9,7 @@ const ColorSwatch = ({ colorClass }: { colorClass: string }) => {
       className={cn(
         "aspect-square overflow-hidden rounded relative font-mono",
         `border-2 border-${intent}-${level}`,
-        colorClass
+        colorClass,
       )}
     >
       <span
@@ -29,10 +29,10 @@ const ColorSwatch = ({ colorClass }: { colorClass: string }) => {
 export const ColorGrid = () => {
   const classNames = [
     "neutral",
-    "accent",
-    "success",
     "warning",
     "danger",
+    "success",
+    "accent",
   ].reduce<string[]>((acc, category) => {
     for (let i = 1; i <= 12; i++) {
       acc.push(`bg-${category}-${i}`);

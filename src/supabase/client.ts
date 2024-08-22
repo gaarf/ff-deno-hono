@@ -11,3 +11,5 @@ export function createClient() {
     PUBLIC_SUPABASE_ANON_KEY,
   );
 }
+
+export default createClient();

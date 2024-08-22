@@ -1,4 +1,4 @@
-import { ToastContainer, type IconProps } from "react-toastify";
+import { type IconProps, ToastContainer } from "react-toastify";
 import clientOnly from "@/client/only.tsx";
 import { Intent, useTheme } from "@/theme/index.ts";
 import { IntentIcon } from "@/components";

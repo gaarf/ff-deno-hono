@@ -2,6 +2,7 @@ import { type Tables } from "@/supabase/schema.gen.ts";
 import { TimeAgo } from "@/components/TimeAgo.tsx";
 import { Link } from "@/components/intrinsic.ts";
 import { Box } from "@/components";
+import { BlogVotes } from "@/components/BlogVotes.tsx";
 
 type BlogPostProps = {
   post: Tables<"posts">;
@@ -24,5 +25,7 @@ export const BlogPost = ({ post }: BlogPostProps) => (
     </Box>
 
     <blockquote className="p-2">{post.content}</blockquote>
+
+    <BlogVotes postId={post.id} />
   </article>
 );

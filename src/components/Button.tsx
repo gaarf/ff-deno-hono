@@ -1,14 +1,15 @@
 import { cn } from "@/utils.ts";
-import { useState } from "@/react.shim.ts";
+import { PropsWithChildren, useState } from "@/react.shim.ts";
 import { intrinsic } from "@/components/intrinsic.ts";
 import { Icon } from "@/components/Icon.tsx";
 import { Intent } from "@/theme/index.ts";
 
 export const BaseButton = intrinsic("button", {
   className: cn(
-    "relative active:translate-y-px hover:scale-105 flex items-center gap-2",
+    "active:translate-y-px hover:scale-105 transition-transform",
+    "relative inline-flex items-center gap-2",
     "border text-neutral-12 font-bold rounded-lg py-1 px-2 select-none",
-    "disabled:border-dashed disabled:text-opacity-50 disabled:pointer-events-none",
+    "disabled:border-dashed disabled:text-opacity-50 disabled:pointer-events-none"
   ),
 });
 
@@ -29,8 +30,8 @@ export const Button = ({
 }: ButtonProps) => {
   const button = (
     <BaseButton
-      disabled={loading}
       {...props}
+      disabled={loading || props.disabled}
       className={cn(
         {
           "bg-danger-3 border-danger-8": intent === "danger",
@@ -39,7 +40,7 @@ export const Button = ({
           "bg-accent-4 border-accent-8": intent === "accent",
           "bg-neutral-3": intent === "neutral",
         },
-        props.className,
+        props.className
       )}
     >
       {loading && (
@@ -60,7 +61,12 @@ export const Button = ({
 
   if (href && !loading && !props.disabled) {
     return (
-      <a href={href} {...anchorProps} tabIndex={-1}>
+      <a
+        href={href}
+        {...anchorProps}
+        className={cn("inline-flex", anchorProps.className)}
+        tabIndex={-1}
+      >
         {button}
       </a>
     );
@@ -79,5 +85,21 @@ export const LoadingButton = (props: Omit<ButtonProps, "loading">) => {
         props.onClick?.call(null, event);
       }}
     />
+  );
+};
+
+export const ButtonGroup = ({ children }: PropsWithChildren) => {
+  return (
+    <span
+      className={cn(
+        "flex [&_button]:border-neutral-6 [&_button]:rounded-none",
+        "[&>*:not(:last-child)]:-mr-px",
+        "[&>button:last-child]:rounded-r-lg [&>a:last-child>button]:rounded-r-lg",
+        "[&>button:first-child]:rounded-l-lg [&>a:first-child>button]:rounded-l-lg",
+        "[&_button:hover]:z-10"
+      )}
+    >
+      {children}
+    </span>
   );
 };

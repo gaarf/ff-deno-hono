@@ -15,7 +15,7 @@ import { Intent } from "@/theme/index.ts";
 function icon(
   Component: IconType,
   injectClassName?: string,
-  injectProps?: IconBaseProps
+  injectProps?: IconBaseProps,
 ) {
   return ({ className, ...props }: { className?: string } & IconBaseProps) => (
     <span className={cn(injectClassName, className)}>
