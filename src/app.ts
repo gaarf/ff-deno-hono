@@ -34,6 +34,11 @@ Object.entries(routes).forEach(([path, route]) => {
   app.route(path, route);
 });
 
+app.onError((err, c) => {
+  console.error(err);
+  return c.text(err.message || `Something went horribly wrong`, 500);
+});
+
 DEV: {
   const { showRoutes } = await import("hono/dev");
   showRoutes(app);

@@ -2,6 +2,7 @@ import { isBrowser, PropsWithChildren, toast } from "@/utils.ts";
 import { useSsrContext } from "@/client/SsrContext.ts";
 import { Box, Button, LoadingButton } from "@/components";
 import { Json } from "@/components/Json.tsx";
+import { ColorGrid } from "@/theme/Palette.tsx";
 
 export const Test = ({
   children,
@@ -11,7 +12,7 @@ export const Test = ({
   const browser = isBrowser();
 
   return (
-    <Box className="flex-col gap-5 items-stretch border p-2 my-2">
+    <Box className="flex-col gap-5 items-stretch my-2">
       <h1 className="text-xl">this is the Test component</h1>
       <Json value={{ ...ssr, browser }} />
       <Box className="gap-10">
@@ -21,15 +22,15 @@ export const Test = ({
             <Button intent="warning" onClick={() => toast.success("yay")}>
               click for toast
             </Button>
-            <LoadingButton href="/">
-              another button
-            </LoadingButton>
+            <LoadingButton href="/">another button</LoadingButton>
           </>
         )}
         <Button href="/test" disabled={browser}>
           {btnLabel}
         </Button>
       </Box>
+
+      <ColorGrid />
     </Box>
   );
 };

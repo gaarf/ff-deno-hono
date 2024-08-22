@@ -12,7 +12,7 @@ export const TimeAgo = ({
   when = DateTime.now().toISO(),
   children,
   unit,
-  options = { unitDisplay: "narrow" },
+  options = { unitDisplay: "narrow", useGrouping: true },
   className,
 }: TimeAgoProps) => {
   return (

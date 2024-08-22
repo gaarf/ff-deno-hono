@@ -33,9 +33,9 @@ export const Button = ({
       {...props}
       className={cn(
         {
-          "bg-danger-8 border-danger-9": intent === "danger",
-          "bg-warning-8 border-warning-9": intent === "warning",
-          "bg-success-10 border-success-10": intent === "success",
+          "bg-danger-4 border-danger-8": intent === "danger",
+          "bg-warning-4 border-warning-8": intent === "warning",
+          "bg-success-4 border-success-8": intent === "success",
           "bg-neutral-2": intent === "neutral",
         },
         props.className,

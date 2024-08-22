@@ -1,4 +1,4 @@
-// islands are rendered on the server first, then on the client.
+// islands are rendered on the server first, then again on the client if "hybrid".
 
 import { BlogPost } from "@/components/BlogPost.tsx";
 import { Tables } from "@/supabase/schema.gen.ts";
