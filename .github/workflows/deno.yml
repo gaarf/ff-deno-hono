@@ -44,3 +44,6 @@ jobs:
 
       - name: Run tests
         run: deno test -A --env
+        env:
+          SUPABASE_URL: https://test.supabase.co
+          SUPABASE_ANON_KEY: 'test'
