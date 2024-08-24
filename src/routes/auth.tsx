@@ -9,7 +9,7 @@ const redirIfLoggedIn = createMiddleware(async (c, next) => {
   return user ? c.redirect("/secret") : next();
 });
 
-const getCreds = async (c: Context) => {
+const formFields = async (c: Context) => {
   const body = await c.req.formData();
   const email = body.get("email")?.toString();
   const password = body.get("password")?.toString();
@@ -21,7 +21,7 @@ export default new Hono()
   .all("/", (c) => c.redirect("/auth/login"))
   .all("/signup", redirIfLoggedIn)
   .post("/signup", async (c, next) => {
-    const { email, password, password2 } = await getCreds(c);
+    const { email, password, password2 } = await formFields(c);
     if (!email || !password || !password2) {
       console.log({ email, password, password2 });
       setMessage(c, "Missing credentials!", "warning");
@@ -43,13 +43,12 @@ export default new Hono()
 
     return c.json(data);
   })
-  .all(
-    "/signup",
-    (c) => c.render(<hybrid.AuthForm signup />, { title: "Sign up" }),
-  )
+  .all("/signup", (c) => {
+    return c.render(<hybrid.AuthForm signup />, { title: "Sign up" });
+  })
   .all("/login", redirIfLoggedIn)
   .post("/login", async (c, next) => {
-    const { email, password } = await getCreds(c);
+    const { email, password } = await formFields(c);
     if (!email || !password) {
       setMessage(c, "Missing credentials!", "warning");
       return next();
@@ -65,9 +64,12 @@ export default new Hono()
       return next();
     }
 
-    return c.redirect("/secret");
+    const redir = new URL(c.req.url).searchParams.get("redir");
+    return c.redirect(redir?.startsWith("/") ? redir : "/secret");
   })
-  .all("/login", (c) => c.render(<hybrid.AuthForm />, { title: "Login" }))
+  .all("/login", (c) => {
+    return c.render(<hybrid.AuthForm />, { title: "Login" });
+  })
   .all("/logout", async (c) => {
     await c.get("db").auth.signOut();
     return c.redirect("/");

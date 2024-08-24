@@ -2,21 +2,16 @@ import { cn } from "@/utils.ts";
 
 const ColorSwatch = ({ colorClass }: { colorClass: string }) => {
   const [, intent, level] = colorClass.split("-"); // Remove the 'bg-' prefix to get the color name
-  const colorLevel = parseInt(level);
 
   return (
     <div
       className={cn(
         "aspect-square overflow-hidden rounded relative font-mono",
-        `border-2 border-${intent}-${level}`,
-        colorClass,
+        `border border-${intent}-${level}`,
+        colorClass
       )}
     >
-      <span
-        className={cn("text-xs hidden md:inline p-1", {
-          "text-default-bg": colorLevel > 6,
-        })}
-      >
+      <span className="text-xs opacity-30 hidden md:inline p-1">
         {intent}
       </span>
       <div className="md:text-3xl absolute md:bottom-0 right-1 opacity-30">

@@ -7,13 +7,14 @@ export default new Hono()
   .all("/", requireAuth)
   .post("/", async (c, next) => {
     const body = await c.req.formData();
+    const title = body.get("title")?.toString();
     const content = String(body.get("content"));
 
     const { data, error } = await c
       .get("db")
       .from("posts")
-      .insert({ content })
-      .select()
+      .insert({ title, content })
+      .select('id')
       .maybeSingle();
 
     if (error) {

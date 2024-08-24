@@ -1,5 +1,5 @@
 import { Button } from "@/components/Button.tsx";
-import { LabeledTextarea } from "@/components/LabeledInput.tsx";
+import { LabeledTextarea, LabeledInput } from "@/components/LabeledInput.tsx";
 import { useCallback, useState } from "@/react.shim.ts";
 
 export const PostForm = () => {
@@ -13,12 +13,8 @@ export const PostForm = () => {
       onSubmit={handleSubmit}
     >
       <fieldset className="flex flex-col gap-2 w-full">
-        <LabeledTextarea
-          label="Content"
-          name="content"
-          rows={8}
-          required
-        />
+        <LabeledInput label="Title" name="title" />
+        <LabeledTextarea label="Content" name="content" rows={8} required />
       </fieldset>
       <Button type="submit" loading={loading}>
         Submit

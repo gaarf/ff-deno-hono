@@ -23,5 +23,5 @@ export default new Hono().get("/:id", async (c) => {
     return c.render(<Message intent="warning">Post not found</Message>);
   }
 
-  return c.render(<hybrid.Landing posts={[post]} />);
+  return c.render(<hybrid.Landing posts={[post]} single />);
 });

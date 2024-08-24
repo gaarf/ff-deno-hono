@@ -7,9 +7,10 @@ import { Link } from "@/components";
 
 type LandingProps = {
   posts: Tables<"posts">[];
+  single?: boolean;
 };
 
-export const Landing = ({ posts }: LandingProps) => {
+export const Landing = ({ posts, single }: LandingProps) => {
   return (
     <>
       {posts.length
@@ -17,7 +18,7 @@ export const Landing = ({ posts }: LandingProps) => {
           <ul className="flex flex-col gap-4">
             {posts.map((post) => (
               <li key={post.id}>
-                <BlogPost post={post} />
+                <BlogPost post={post} detail={single} />
               </li>
             ))}
           </ul>
