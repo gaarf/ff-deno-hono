@@ -66,6 +66,6 @@ export function createClient(c: Context) {
     PUBLIC_SUPABASE_ANON_KEY,
     {
       cookies,
-    }
+    },
   );
 }

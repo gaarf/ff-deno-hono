@@ -24,7 +24,7 @@ export const BlogPost = ({ post }: BlogPostProps) => {
           </Link>
           {", by "}
           <Link href={`/blog?by=${post.author_id}`}>
-            {post.author_id === user?.id ? 'You' : post.author_id.split("-")[0]}
+            {post.author_id === user?.id ? "You" : post.author_id.split("-")[0]}
           </Link>
         </address>
       </Box>

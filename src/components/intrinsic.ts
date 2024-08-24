@@ -42,5 +42,6 @@ export const Pre = intrinsic("pre", {
 });
 
 export const Code = intrinsic("code", {
-  className: "bg-neutral-1 border border-neutral-5 font-mono text-xs rounded p-1 break-all",
+  className:
+    "bg-neutral-1 border border-neutral-5 font-mono text-xs rounded p-1 break-all",
 });

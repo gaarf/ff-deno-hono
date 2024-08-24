@@ -63,5 +63,5 @@ function j<T>(url: string) {
 export const useBtcPrice = () =>
   useQuery({
     ...j<ApiBtc>("/test/api/btc"),
-    enabled: false
+    enabled: false,
   });

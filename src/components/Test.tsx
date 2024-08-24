@@ -34,7 +34,9 @@ export const Test = ({
             <Button intent="accent" onClick={() => toast.info("yay")}>
               accent
             </Button>
-            <LoadingButton href="/test/btc"><Icon.Bitcoin /></LoadingButton>
+            <LoadingButton href="/test/btc">
+              <Icon.Bitcoin />
+            </LoadingButton>
             <LoadingButton href="/">another button</LoadingButton>
           </ButtonGroup>
         )}

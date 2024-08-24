@@ -3,7 +3,8 @@ import { forwardRef } from "@/react.shim.ts";
 import { cn } from "@/utils.ts";
 
 type LabeledInputProps<T extends keyof JSX.IntrinsicElements = "input"> =
-  JSX.IntrinsicElements[T] & {
+  & JSX.IntrinsicElements[T]
+  & {
     label: string;
   };
 
@@ -15,7 +16,7 @@ export const LabeledInput = forwardRef<HTMLInputElement, LabeledInputProps>(
         <Input {...props} className={cn("w-full", props.className)} ref={ref} />
       </label>
     );
-  }
+  },
 );
 
 export const LabeledTextarea = forwardRef<

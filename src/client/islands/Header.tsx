@@ -29,7 +29,7 @@ export const Header = ({
       >
         <Container>
           <h1 className="text-center text-lg font-bold text-ellipsis whitespace-nowrap overflow-hidden uppercase">
-            {ssr.title || ssr.url?.pathname.split('/')[1]}
+            {ssr.title || ssr.url?.pathname.split("/")[1]}
           </h1>
 
           <nav className="flex items-center gap-2">

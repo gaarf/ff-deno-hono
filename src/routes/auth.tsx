@@ -1,4 +1,4 @@
-import { Hono, type Context } from "hono";
+import { type Context, Hono } from "hono";
 import { setMessage } from "@/server/layout/Message.tsx";
 import { userPromise } from "@/supabase/server.ts";
 import { createMiddleware } from "hono/factory";
@@ -43,7 +43,10 @@ export default new Hono()
 
     return c.json(data);
   })
-  .all("/signup", (c) => c.render(<hybrid.AuthForm signup />, { title: "Sign up" }))
+  .all(
+    "/signup",
+    (c) => c.render(<hybrid.AuthForm signup />, { title: "Sign up" }),
+  )
   .all("/login", redirIfLoggedIn)
   .post("/login", async (c, next) => {
     const { email, password } = await getCreds(c);
