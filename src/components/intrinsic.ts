@@ -19,7 +19,7 @@ export function intrinsic<T extends Tag>(
   });
 }
 
-const inputKlass = "border rounded bg-neutral-1 p-1 shadow-inner";
+const inputKlass = "border rounded bg-default-bg p-1 shadow-inner";
 
 export const Input = intrinsic("input", {
   className: inputKlass,
@@ -42,5 +42,5 @@ export const Pre = intrinsic("pre", {
 });
 
 export const Code = intrinsic("code", {
-  className: "border border-neutral-5 font-mono text-xs rounded p-1 break-all",
+  className: "bg-neutral-1 border border-neutral-5 font-mono text-xs rounded p-1 break-all",
 });

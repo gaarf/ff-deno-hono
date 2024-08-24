@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { type ApiBtc } from "@/routes/api.tsx";
+import { type ApiBtc } from "../routes/test/api.tsx";
 import supabase from "@/supabase/client.ts";
 
 // export const usePosts = () =>
@@ -62,6 +62,6 @@ function j<T>(url: string) {
 
 export const useBtcPrice = () =>
   useQuery({
-    ...j<ApiBtc>("/api/btc"),
-    enabled: false,
+    ...j<ApiBtc>("/test/api/btc"),
+    enabled: false
   });

@@ -34,14 +34,13 @@ export async function userPromise(c: Context) {
   return data.user;
 }
 
-export const requireAuth = () =>
-  createMiddleware(async (c, next) => {
-    const user = await userPromise(c);
-    if (!user) {
-      return c.redirect("/auth/login");
-    }
-    await next();
-  });
+export const requireAuth = createMiddleware(async (c, next) => {
+  const user = await userPromise(c);
+  if (!user) {
+    return c.redirect("/auth/login");
+  }
+  await next();
+});
 
 export function createClient(c: Context) {
   const cookies: CookieMethodsServer = {
@@ -67,6 +66,6 @@ export function createClient(c: Context) {
     PUBLIC_SUPABASE_ANON_KEY,
     {
       cookies,
-    },
+    }
   );
 }

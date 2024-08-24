@@ -50,8 +50,8 @@ export function Document({
           <Footer>
             {dev && "[DEV]"} boot <TimeAgo when={bootTime} />
           </Footer>
-          {dev && <ClientRun name="hmr" />}
           <hybrid.Toaster />
+          {dev && <ClientRun name="hmr" />}
         </body>
       </html>
     </Providers>

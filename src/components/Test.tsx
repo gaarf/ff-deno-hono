@@ -4,6 +4,7 @@ import { Box, Button, ButtonGroup, LoadingButton } from "@/components";
 import { Json } from "@/components/Json.tsx";
 import { ColorGrid } from "@/theme/Palette.tsx";
 import { Message } from "@/server/layout/Message.tsx";
+import { Icon } from "@/components/Icon.tsx";
 
 export const Test = ({
   children,
@@ -33,6 +34,7 @@ export const Test = ({
             <Button intent="accent" onClick={() => toast.info("yay")}>
               accent
             </Button>
+            <LoadingButton href="/test/btc"><Icon.Bitcoin /></LoadingButton>
             <LoadingButton href="/">another button</LoadingButton>
           </ButtonGroup>
         )}

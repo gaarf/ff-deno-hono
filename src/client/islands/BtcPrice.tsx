@@ -7,7 +7,7 @@ export const BtcPrice = clientOnly(
     const { data, refetch, isFetching } = useBtcPrice();
 
     return (
-      <div className="flex flex-col-reverse gap-4 items-center justify-center h-full">
+      <>
         <Button onClick={() => refetch()} loading={isFetching}>
           <Icon.Bitcoin />
           Fetch price
@@ -21,7 +21,7 @@ export const BtcPrice = clientOnly(
             })}
           </p>
         )}
-      </div>
+      </>
     );
   },
   () => <Button disabled>JS required</Button>,

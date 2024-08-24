@@ -29,13 +29,13 @@ export const Header = ({
       >
         <Container>
           <h1 className="text-center text-lg font-bold text-ellipsis whitespace-nowrap overflow-hidden uppercase">
-            {ssr.title || "Welcome"}
+            {ssr.title || ssr.url?.pathname.split('/')[1]}
           </h1>
 
           <nav className="flex items-center gap-2">
             <ThemeSwitch />
             <ul className="flex gap-2 items-center">
-              <NavItem href="/">Home</NavItem>
+              <NavItem href="/blog">Blog</NavItem>
               <NavItem href="/test">Test</NavItem>
               {ssr.user
                 ? <NavItem href="/auth/logout">Logout</NavItem>
