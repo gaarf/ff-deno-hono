@@ -1,11 +1,28 @@
 import { Hono } from "hono";
-// import { hybrid } from "@/client/islands/index.ts";
-// import { Message } from "@/server/layout/Message.tsx";
+import { hybrid } from "@/client/islands/index.ts";
 import { requireAuth } from "@/supabase/server.ts";
+import { setMessage } from "@/server/layout/Message.tsx";
 
 export default new Hono()
-  .all('/', requireAuth)
-  .get('/', (c) => {
-    return c.render('new blog post');
-  })
+  .all("/", requireAuth)
+  .post("/", async (c, next) => {
+    const body = await c.req.formData();
+    const content = String(body.get("content"));
 
+    const { data, error } = await c
+      .get("db")
+      .from("posts")
+      .insert({ content })
+      .select()
+      .maybeSingle();
+
+    if (error) {
+      setMessage(c, error.message, "danger");
+      return next();
+    }
+
+    return c.redirect(`/blog/post/${data?.id}`);
+  })
+  .get("/", (c) => {
+    return c.render(<hybrid.PostForm />);
+  });

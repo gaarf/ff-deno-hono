@@ -37,7 +37,7 @@ export function useTheme(observer = false): [Theme | undefined, () => void] {
         return () => o.disconnect();
       } else {
         console.log("theme", theme);
-        document.cookie = `theme=${theme};max-age=31536000`;
+        document.cookie = `theme=${theme};path=/;max-age=31536000`;
       }
     }
   }, [theme, nextTheme]);

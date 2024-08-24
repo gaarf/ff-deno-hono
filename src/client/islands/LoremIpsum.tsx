@@ -18,7 +18,7 @@ export const LoremIpsum = ({
       {Array(count)
         .fill(null)
         .map((_, i) => (
-          <p className="italic my-2" key={i}>
+          <p className="italic mb-2" key={i}>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. In ipsum
             quia consequatur odit quidem qui doloremque inventore unde quaerat.
             Cupiditate suscipit vel temporibus natus facilis debitis, aspernatur

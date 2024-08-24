@@ -3,15 +3,10 @@ import { setMessage } from "@/server/layout/Message.tsx";
 import { userPromise } from "@/supabase/server.ts";
 import { createMiddleware } from "hono/factory";
 import { hybrid } from "@/client/islands/index.ts";
-import { useMessage } from "@/server/layout/Message.tsx";
 
 const redirIfLoggedIn = createMiddleware(async (c, next) => {
   const user = await userPromise(c);
-  if (user) {
-    // already logged in
-    return c.redirect("/secret");
-  }
-  return next();
+  return user ? c.redirect("/secret") : next();
 });
 
 const getCreds = async (c: Context) => {
@@ -21,16 +16,6 @@ const getCreds = async (c: Context) => {
   const password2 = body.get("password2")?.toString();
   return { email, password, password2 };
 };
-
-function Form({ signup = false }) {
-  const message = useMessage();
-  return (
-    <>
-      {message}
-      <hybrid.AuthForm signup={signup} />
-    </>
-  )
-}
 
 export default new Hono()
   .all("/", (c) => c.redirect("/auth/login"))
@@ -58,7 +43,7 @@ export default new Hono()
 
     return c.json(data);
   })
-  .all("/signup", (c) => c.render(<Form signup />, { title: "Sign up" }))
+  .all("/signup", (c) => c.render(<hybrid.AuthForm signup />, { title: "Sign up" }))
   .all("/login", redirIfLoggedIn)
   .post("/login", async (c, next) => {
     const { email, password } = await getCreds(c);
@@ -79,7 +64,7 @@ export default new Hono()
 
     return c.redirect("/secret");
   })
-  .all("/login", (c) => c.render(<Form />, { title: "Login" }))
+  .all("/login", (c) => c.render(<hybrid.AuthForm />, { title: "Login" }))
   .all("/logout", async (c) => {
     await c.get("db").auth.signOut();
     return c.redirect("/");

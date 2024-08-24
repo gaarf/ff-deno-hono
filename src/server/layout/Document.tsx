@@ -8,6 +8,7 @@ import { Providers } from "@/Providers.tsx";
 import { useRequestContext } from "@/server/context.ts";
 import { Container } from "@/server/layout/Container.tsx";
 import { TimeAgo } from "@/components";
+import { useMessage } from "@/server/layout/Message.tsx";
 
 const bootTime = isoNow();
 
@@ -20,6 +21,7 @@ export function Document({
   const theme = c.get("theme");
   const user = c.get("user");
   const { title, icon = "🌐" } = props;
+  const message = useMessage();
 
   return (
     <Providers
@@ -44,8 +46,9 @@ export function Document({
         </head>
         <body className="min-h-svh flex flex-col text-default-text bg-default-bg">
           <hybrid.Header fixed />
-          <main className="flex-1 w-full flex justify-center">
-            <Container className="relative my-3 block">{children}</Container>
+          <main className="flex-1 w-full flex flex-col items-center gap-3 py-3">
+            {message && <Container>{message}</Container>}
+            <Container className="relative block">{children}</Container>
           </main>
           <Footer>
             {dev && "[DEV]"} boot <TimeAgo when={bootTime} />

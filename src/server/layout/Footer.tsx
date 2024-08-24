@@ -8,8 +8,8 @@ type FooterProps = PropsWithChildren<{
 export const Footer = ({ children, fixed }: FooterProps) => (
   <footer
     className={cn(
-      "border-t text-nowrap bg-neutral-1",
-      "flex justify-center",
+      "border-t border-neutral-2 shadow-inner bg-neutral-1",
+      "flex justify-center text-nowrap",
       {
         "fixed inset-0 top-auto": fixed,
       },

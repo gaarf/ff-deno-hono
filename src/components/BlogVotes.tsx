@@ -29,31 +29,24 @@ export const BlogVotes = clientOnly(({ postId }: BlogVotesProps) => {
   const didVoteUp = !!(didVote && didVote.up);
 
   const doubleVote = () => toast.warn("You already voted that way!");
+  const disableKls = "cursor-not-allowed pointer-events-none text-opacity-50";
 
   return (
     <aside className="flex items-baseline gap-2 p-2 border-t">
       <ButtonGroup>
         <Button
-          intent={loading || didVoteDown ? "neutral" : "warning"}
           onClick={didVoteDown ? doubleVote : voteDown}
           loading={loading}
           title={didVoteDown ? "You voted Down" : "Vote Down"}
-          className={cn(
-            didVoteDown &&
-              "cursor-not-allowed enabled:bg-default-bg hover:bg-default-bg",
-          )}
+          className={cn({ [disableKls]: didVoteDown })}
         >
           ⬇️ {downCount?.toLocaleString()}
         </Button>
         <Button
-          intent={loading || didVoteUp ? "neutral" : "accent"}
           onClick={didVoteUp ? doubleVote : voteUp}
           loading={loading}
           title={didVoteUp ? "You voted Up" : "Vote Up"}
-          className={cn(
-            didVoteUp &&
-              "cursor-not-allowed enabled:bg-default-bg hover:bg-default-bg",
-          )}
+          className={cn({ [disableKls]: didVoteUp })}
         >
           ⬆️ {upCount?.toLocaleString()}
         </Button>

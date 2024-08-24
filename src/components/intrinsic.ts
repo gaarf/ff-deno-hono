@@ -26,7 +26,7 @@ export const Input = intrinsic("input", {
 });
 
 export const Textarea = intrinsic("textarea", {
-  className: inputKlass,
+  className: cn(inputKlass, "font-mono"),
 });
 
 export const Box = intrinsic("div", {

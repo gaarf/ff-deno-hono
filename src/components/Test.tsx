@@ -14,8 +14,8 @@ export const Test = ({
   const browser = isBrowser();
 
   return (
-    <Box className="flex-col gap-5 items-stretch my-2">
-      <h1 className="text-xl">this is the Test component</h1>
+    <Box className="flex-col gap-5 items-stretch mt-5">
+      <h1 className="text-xl">Test component</h1>
       <Json value={{ ...ssr, browser }} />
       <Box className="gap-2 flex-wrap">
         <span className="flex-1">{children}</span>

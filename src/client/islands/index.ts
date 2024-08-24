@@ -4,6 +4,7 @@ import { Header } from "@/client/islands/Header.tsx";
 import { Landing } from "@/client/islands/Landing.tsx";
 import { Toaster } from "@/client/islands/Toaster.tsx";
 import { AuthForm } from "@/client/islands/AuthForm.tsx";
+import { PostForm } from "@/client/islands/PostForm.tsx";
 
 import { withHybrid } from "@/server/Hybrid.tsx";
 import { ComponentType } from "@/utils.ts";
@@ -13,6 +14,7 @@ export const mountables = {
   Toaster,
   LoremIpsum,
   AuthForm,
+  PostForm,
   Landing,
   BtcPrice,
   Header,
