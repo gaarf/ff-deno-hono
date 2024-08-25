@@ -53,7 +53,7 @@ export const BlogPost = (props: BlogPostProps) => {
         </address>
       </Box>
 
-      <Markdown className="p-2">{post.content}</Markdown>
+      <Markdown>{post.content}</Markdown>
 
       {detail ? user && <BlogVotes postId={post.id} /> : <Gradient />}
     </article>

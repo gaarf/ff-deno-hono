@@ -1,6 +1,5 @@
 @import url("./theme/colors.css");
 @import url("./theme/toastify.css");
-@import url("./theme/prose.css");
 
 @tailwind base;
 @tailwind components;

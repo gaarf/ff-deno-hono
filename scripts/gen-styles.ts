@@ -4,6 +4,7 @@ import atImport from "npm:postcss-import";
 import urlImport from "npm:postcss-import-url";
 import cssnano from "npm:cssnano";
 import postcss from "npm:postcss";
+import { CSS as MARKDOWN_CSS } from "gfm";
 
 const TARGET = ".generated/styles.ts";
 const cssIn = "src/app.css";
@@ -21,11 +22,14 @@ if (prod) {
   plugins.push(cssnano);
 }
 
-const result = await postcss(plugins).process(Deno.readTextFileSync(cssIn), {
-  from: cssIn,
-  to: "styles.css",
-  map: !prod && { inline: false },
-});
+const result = await postcss(plugins).process(
+  Deno.readTextFileSync(cssIn) + MARKDOWN_CSS,
+  {
+    from: cssIn,
+    to: "styles.css",
+    map: !prod && { inline: false },
+  }
+);
 
 Deno.writeTextFileSync(
   TARGET,
@@ -33,7 +37,7 @@ Deno.writeTextFileSync(
     `export default ${JSON.stringify(result.css)};\n`,
     `export const cssMap = ${
       prod ? "undefined" : JSON.stringify(result.map)
-    };\n`,
-  ),
+    };\n`
+  )
 );
 console.log(`✍️ styles (${prod ? "prod" : "dev"})`);
