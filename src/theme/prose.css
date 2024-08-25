@@ -59,5 +59,8 @@
         @apply border-none p-0 text-xs;
       }
     }
+    a {
+      @apply underline;
+    }
   }
 }
