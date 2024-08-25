@@ -6,6 +6,7 @@ import { BlogVotes } from "@/components/BlogVotes.tsx";
 import { useSsrContext } from "@/client/SsrContext.ts";
 import { PropsWithChildren } from "@/react.shim.ts";
 import { cn } from "@/utils.ts";
+import { Markdown } from "@/components/Markdown.tsx";
 
 type BlogPostProps = {
   post: Tables<"posts">;
@@ -17,9 +18,11 @@ const LinkOrSpan = ({
   detail,
   children,
 }: PropsWithChildren<BlogPostProps>) =>
-  detail
-    ? <span>{children}</span>
-    : <Link href={`/blog/post/${post.id}`}>{children}</Link>;
+  detail ? (
+    <span>{children}</span>
+  ) : (
+    <Link href={`/blog/post/${post.id}`}>{children}</Link>
+  );
 
 export const Gradient = () => {
   return (
@@ -52,7 +55,8 @@ export const BlogPost = (props: BlogPostProps) => {
         </address>
       </Box>
 
-      <blockquote className="p-2">{post.content}</blockquote>
+      <Markdown className="p-2">{post.content}</Markdown>
+
       {detail ? user && <BlogVotes postId={post.id} /> : <Gradient />}
     </article>
   );

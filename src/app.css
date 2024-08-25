@@ -1,14 +1,25 @@
 @import url("./theme/colors.css");
 @import url("./theme/toastify.css");
+@import url("./theme/prose.css");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@view-transition {
-  navigation: auto;
+@layer base {
+  :root {
+    /* Font antialising */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @view-transition {
+    navigation: auto;
+  }
+
+  ::view-transition-group(root) {
+    animation-duration: 0.5s;
+  }
 }
 
-::view-transition-group(root) {
-  animation-duration: 0.5s;
-}
+

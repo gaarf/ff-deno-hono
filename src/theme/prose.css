@@ -1,0 +1,63 @@
+@layer components {
+  .prose {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @apply font-bold border-b border-neutral-2;
+      a.anchor {
+        @apply fill-neutral-4 float-right mt-2 ml-2;
+      }
+      @apply mt-8 first:mt-0 scroll-mt-14 clear-both;
+    }
+    h1 {
+      @apply text-2xl;
+    }
+    h2 {
+      @apply text-xl;
+    }
+    h3 {
+      @apply text-lg;
+    }
+    h5 {
+      @apply text-sm;
+    }
+    h6 {
+      @apply text-xs;
+    }
+    p,
+    blockquote,
+    ul,
+    ol,
+    pre {
+      @apply my-3;
+    }
+    ol {
+      @apply list-decimal;
+    }
+    ul {
+      @apply list-disc;
+    }
+    li {
+      @apply list-outside ml-8 pl-4;
+    }
+    blockquote {
+      @apply border-l-2 ml-4 pl-5;
+      p {
+        @apply my-1;
+      }
+    }
+    code {
+      @apply font-mono break-all;
+      @apply bg-neutral-1 rounded border border-neutral-5 p-1;
+    }
+    pre {
+      @apply bg-neutral-1 rounded overflow-auto p-2 leading-none;
+      > code {
+        @apply border-none p-0 text-xs;
+      }
+    }
+  }
+}

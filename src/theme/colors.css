@@ -1,9 +1,4 @@
 @layer base {
-  :root {
-    /* Font antialising */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
 
   :root[data-theme="light"] {
     /* Light - Monochrome */
