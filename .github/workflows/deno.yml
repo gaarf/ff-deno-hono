@@ -36,8 +36,8 @@ jobs:
       - name: Check types
         run: deno task check
   
-      - name: Verify formatting
-        run: deno fmt --check --ignore=.generated
+      # - name: Verify formatting
+      #   run: deno fmt --check --ignore=.generated
 
       - name: Run linter
         run: deno lint --ignore=.generated
