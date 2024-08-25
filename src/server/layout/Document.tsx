@@ -48,7 +48,9 @@ export function Document({
           <hybrid.Header fixed />
           <main className="flex-1 w-full flex flex-col items-center gap-3 py-3">
             {message && <Container>{message}</Container>}
-            <Container className="relative block">{children}</Container>
+            <Container className="flex flex-col items-stretch justify-start flex-1">
+              {children}
+            </Container>
           </main>
           <Footer>
             {dev && "[DEV]"} boot <TimeAgo when={bootTime} />

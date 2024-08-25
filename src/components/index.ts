@@ -5,3 +5,4 @@ export * from "@/components/BlogPost.tsx";
 export * from "@/components/LabeledInput.tsx";
 export * from "@/components/TimeAgo.tsx";
 export * from "@/components/Icon.tsx";
+export * from "@/components/LoadingForm.tsx";
