@@ -17,11 +17,9 @@ const LinkOrSpan = ({
   detail,
   children,
 }: PropsWithChildren<BlogPostProps>) =>
-  detail ? (
-    <span>{children}</span>
-  ) : (
-    <Link href={`/blog/post/${post.id}`}>{children}</Link>
-  );
+  detail
+    ? <span>{children}</span>
+    : <Link href={`/blog/post/${post.id}`}>{children}</Link>;
 
 export const Gradient = () => {
   return (

@@ -14,7 +14,7 @@ export default new Hono()
       .get("db")
       .from("posts")
       .insert({ title, content })
-      .select('id')
+      .select("id")
       .maybeSingle();
 
     if (error) {

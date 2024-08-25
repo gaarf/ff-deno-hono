@@ -25,7 +25,7 @@ export const LoadingForm = ({
       method="post"
       className={cn(
         "flex w-full p-4 rounded bg-neutral-1 flex-col items-start gap-4",
-        className
+        className,
       )}
       onSubmit={handleSubmit}
     >

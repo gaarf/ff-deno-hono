@@ -1,4 +1,4 @@
-import { LabeledTextarea, LabeledInput, LoadingForm } from "@/components";
+import { LabeledInput, LabeledTextarea, LoadingForm } from "@/components";
 
 export const PostForm = () => {
   return (

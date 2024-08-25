@@ -38,7 +38,7 @@ export const requireAuth = createMiddleware(async (c, next) => {
   const user = await userPromise(c);
   const { pathname } = new URL(c.req.url);
   if (!user) {
-    return c.redirect("/auth/login?redir="+encodeURIComponent(pathname));
+    return c.redirect("/auth/login?redir=" + encodeURIComponent(pathname));
   }
   await next();
 });

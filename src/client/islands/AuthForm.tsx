@@ -1,17 +1,15 @@
-import { Box, Link, LabeledInput, LoadingForm } from "@/components";
+import { Box, LabeledInput, Link, LoadingForm } from "@/components";
 
 export const AuthForm = ({ signup = false }) => {
   return (
     <Box className="justify-center">
       <LoadingForm
         className="max-w-lg"
-        afterContent={
-          !signup && (
-            <span>
-              or <Link href="/auth/signup">Sign up</Link>
-            </span>
-          )
-        }
+        afterContent={!signup && (
+          <span>
+            or <Link href="/auth/signup">Sign up</Link>
+          </span>
+        )}
       >
         <LabeledInput
           label="Email"

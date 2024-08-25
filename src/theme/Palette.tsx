@@ -8,7 +8,7 @@ const ColorSwatch = ({ colorClass }: { colorClass: string }) => {
       className={cn(
         "aspect-square overflow-hidden rounded relative font-mono",
         `border border-${intent}-${level}`,
-        colorClass
+        colorClass,
       )}
     >
       <span className="text-xs opacity-30 hidden md:inline p-1">

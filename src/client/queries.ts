@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { type ApiBtc } from "../routes/test/api.tsx";
+import { type ApiBtc } from "@/routes/test/api.tsx";
 import supabase from "@/supabase/client.ts";
 
 // export const usePosts = () =>
