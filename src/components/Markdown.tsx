@@ -11,7 +11,7 @@ export const Markdown = ({ children, className }: MarkdownProps) => {
   const markup = useMemo(() => render(children?.toString()!), [children]);
   const [theme] = useTheme(true);
   return (
-    <blockquote
+    <div
       data-color-mode={theme}
       data-light-theme="light"
       data-dark-theme="dark"

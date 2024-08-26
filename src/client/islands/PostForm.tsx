@@ -29,7 +29,7 @@ export const PostForm = () => {
         />
       </LoadingForm>
 
-      {content && <Markdown className="p-4 border border-dashed">{content}</Markdown>}
+      {content && <Markdown className="border border-dashed">{content}</Markdown>}
     </>
   );
 };
